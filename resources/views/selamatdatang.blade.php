@@ -39,9 +39,9 @@
     <!-- Logo --><!-- Tambahin Image -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>SIPPKTI</b></span>
+      <span class="logo-mini"><b>SIP3KTI</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>SIPPKTI</b></span>
+      <span class="logo-lg"><b>SIP3KTI</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -55,9 +55,6 @@
           @guest
           <li class="nav-item">
             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
           </li>
           @else
              <!-- User Account: style can be found in dropdown.less -->
@@ -102,7 +99,7 @@
     <section class="sidebar">
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN NAVIGATION</li>
+        <li class="header">Menu Panduan</li>
         <li class="active treeview">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
@@ -132,37 +129,70 @@
     <section class="content-header">
       <h1>
        Selamat Datang di
-        <small> Sistem Informasi Pengajuan dan Peminjaman Karya Tulis Ilmiah </small>
+        <small> Sistem Informasi Pengelolaan Pengajuan dan Peminjaman Karya Tulis Ilmiah </small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Examples</a></li>
-        <li class="active">Blank page</li>
-      </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
+      <div class="row">
+        <div class="col-lg-4 col-xs-6">
+          <div class="small-box bg-navy">
+            <div class="inner">
+              <h2>Mudah</h2>
+              <p>Kemudahan mengakses informasi mengenai Makalah atau Karya Tulis Ilmiah</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-file-text-o"></i>
+            </div>
+            <a class="small-box-footer" href="#">Informasi Lainnya <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-xs-6">
+          <div class="small-box bg-blue">
+            <div class="inner">
+              <h2>-</h2>
+              <p>Cepat menyesuaikan data dan informasi....</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-file-text-o"></i>
+            </div>
+            <a class="small-box-footer" href="#">Informasi Lainnya <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-xs-6">
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h2>-</h2>
+              <p>Kemudahan mengakses informasi mengenai Makalah/Kti</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-file-text-o"></i>
+            </div>
+            <a class="small-box-footer" href="#">Informasi Lainnya <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+      </div>
 
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Title</h3>
-
-          <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                    title="Collapse">
-              <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fa fa-times"></i></button>
-          </div>
+          <h3 class="box-title">Pendahuluan</h3>
         </div>
         <div class="box-body">
-          Start creating your amazing application!
+          Sistem Informasi Pengelolaan Pengajuan dan Peminjaman Karya Tulis Ilmiah (SIP3KTI)
+          berfungsi untuk mengelola data diantaranya:<br/>
+          <ol>
+            <li>Mengelola data Pengajuan Makalah/Karya Tulis Ilmiah (Kti)</li>
+            <li>Mengelola data perkembangan Pemeriksaan Makalah/Kti.</li>
+            <li>Mengelola data Peminjaman Makalah/Kti.</li>
+          </ol>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Footer
+          Tanggal,Jam.....
         </div>
         <!-- /.box-footer-->
       </div>
