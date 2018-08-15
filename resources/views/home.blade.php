@@ -10,22 +10,17 @@
         <small>Control panel</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
+        <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
       </ol>
 
       <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+        @if (session('status'))
+          <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+          </div>
+        @endif
+      </div>
     </section>
-
-    
 
     <!-- Main content -->
     <section class="content">

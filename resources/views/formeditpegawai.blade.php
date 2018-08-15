@@ -28,24 +28,24 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="text">Nomor Induk Pegawai</label>
-                  <input type="text" class="form-control" name="nip" placeholder="*misal: 19620144 199503 1 001" required autofocus>
+                  <input type="text" class="form-control" name="nip" value="{{ $data->nip }}" disable>
                 </div>
                 <div class="form-group">
                   <label for="text">Nama Lengkap</label>
-                  <input type="text" class="form-control" name="nama" required>
+                  <input type="text" class="form-control" name="nama" value="{{ $data->namapegawai }}" required>
                 </div>
                 <div class="form-group">
                   <label for="text">Golongan</label>
-                  <input type="text" class="form-control" name="golongan" placeholder="*misal: IV/a" required>
+                  <input type="text" class="form-control" name="golongan" value="{{ $data->golongan }}" required>
                 </div>
                 <div class="form-group">
                   <label>Pendidikan Akhir</label>
-                  <select class="form-control" name="pendidikanakhir">
+                  <select class="form-control" name="pendidikanakhir" value="{{ $data->pendidikanakhir }}" required>
                     <option>SD</option>
                     <option>SMP</option>
                     <option>SMA</option>
                     <option>SMK</option>
-                    <option>STM</option>
+                    <option selected>STM</option>
                     <option>D1</option>
                     <option>D2</option>
                     <option>D3</option>
@@ -57,15 +57,15 @@
                 </div>
                 <div class="form-group">
                   <label for="text">Jurusan</label>
-                  <input type="text" class="form-control" name="jurusan" placeholder="*misal: IPA/IPS/Ekonomi/dsb.." required>
+                  <input type="text" class="form-control" name="jurusan" value="{{ $data->jurusan }}" required>
                 </div>
                 <div class="form-group">
                   <label for="text">Jabatan</label>
-                  <input type="text" class="form-control" name="jabatan" placeholder="*misal: Peneliti Ahli Utama" required>
+                  <input type="text" class="form-control" name="jabatan" value="{{ $data->jabatan }}" required>
                 </div>
                 <div class="form-group">
                   <label>Status</label>
-                  <select class="form-control" name="status">
+                  <select class="form-control" name="status" value="{{ $data->status }}">
                     <option>PNS</option>
                     <option>CPNS</option>
                     <option>PEGAWAI KONTRAK</option>

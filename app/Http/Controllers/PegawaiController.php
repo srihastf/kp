@@ -36,7 +36,7 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        //
+        return view('formpegawai');
     }
 
     /**
@@ -47,7 +47,16 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Pegawaimodel::create([
+			'nip' => $request->nip,
+			'namapegawai' =>  $request->nama,
+            'golongan' => $request->golongan,
+            'pendidikanakhir'=>$request->pendidikanakhir,
+            'jurusan'=>$request->jurusan,
+            'jabatan'=>$request->jabatan,
+            'status'=>$request->status
+                ]);
+        return redirect()->route('pegawai.index');
     }
 
     /**
@@ -58,7 +67,8 @@ class PegawaiController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['data']=Pegawaimodel::find($id);
+		return view('detailpegawai', $data);
     }
 
     /**
@@ -69,7 +79,8 @@ class PegawaiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['data']=Pegawaimodel::find($id);
+        return view('formeditpegawai', $data);
     }
 
     /**
@@ -81,7 +92,13 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Pegawaimodel::find($id)->update(['namapegawai'=>$request->nama]);
+        Pegawaimodel::find($id)->update(['golongan'=>$request->golongan]);
+        Pegawaimodel::find($id)->update(['pendidikanakhir'=>$request->pendidikanakhir]);
+        Pegawaimodel::find($id)->update(['jurusan'=>$request->jurusan]);
+        Pegawaimodel::find($id)->update(['jabatan'=>$request->jabatan]);
+        Pegawaimodel::find($id)->update(['status'=>$request->status]);
+		return redirect()->route('pegawai.index');
     }
 
     /**
@@ -92,6 +109,9 @@ class PegawaiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $temp=Pegawaimodel::find($id)->value('nip');
+        Pegawaimodel::find($id)->delete();
+
+        return redirect()->route('pegawai.index',$temp)->with('message', 'Data berhasil di hapus');
     }
 }
