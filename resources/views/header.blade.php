@@ -47,17 +47,16 @@
           @else 
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{url('dist/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
+              <icon class="ion ion-person"></icon> 
               <span class="hidden-xs">{{ Auth::user()->name }} </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{url('dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-
                 <p>
-                {{ Auth::user()->name }} - Web Developer
-                  <small>Member since Nov. 2012</small>
+                {{ Auth::user()->name }}</br>
+                Sebagai : {{ Auth::user()->status }}
+                  <small>Bergabung sejak : {{ Auth::user()->created_at }}</small>
                 </p>
               </li>
               <!-- Menu Footer-->

@@ -16,7 +16,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="/pegawai"><i class="fa fa-user"></i> Pegawai</a></li>
+            <li class="active"><a href="{{route('pegawai.index')}}"><i class="fa fa-user"></i> Pegawai</a></li>
             <li><a href="/user"><i class="fa fa-users"></i> Pengguna</a></li>
           </ul>
         </li>

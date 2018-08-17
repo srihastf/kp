@@ -9,6 +9,11 @@
       <h1>
        Form Tambah Pegawai
       </h1>
+      <ol class="breadcrumb">
+        <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
+        </li>
+        <li class="breadcrumb-item active">@yield('title')</li>
+      </ol>
     </section>
 
     <!-- Main content -->
@@ -20,6 +25,15 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Silahkan isi dengan data yang sesuai.</h3>
+              @if($errors->any())
+                <div class="alert alert-danger">
+                  <ul>
+                    @foreach($errors->all() as $error)
+                      <li>{{$error}}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
             </div>
             <!-- /.box-header -->
             <!-- form start -->

@@ -9,13 +9,23 @@
 @section('content')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
+  <div class="flash-message">
+      @foreach(['danger','warning','success','info'] as $msg)
+        @if(Session::has('alert-'.$msg))
+          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-'.$msg) }}
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+          </p>
+        @endif
+      @endforeach
+    </div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Daftar Data Pegawai
       </h1>
       <ol class="breadcrumb">
-        <li><a href="{{route('pegawai.create')}}"><button type="button" class="btn btn-block btn-success btn-sm">Tambah Data Pegawai</button></a></li>
+        <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
+        <li class="breadcrumb-item active">@yield('title')</li>
       </ol>
     </section>
 
@@ -44,7 +54,8 @@
                     <th>{{$d->jabatan}}</th>
                     <th>{{$d->status}}</th>
                     <th>
-                      <form action="{{ route('pegawai.destroy', ['pegawai'=>$d->nip]) }}" method="post">
+                      <form action="{{ route('pegawai.destroy', ['pegawai'=>$d->nip]) }}" method="post"
+                      onsubmit="return confirm('Anda yakin akan menghapus data?')">
                         <a href="{{ route('pegawai.show', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Detail</button></a>
                         <a href="{{ route('pegawai.edit', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                         <input type="hidden" name="_method" value="DELETE">
@@ -64,6 +75,11 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
+      <div class="row">
+        <div class="col-md-2">
+          <a href="{{route('pegawai.create')}}"><button class="btn btn-block btn-sm btn-success" type="button">Tambah Data Baru</button></a>
+        </div>
+      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -88,5 +104,6 @@
       'autoWidth'   : false
     })
   })
+
 </script>
 @endsection

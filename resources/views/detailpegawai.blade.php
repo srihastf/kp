@@ -4,6 +4,15 @@
 @section('content')
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
+    <div class="flash-message">
+      @foreach(['danger','warning','success','info'] as $msg)
+        @if(Session::has('alert-'.$msg))
+          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-'.$msg) }}
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+          </p>
+        @endif
+      @endforeach
+    </div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -70,6 +79,10 @@
             </div>
           </div>
           <!-- /.box -->
+        </div>
+
+        <div class="col-md-3">
+          <a href="/tampilpegawai"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Daftar Pegawai</button></a>
         </div>
       </div>
     </section>

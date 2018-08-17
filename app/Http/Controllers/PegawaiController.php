@@ -25,9 +25,19 @@ class PegawaiController extends Controller
      */
     public function index()
     {
+        return view('kelolapegawai');
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function tampil()
+    {
         $data['data']=Pegawaimodel::Get();
         return view('tampilpegawai',$data);
-    }
+    }   
 
     /**
      * Show the form for creating a new resource.
@@ -47,6 +57,11 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'nip'=>'required|min:21|max:21',
+            'golongan'=>'required|min:3|max:5',
+        ]);
+
         Pegawaimodel::create([
 			'nip' => $request->nip,
 			'namapegawai' =>  $request->nama,
@@ -55,8 +70,10 @@ class PegawaiController extends Controller
             'jurusan'=>$request->jurusan,
             'jabatan'=>$request->jabatan,
             'status'=>$request->status
-                ]);
-        return redirect()->route('pegawai.index');
+        ]);
+
+        $request->session()->flash('alert-success','Data Pegawai berhasil ditambahkan.');
+        return redirect()->route('pegawai.show', $request->nip);
     }
 
     /**
@@ -92,26 +109,34 @@ class PegawaiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Pegawaimodel::find($id)->update(['namapegawai'=>$request->nama]);
-        Pegawaimodel::find($id)->update(['golongan'=>$request->golongan]);
-        Pegawaimodel::find($id)->update(['pendidikanakhir'=>$request->pendidikanakhir]);
-        Pegawaimodel::find($id)->update(['jurusan'=>$request->jurusan]);
-        Pegawaimodel::find($id)->update(['jabatan'=>$request->jabatan]);
-        Pegawaimodel::find($id)->update(['status'=>$request->status]);
-		return redirect()->route('pegawai.index');
-    }
+        $this->validate($request,[
+            'golongan'=>'required|min:3|max:5',
+        ]);
+
+        $pegawai = Pegawaimodel::where('nip',$id)->first();
+        $pegawai->namapegawai = $request->nama;
+        $pegawai->golongan = $request->golongan;
+        $pegawai->pendidikanakhir = $request->pendidikanakhir;
+        $pegawai->jurusan = $request->jurusan;
+        $pegawai->jabatan = $request->jabatan;
+        $pegawai->status = $request->status;
+        $pegawai->save();
+
+        $request->session()->flash('alert-success','Data Pegawai berhasil diubah.');
+		return redirect()->route('pegawai.show', $pegawai->nip);
+    } 
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $temp=Pegawaimodel::find($id)->value('nip');
         Pegawaimodel::find($id)->delete();
 
-        return redirect()->route('pegawai.index',$temp)->with('message', 'Data berhasil di hapus');
+        $request->session()->flash('alert-warning','Data Pegawai berhasil dihapus.');
+        return redirect('/tampilpegawai');
     }
 }
