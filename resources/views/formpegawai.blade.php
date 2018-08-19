@@ -2,8 +2,18 @@
 @section('title','Tambah Pegawai')
 
 @section('content')
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+  <div class="flash-message">
+      @foreach(['danger','warning','success','info'] as $msg)
+        @if(Session::has('alert-'.$msg))
+          <p class="alert alert-{{ $msg }}">{{ Session::get('alert-'.$msg) }}
+            <a href="#" class="close" data-dismiss="alert" aria-label="close"> &times;</a>
+          </p>
+        @endif
+      @endforeach
+    </div>
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -25,15 +35,6 @@
           <div class="box box-primary">
             <div class="box-header with-border">
               <h3 class="box-title">Silahkan isi dengan data yang sesuai.</h3>
-              @if($errors->any())
-                <div class="alert alert-danger">
-                  <ul>
-                    @foreach($errors->all() as $error)
-                      <li>{{$error}}</li>
-                    @endforeach
-                  </ul>
-                </div>
-              @endif
             </div>
             <!-- /.box-header -->
             <!-- form start -->
@@ -42,11 +43,11 @@
               <div class="box-body">
                 <div class="form-group">
                   <label for="text">Nomor Induk Pegawai</label>
-                  <input type="text" class="form-control" name="nip" placeholder="*misal: 19620144 199503 1 001" required autofocus>
+                  <input type="text" class="form-control" name="nip" id="nip" placeholder="*misal: 19620144 199503 1 001" name="nip" required autofocus>
                 </div>
                 <div class="form-group">
                   <label for="text">Nama Lengkap</label>
-                  <input type="text" class="form-control" name="nama" required>
+                  <input type="text" class="form-control" name="nama" id="nama" required>
                 </div>
                 <div class="form-group">
                   <label for="text">Golongan</label>

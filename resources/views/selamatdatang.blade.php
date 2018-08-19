@@ -192,7 +192,15 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          Tanggal,Jam.....
+          <p class="meta">
+          <?php 
+            $tgl=mktime(date("m"),date("d"),date("Y"));
+            echo "Tanggal : <b>".date("d-m-Y", $tgl)."</b> ";
+            date_default_timezone_set('Asia/Jakarta');
+            $jam=date("H:i:s");
+            echo "| Pukul : <b>". $jam." WIB "."</b>";
+          ?>
+          </p>
         </div>
         <!-- /.box-footer-->
       </div>

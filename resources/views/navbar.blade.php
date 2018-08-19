@@ -15,10 +15,15 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+
+          <!--Menu Per/Aktor-->
+          @if(Auth::user()->status=="Admin")
           <ul class="treeview-menu">
-            <li class="active"><a href="{{route('pegawai.index')}}"><i class="fa fa-user"></i> Pegawai</a></li>
-            <li><a href="/user"><i class="fa fa-users"></i> Pengguna</a></li>
+            <li><a href="{{route('pegawai.index')}}"><i class="fa fa-user"></i> Pegawai</a></li>
+            <li><a href="/pengguna"><i class="fa fa-users"></i> Pengguna</a></li>
           </ul>
+          @endif
+          
         </li>
         <li class="header">Informasi</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Penting</span></a></li>

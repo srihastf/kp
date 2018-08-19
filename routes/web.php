@@ -47,6 +47,11 @@ Route::resource('bidangsnt','BidangsntController');
 Route::resource('pegawai','PegawaiController');
 Route::get('/tampilpegawai','PegawaiController@tampil');
 
+//PENGGUNA
+Route::resource('pengguna','PenggunaController');
+Route::get('/tampilpengguna','PenggunaController@tampil');
+Route::get('/infopengguna', 'PenggunaController@getInfo');
+
 //MAKALAH
 Route::resource('makalah','MakalahController');
 

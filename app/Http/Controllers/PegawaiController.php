@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pegawaimodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PegawaiController extends Controller
 {
@@ -57,10 +58,22 @@ class PegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'nip'=>'required|min:21|max:21',
-            'golongan'=>'required|min:3|max:5',
+
+        $validator= Validator::make($request->all(),[
+            'nip' => 'bail|required|string|min:21|max:21|unique:pegawai',
+            'nama' => 'required|string|max:30',
+            'golongan' => 'required|string|min:3|max:5',
+            'pendidikanakhir' => 'required|string|max:3',
+            'jurusan' => 'required|string|max:40',
+            'jabatan' => 'required|string|max:40',
+            'status' => 'required|string|max:21',
         ]);
+
+        if($validator->fails()){
+            return redirect()->route('pegawai.create')
+            ->withErrors($validator)
+            ->withInput();
+        }
 
         Pegawaimodel::create([
 			'nip' => $request->nip,
@@ -110,7 +123,12 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'golongan'=>'required|min:3|max:5',
+            'nama' => 'required|string|max:30',
+            'golongan' => 'required|string|min:3|max:5',
+            'pendidikanakhir' => 'required|string|max:3',
+            'jurusan' => 'required|string|max:40',
+            'jabatan' => 'required|string|max:40',
+            'status' => 'required|string|max:21',
         ]);
 
         $pegawai = Pegawaimodel::where('nip',$id)->first();

@@ -52,9 +52,9 @@
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
+              <li class="user-header" style="height:100px">
                 <p>
-                {{ Auth::user()->name }}</br>
+                <b>{{ Auth::user()->name }}</b></br>
                 Sebagai : {{ Auth::user()->status }}
                   <small>Bergabung sejak : {{ Auth::user()->created_at }}</small>
                 </p>
