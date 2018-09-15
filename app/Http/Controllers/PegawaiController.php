@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Pegawaimodel;
+use App\Subbidmodel;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,7 +28,7 @@ class PegawaiController extends Controller
      */
     public function index()
     {
-        return view('kelolapegawai');
+        return view('pegawai.kelolapegawai');
     }
 
      /**
@@ -37,7 +39,7 @@ class PegawaiController extends Controller
     public function tampil()
     {
         $data['data']=Pegawaimodel::Get();
-        return view('tampilpegawai',$data);
+        return view('pegawai.tampilpegawai',$data);
     }   
 
     /**
@@ -47,8 +49,16 @@ class PegawaiController extends Controller
      */
     public function create()
     {
-        return view('formpegawai');
+        $subbid['subbid']=Subbidmodel::Get();
+        $bidang = DB::table('bidangsnt')->pluck("kodesnt","namabidang");
+        return view('pegawai.formpegawai',compact('bidang'),$subbid);
     }
+
+    public function getSubbid($id) {
+        $subbid = DB::table("subbidang")->where("kodesnt",$id)->pluck("kodesubid","namasubid");
+        return json_encode($subbid);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -61,10 +71,12 @@ class PegawaiController extends Controller
 
         $validator= Validator::make($request->all(),[
             'nip' => 'bail|required|string|min:21|max:21|unique:pegawai',
-            'nama' => 'required|string|max:30',
-            'golongan' => 'required|string|min:3|max:5',
+            'bidang' => 'string|max:5',
+            'subbid' => 'string|max:15',
+            'nama' => 'required|string|max:40',
+            'golongan' => 'string|min:3|max:5',
             'pendidikanakhir' => 'required|string|max:3',
-            'jurusan' => 'required|string|max:40',
+            'jurusan' => 'string|max:40',
             'jabatan' => 'required|string|max:40',
             'status' => 'required|string|max:21',
         ]);
@@ -75,8 +87,16 @@ class PegawaiController extends Controller
             ->withInput();
         }
 
+        if($request->subbid==""){
+            $isisubbid=null;
+        }else{
+            $isisubbid=$request->subbid;
+        }
+
         Pegawaimodel::create([
-			'nip' => $request->nip,
+            'nip' => $request->nip,
+            'bidang'=>$request->bidang,
+            'subbid'=>$isisubbid,
 			'namapegawai' =>  $request->nama,
             'golongan' => $request->golongan,
             'pendidikanakhir'=>$request->pendidikanakhir,
@@ -98,7 +118,13 @@ class PegawaiController extends Controller
     public function show($id)
     {
         $data['data']=Pegawaimodel::find($id);
-		return view('detailpegawai', $data);
+        $bidang = DB::table("bidangsnt")
+            		->select("kodesnt","namabidang")
+                    ->pluck("kodesnt","namabidang");
+        $subbids = DB::table("subbidang")
+            		->select("kodesubid","namasubid")
+                    ->pluck("kodesubid","namasubid");
+		return view('pegawai.detailpegawai', $data,compact('bidang','subbids'));
     }
 
     /**
@@ -110,7 +136,9 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         $data['data']=Pegawaimodel::find($id);
-        return view('formeditpegawai', $data);
+        $subbid['subbid']=Subbidmodel::Get();
+        $bidang = DB::table('bidangsnt')->pluck("kodesnt","namabidang");
+        return view('pegawai.formeditpegawai', $data,compact('bidang'),$subbid);
     }
 
     /**
@@ -123,15 +151,20 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nama' => 'required|string|max:30',
-            'golongan' => 'required|string|min:3|max:5',
+            'bidang' => 'required|string|max:5',
+            'subbid' => 'string|max:15',
+            'nama' => 'required|string|max:40',
+            'golongan' => 'string|min:3|max:5',
             'pendidikanakhir' => 'required|string|max:3',
-            'jurusan' => 'required|string|max:40',
+            'jurusan' => 'string|max:40',
             'jabatan' => 'required|string|max:40',
             'status' => 'required|string|max:21',
         ]);
 
         $pegawai = Pegawaimodel::where('nip',$id)->first();
+        
+        $pegawai->bidang = $request->bidang;
+        $pegawai->subbid = $request->subbid;
         $pegawai->namapegawai = $request->nama;
         $pegawai->golongan = $request->golongan;
         $pegawai->pendidikanakhir = $request->pendidikanakhir;

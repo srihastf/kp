@@ -39,6 +39,7 @@
               <table id="example1" class="table table-bordered table-striped">
               <thead>
                   <tr>
+                    <th>No</th>
                     <th>Nama Pegawai</th>
                     <th>NIP</th>
                     <th>E-mail</th>
@@ -49,15 +50,16 @@
                 <tbody>
                   @foreach($data as $d)
                   <tr>
+                    <td>{{$d->id}}</td>
                     <td>{{$d->name}}</td>
                     <th>{{$d->nip}}</th>
                     <th>{{$d->email}}</th>
                     <th>{{$d->status}}</th>
                     <th>
-                      <form action="{{ route('pengguna.destroy', ['pengguna'=>$d->nip]) }}" method="post"
+                      <form action="{{ route('pengguna.destroy', ['pengguna'=>$d->id]) }}" method="post"
                       onsubmit="return confirm('Anda yakin akan menghapus data?')">
-                        <a href="{{ route('pengguna.show', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Detail</button></a>
-                        <a href="{{ route('pengguna.edit', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
+                        <a href="{{ route('pengguna.show', ['pegawai'=>$d->id]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Detail</button></a>
+                        <a href="{{ route('pengguna.edit', ['pegawai'=>$d->id]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>
@@ -95,14 +97,6 @@
 <script>
   $(function () {
     $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
   })
 
 </script>

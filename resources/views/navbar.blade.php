@@ -22,8 +22,13 @@
             <li><a href="{{route('pegawai.index')}}"><i class="fa fa-user"></i> Pegawai</a></li>
             <li><a href="/pengguna"><i class="fa fa-users"></i> Pengguna</a></li>
           </ul>
+          @elseif(Auth::user()->status=="Sekertaris KPTF/KPTP")
+          <ul class="treeview-menu">
+            <li><a href="{{route('makalah.index')}}"><i class="fa fa-file-text"></i>Pengajuan KTI/Makalah</a></li>
+            <li><a href="#"><i class="fa fa-files-o"></i> Peminjaman KTI/Makalah</a></li>
+          </ul>
           @endif
-          
+
         </li>
         <li class="header">Informasi</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Penting</span></a></li>
@@ -34,10 +39,17 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+          @if(Auth::user()->status=="Admin")
           <ul class="treeview-menu">
-            <li class="active"><a href="#"><i class="fa fa-user"></i> Panduan Kelola Pegawai</a></li>
-            <li><a href="#"><i class="fa fa-users"></i>Panduan Kelola Pengguna</a></li>
+            <li class="active"><a href="#">Kelola Pegawai</a></li>
+            <li><a href="#">Kelola Pengguna</a></li>
           </ul>
+          @elseif(Auth::user()->status=="Sekertaris KPTF/KPTP")
+          <ul class="treeview-menu">
+            <li class="active"><a href="#">Kelola Pengajuan KTI/Makalah</a></li>
+            <li><a href="#">Kelola Peminjaman KTI/Makalah</a></li>
+          </ul>
+          @endif
         </li>
       </ul>
     </section>

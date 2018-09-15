@@ -28,7 +28,7 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        return view('kelolapengguna');
+        return view('pengguna.kelolapengguna');
     }
 
      /**
@@ -39,7 +39,7 @@ class PenggunaController extends Controller
     public function tampil()
     {
         $data['data']=User::Get();
-        return view('tampilpengguna',$data);
+        return view('pengguna.tampilpengguna',$data);
     }  
     
     /**
@@ -69,7 +69,7 @@ class PenggunaController extends Controller
     public function create()
     {
         $data['data']=User::get();
-        return view('formpengguna',$data);
+        return view('pengguna.formpengguna',$data);
     }
 
     /**
@@ -103,7 +103,7 @@ class PenggunaController extends Controller
             'name'=>$data->namapegawai,
             'email'=>$request->email,
             'status'=>$request->status,
-            'password'=>Hash::make("batan"), //(pass awal / default)
+            'password'=>Hash::make($request->password),
         ]);
 
         $request->session()->flash('alert-success','Data Pengguna berhasil ditambahkan.');
@@ -119,7 +119,7 @@ class PenggunaController extends Controller
     public function show($id)
     {
         $data['data']=User::find($id);
-		return view('detailpengguna', $data);
+		return view('pengguna.detailpengguna', $data);
     }
 
     /**
@@ -131,7 +131,7 @@ class PenggunaController extends Controller
     public function edit($id)
     {
         $data['data']=User::find($id);
-        return view('formeditpengguna', $data);
+        return view('pengguna.formeditpengguna', $data);
     }
 
     /**
@@ -143,18 +143,16 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'email'=>'required|email|unique:users',
-            'status'=>'required|string|max:30',
-        ]);
-
-        $pengguna = User::where('nip',$id)->first();
+        $pengguna = User::where('id',$id)->first();
+        $pengguna->name = $request->name;
+        $pengguna->nip = $request->nip;
         $pengguna->email = $request->email;
         $pengguna->status = $request->status;
+        $pengguna->password = Hash::make($request->password);
         $pengguna->save();
 
         $request->session()->flash('alert-success','Data Pengguna berhasil diubah.');
-		return redirect()->route('pengguna.show', $pegawai->nip);
+		return redirect()->route('pengguna.show', $id);
     } 
 
     /**

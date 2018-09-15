@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Detail Pegawai')
+@section('title','Detail Pengguna')
 
 @section('content')
  <!-- Content Wrapper. Contains page content -->
@@ -16,12 +16,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Detail Pegawai
+        Data Detail Pengguna
       </h1>
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i>Beranda</a></li>
-        <li><a href="/pegawai">Pegawai</a></li>
-        <li class="active">Detail Pegawai</li>
+        <li><a href="/pegawai">Pengguna</a></li>
+        <li class="active">Detail Pengguna</li>
       </ol>
     </section>
 
@@ -37,7 +37,7 @@
                   <td>1.</td>
                   <td>Nama</td>
                   <td>:</td>
-                  <td>{{ $data->namapegawai }}</td>
+                  <td>{{ $data->name }}</td>
                 </tr>
                 <tr>
                   <td>2.</td>
@@ -47,25 +47,13 @@
                 </tr>
                 <tr>
                   <td>3.</td>
-                  <td>Golongan</td>
+                  <td>Email</td>
                   <td>:</td>
-                  <td>{{ $data->golongan }}</td>
+                  <td>{{ $data->email }}</td>
                 </tr>
                 <tr>
                   <td>4.</td>
-                  <td>Pendidikan Akhir</td>
-                  <td>:</td>
-                  <td>{{ $data->pendidikanakhir }} - {{ $data->jurusan }}</td>
-                </tr>
-                <tr>
-                  <td>5.</td>
-                  <td>Jabatan Fungsional</td>
-                  <td>:</td>
-                  <td>{{ $data->jabatan }}</td>
-                </tr>
-                <tr>
-                  <td>6.</td>
-                  <td>Status</td>
+                  <td>Status sebagai</td>
                   <td>:</td>
                   <td>{{ $data->status }}</td>
                 </tr>
@@ -82,7 +70,7 @@
         </div>
 
         <div class="col-md-3">
-          <a href="/tampilpegawai"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Daftar Pegawai</button></a>
+          <a href="/tampilpegawai"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Daftar Pengguna</button></a>
         </div>
       </div>
     </section>

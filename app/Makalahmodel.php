@@ -12,8 +12,10 @@ class Makalahmodel extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'nomormakalah','kodesnt','kodekti','judulmakalah','penulis','pemeriksa1','pemeriksa2','file',
-        'tgldaftarawal','tglaccperiksa','tglterimap1','tglterimap2','tglaccp1','tglaccp2',
-        'statusp1','statusp2','tglselesai',
+        'nomormakalah','kodesnt','kodekti',
+        'subidnkelompok','judulmakalah','tujuan','penulis',
+        'pemeriksa1','pemeriksa2','tgldaftarawal','accpsubidkapok','accpkabid',
+        'tglterimap1','tglterimap2','tglaccp1','tglaccp2',
+        'statusp1','statusp2','ttdkakptf','tglselesai','arsip'
     ];
 }

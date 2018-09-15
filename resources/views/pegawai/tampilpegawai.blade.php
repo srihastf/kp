@@ -42,7 +42,6 @@
                     <th>NIP</th>
                     <th>Nama Pegawai</th>
                     <th>Jabatan</th>
-                    <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -52,7 +51,6 @@
                     <td>{{$d->nip}}</td>
                     <td>{{$d->namapegawai}}</td>
                     <th>{{$d->jabatan}}</th>
-                    <th>{{$d->status}}</th>
                     <th>
                       <form action="{{ route('pegawai.destroy', ['pegawai'=>$d->nip]) }}" method="post"
                       onsubmit="return confirm('Anda yakin akan menghapus data?')">
@@ -95,14 +93,6 @@
 <script>
   $(function () {
     $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
   })
 
 </script>

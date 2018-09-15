@@ -4,14 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pegawaimodel extends Model
+class PenggunaModel extends Model
 {
-    protected $table = 'pegawai';
+    protected $table = 'users';
     protected $primaryKey = 'nip';
     public $incrementing = false;
     public $timestamps = false;
-
+    
     protected $fillable = [
-    	'nip','bidang','subbid','namapegawai','golongan','pendidikanakhir','jurusan','jabatan','status',
+        'name','nip', 'email','status', 'password',
+    ];
+
+    protected $hidden = [
+        'password', 'remember_token',
     ];
 }

@@ -47,6 +47,36 @@
                   <input type="text" class="form-control" name="nip" value="{{ $data->nip }}" readonly>
                 </div>
                 <div class="form-group">
+                  <label>Bidang</label>
+                  <select name="bidang" class="form-control" value="{{ $data->bidang }}">
+                    @if($data->bidang=="SNT.1") <option value="SNT.1" selected>Tata Usaha</option>
+                    @elseif($data->bidang=="SNT.2") <option value="SNT.2" selected>Senyawa Bertanda dan Radiometri</option>
+                    @elseif($data->bidang=="SNT.3") <option value="SNT.3" selected>Teknofisika</option>
+                    @elseif($data->bidang=="SNT.4") <option value="SNT.4" selected>Reaktor</option>
+                    @elseif($data->bidang=="SNT.5") <option value="SNT.5" selected>Keselamatan Kerja dan Keteknikan</option>
+                    @elseif($data->bidang=="SNT.6") <option value="SNT.6" selected>Unit Jaminan Mutu</option>
+                    @elseif($data->bidang=="SNT.7") <option value="SNT.7" selected>Unit Pengamanan Nuklir</option>
+                    @endif
+                    @foreach ($bidang as $b => $key)
+                      <option value="{{ $key }}"> {{ $b }}</option>   
+                    @endforeach
+                  </select>
+                  </div>
+                  <div class="form-group">
+                  <label>Sub.Bidang</label>
+                  <select name="subbid" class="form-control" value="{{ $data->subbid }}">
+                    @if($data->subbid=="ABNPD") <option value="ABNPD" selected>AKUNTANSI BAHAN NUKLIR DAN PERENCANAAN DEKOMISIONING</option>
+                    @elseif($data->subbid=="KETEKNIKAN") <option value="KETEKNIKAN"  selected>KETEKNIKAN</option>
+                    @elseif($data->subbid=="KEUANGAN") <option value="KEUANGAN"  selected>KEUANGAN</option>
+                    @elseif($data->subbid=="KKPR") <option value="KKPR"  selected>KESELAMATAN KERJA DAN PROTEKSI RADIASI</option>
+                    @elseif($data->subbid=="OP") <option value="OP"  selected>OPERASI DAN PERAWATAN</option>
+                    @elseif($data->subbid=="PERLENGKAPAN") <option value="PERLENGKAPAN"  selected>PERLENGKAPAN</option>
+                    @elseif($data->subbid=="PKDI") <option value="PKDI"  selected>PERSURATAN, KEPEGAWAIAN DAN DOKUMENTASI ILMIAH</option>
+                    @endif
+                    
+                  </select>
+                  </div>
+                <div class="form-group">
                   <label for="text">Nama Lengkap</label>
                   <input type="text" class="form-control" name="nama" value="{{ $data->namapegawai }}" required>
                 </div>
@@ -126,4 +156,37 @@
   </div>
   <!-- /.content-wrapper -->
 
+@endsection
+
+
+@section('jsstyle')
+<script type="text/javascript">
+$(document).ready(function() {
+
+$('select[name="bidang"]').on('change', function(){
+    var Id_bidang = $(this).val();
+    if(Id_bidang) {
+        $.ajax({
+            url: '/subbid/get/'+Id_bidang,
+            type:"GET",
+            dataType:"json",
+            beforeSend: function(){
+                $('#loader').css("visibility", "visible");
+            },
+            success:function(data) {
+                $('select[name="subbid"]').empty();
+                $.each(data, function(key, value){
+                    $('select[name="subbid"]').append('<option value="'+ value +'">' + key + '</option>');
+                });
+            },
+            complete: function(){
+                $('#loader').css("visibility", "hidden");
+            }
+        });
+    } else {
+        $('select[name="subbid"]').empty();
+    }
+});
+});
+</script>
 @endsection

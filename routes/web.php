@@ -46,6 +46,7 @@ Route::resource('bidangsnt','BidangsntController');
 //PEGAWAI
 Route::resource('pegawai','PegawaiController');
 Route::get('/tampilpegawai','PegawaiController@tampil');
+Route::get('subbid/get/{id}', 'PegawaiController@getSubbid');
 
 //PENGGUNA
 Route::resource('pengguna','PenggunaController');

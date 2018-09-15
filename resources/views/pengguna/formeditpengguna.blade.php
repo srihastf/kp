@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Tambah Pengguna')
+@section('title','Ubah Pengguna')
 
  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Form Tambah Pengguna
+       Form Ubah Pengguna
       </h1>
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
@@ -26,8 +26,6 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Silahkan isi dengan data yang sesuai.</h3><br/>
-              <small>*diharuskan menambah data pegawai terlebih dahulu.</small>
               @if($errors->any())
                 <div class="alert alert-danger">
                   <ul>
@@ -40,31 +38,41 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form" method="POST" action="{{ route('pengguna.store') }}">
+            <form class="form" action="{{ route('pengguna.update', $data->id) }}" method="post">
               {{ csrf_field() }}
+              {{method_field('PUT')}}
               <div class="box-body">
 
                 <div class="form-group">
                   <label for="text">Nama Lengkap</label>
-                  <!--<input type="text" class="form-control" name="name" id="name" required>-->
-                  <select class="itemName form-control" name="nip" id="nip" required></select>  
+                  <input type="text" class="form-control" name="name" id="name" value="{{$data->name}}" required>
+                  <input type="text" name="nip" id="nip" value="{{$data->nip}}" hidden>
                 </div>
                 <div class="form-group">
                   <label for="email">E-mail</label>
-                  <input type="email" class="form-control" name="email" placeholder="*misal: admin@mail.com" required>
+                  <input type="email" class="form-control" name="email" placeholder="*misal: admin@mail.com" value="{{$data->email}}" required>
                 </div>
                 <div class="form-group">
                   <label>Sebagai</label>
                   <select class="form-control" name="status">
+                    @if($data->status=="Admin")<option selected>Admin</option>
+                    @elseif($data->status=="Sekertaris KPTF/KPTP")<option selected>Sekertaris KPTF/KPTP</option>
+                    @elseif($data->status=="Pegawai")<option selected>Pegawai</option>
+                    @elseif($data->status=="Kepala PSTNT")<option selected>Kepala PSTNT</option>
+                    @endif
                     <option>Admin</option>
                     <option>Sekertaris KPTF/KPTP</option>
                     <option>Pegawai</option>
                     <option>Kepala PSTNT</option>
                   </select>
                 </div>
+                <div class="form-group">
+                  <label for="text">Password</label>
+                  <input type="password" class="form-control" name="password" id="password" placeholder="Masukan Password" required>
+                  <small></small>
+                </div>
               </div>
               <!-- /.box-body -->
-
               <div class="box-footer">
                 <div class="col-md-10">
                   <a href="/pengguna"><button type="button" class="btn btn">Batal</button></a>
@@ -83,28 +91,4 @@
   </div>
   <!-- /.content-wrapper -->
 
-@endsection
-
-@section('jsstyle')
-<script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
-<script type="text/javascript">
-$('.itemName').select2({
-  placeholder: 'Masukan Nama',
-  ajax: {
-    url: '/infopengguna',
-    dataType: 'json',
-    delay: 250,
-    processResults: function (data) {
-      return {
-        results:  $.map(data, function (item) {
-              return {
-                  text: item.namapegawai,
-                  id: item.nip
-              }
-          })
-      };
-    },
-  }
-});
-</script>
 @endsection
