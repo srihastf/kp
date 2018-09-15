@@ -75,6 +75,20 @@ class MakalahController extends Controller
             $subidnkelompok = $request->kelompok;
         }
 
+        if($request->arsip!=null){
+            $arsip = $request->arsip;
+        }else{
+            $arsip = "TIDAK TERSEDIA";
+        }
+
+        if($request->tglaccp1!=null && $request->tglaccp2!=null){
+            $statusp1 = $request->statusp1;
+            $statusp2 = $request->statusp2;
+        }else{
+            $statusp1 = null;
+            $statusp2 = null;
+        }
+
         Makalahmodel::create([
             'nomormakalah'=>$request->no,
             'kodesnt'=>$request->kodesnt,
@@ -83,20 +97,20 @@ class MakalahController extends Controller
             'judulmakalah'=>$request->judulmakalah,
             'tujuan'=>$request->tujuan,
             'penulis'=>$request->penulis,
-            'pemeriksa1'=>null,
-            'pemeriksa2'=>null,
+            'pemeriksa1'=>$request->pemeriksa1,
+            'pemeriksa2'=>$request->pemeriksa2,
             'tgldaftarawal'=>$request->tgldaftarawal,
-            'accpsubidkapok'=>null,
-            'accpkabid'=>null,
-            'tglterimap1'=>null,
-            'tglterimap2'=>null,
-            'tglaccp1'=>null,
-            'tglaccp2'=>null,
-            'statusp1'=>null,
-            'statusp2'=>null,
-            'ttdkakptf'=>null,
-            'tglselesai'=>null,
-            'arsip'=>"TIDAK TERSEDIA"
+            'accpsubidkapok'=>$request->accpsubidkapok,
+            'accpkabid'=>$request->accpkabid,
+            'tglterimap1'=>$request->tglterimap1,
+            'tglterimap2'=>$request->tglterimap2,
+            'tglaccp1'=>$request->tglaccp1,
+            'tglaccp2'=>$request->tglaccp2,
+            'statusp1'=>$statusp1,
+            'statusp2'=>$statusp2,
+            'ttdkakptf'=>$request->ttdkakptf,
+            'tglselesai'=>$request->tglselesai,
+            'arsip'=>$arsip,
         ]);
 
         $request->session()->flash('alert-success','Data Makalah berhasil ditambahkan.');

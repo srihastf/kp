@@ -22,7 +22,7 @@
             <li><a href="{{route('pegawai.index')}}"><i class="fa fa-user"></i> Pegawai</a></li>
             <li><a href="/pengguna"><i class="fa fa-users"></i> Pengguna</a></li>
           </ul>
-          @elseif(Auth::user()->status=="Sekertaris KPTF/KPTP")
+          
           <ul class="treeview-menu">
             <li><a href="{{route('makalah.index')}}"><i class="fa fa-file-text"></i>Pengajuan KTI/Makalah</a></li>
             <li><a href="#"><i class="fa fa-files-o"></i> Peminjaman KTI/Makalah</a></li>

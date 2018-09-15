@@ -110,6 +110,7 @@
               </div>
             </div>
             <!-- /.row -->
+            
 
             <div class="form-group">
               <label for="text">Tanggal Daftar Awal</label>
@@ -128,7 +129,7 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="text">Persetujuan Ka.Bidang</label>
-                  <input type="date" class="form-control" name="accpsubidkapok" >
+                  <input type="date" class="form-control" name="accpkabid" >
                 </div>
               </div>
             </div>
@@ -168,7 +169,7 @@
                     <td>Pemeriksa 1</td>
                     <td><input type="date" class="form-control" name="tglterimap1" ></td>
                     <td><input type="date" class="form-control" name="tglaccp1" ></td>
-                    <td><select name="statusp1" class="form-control" id="subbid">
+                    <td><select name="statusp1" class="form-control">
                           <option>ACC</option>
                           <option>PERBAIKAN</option>
                         </select></td>
@@ -177,7 +178,7 @@
                     <td>Pemeriksa 2</td>
                     <td><input type="date" class="form-control" name="tglterimap2" ></td>
                     <td><input type="date" class="form-control" name="tglaccp2" ></td>
-                    <td><select name="statusp2" class="form-control" id="subbid">
+                    <td><select name="statusp2" class="form-control">
                           <option>ACC</option>
                           <option>PERBAIKAN</option>
                         </select></td>
@@ -205,9 +206,9 @@
                     </tr>
                     <tr>
                       <td>Berkas pada Arsip</td>
-                      <td><select name="arsip" class="form-control" id="subbid">
-                          <option>TERSEDIA</option>
+                      <td><select name="arsip" class="form-control">
                           <option>TIDAK TERSEDIA</option>
+                          <option>TERSEDIA</option>
                         </select></td>
                     </tr>
                   </table>
