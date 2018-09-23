@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Penggunamodel;
+use App\Pegawaimodel;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -38,7 +39,7 @@ class PenggunaController extends Controller
      */
     public function tampil()
     {
-        $data['data']=User::Get();
+        $data['data']=Penggunamodel::Get();
         return view('pengguna.tampilpengguna',$data);
     }  
     
@@ -53,8 +54,8 @@ class PenggunaController extends Controller
         
         if($request->has('q')){
             $search = $request->q;
-            $data = DB::table("pegawai")
-            		->select("nip","namapegawai")
+            //$data = DB::table("pegawai")
+            $data = Pegawaimodel::Select("nip","namapegawai")
             		->where('namapegawai','LIKE',"%$search%")
             		->get();
         }
@@ -68,8 +69,10 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        $data['data']=User::get();
-        return view('pengguna.formpengguna',$data);
+        //$data['data']=User::get();
+        //return view('pengguna.formpengguna',$data);
+        $data['data']=Penggunamodel::get();
+        return view('pengguna.formpengguna');
     }
 
     /**
@@ -98,7 +101,7 @@ class PenggunaController extends Controller
             ->withInput();
         }
 
-        User::create([
+        Penggunamodel::create([
             'nip'=>$request->nip,
             'name'=>$data->namapegawai,
             'email'=>$request->email,
@@ -107,7 +110,7 @@ class PenggunaController extends Controller
         ]);
 
         $request->session()->flash('alert-success','Data Pengguna berhasil ditambahkan.');
-        return redirect()->route('pegawai.show',$request->nip);
+        return redirect('/tampilpengguna');
     }
 
     /**
@@ -118,7 +121,7 @@ class PenggunaController extends Controller
      */
     public function show($id)
     {
-        $data['data']=User::find($id);
+        $data['data']=Penggunamodel::find($id);
 		return view('pengguna.detailpengguna', $data);
     }
 
@@ -130,7 +133,7 @@ class PenggunaController extends Controller
      */
     public function edit($id)
     {
-        $data['data']=User::find($id);
+        $data['data']=Penggunamodel::find($id);
         return view('pengguna.formeditpengguna', $data);
     }
 
@@ -143,7 +146,7 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pengguna = User::where('id',$id)->first();
+        $pengguna = Penggunamodel::where('id',$id)->first();
         $pengguna->name = $request->name;
         $pengguna->nip = $request->nip;
         $pengguna->email = $request->email;
@@ -163,7 +166,7 @@ class PenggunaController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        User::find($id)->delete();
+        Penggunamodel::find($id)->delete();
 
         $request->session()->flash('alert-warning','Data Pengguna berhasil dihapus.');
         return redirect('/tampilpengguna');

@@ -126,6 +126,7 @@ class MakalahController extends Controller
     public function show($id)
     {
         $data['data']=Makalahmodel::find($id);
+        //perbaikan model
 		return view('makalah.detailmakalah', $data);
     }
 
@@ -138,7 +139,7 @@ class MakalahController extends Controller
     public function edit($id)
     {
         $data['data']=Makalahmodel::find($id);
-		return view('makalah.formeditmakalah', $data);
+        return view('makalah.formeditmakalah',$data);
     }
 
     /**
@@ -152,19 +153,18 @@ class MakalahController extends Controller
     {
         $makalah = Makalahmodel::where('nomormakalah',$id)->first();
         
-        $makalah->kodesnt = $request->kodesnt;
-        $makalah->kodekti = $request->kodekti;
         $makalah->judulmakalah = $request->judulmakalah;
-        $makalah->penulis = $request->penulis;
+        $makalah->tujuan = $request->tujuan;
         $makalah->pemeriksa1 = $request->pemeriksa1;
         $makalah->pemeriksa2 = $request->pemeriksa2;
-        $makalah->tgldaftarawal = $request->tgldaftarawal;
         $makalah->accpsubidkapok = $request->accpsubidkapok;
         $makalah->accpkabid = $request->accpkabid;
         $makalah->tglterimap1 = $request->tglterimap1;
         $makalah->tglterimap2 = $request->tglterimap2;
-        $makalah->tglaccp1 = $request->tglaccp2;
-        $makalah->statusp1 = $request->statusp2;
+        $makalah->tglaccp1 = $request->tglaccp1;
+        $makalah->tglaccp2 = $request->tglaccp2;
+        $makalah->statusp1 = $request->statusp1;
+        $makalah->statusp2 = $request->statusp2;
         $makalah->ttdkakptf = $request->ttdkakptf;
         $makalah->tglselesai = $request->tglselesai;
         $makalah->arsip = $request->arsip;
@@ -186,6 +186,6 @@ class MakalahController extends Controller
         Makalahmodel::find($id)->delete();
 
         $request->session()->flash('alert-warning','Data Makalah berhasil dihapus.');
-        return redirect('/tampilmakalah');
+        return redirect()->route('makalah.index');
     }
 }

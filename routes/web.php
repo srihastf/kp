@@ -55,6 +55,7 @@ Route::get('/infopengguna', 'PenggunaController@getInfo');
 
 //MAKALAH
 Route::resource('makalah','MakalahController');
+Route::get('mkedit/{id}', 'MakalahController@edit');
 
 //PERBAIKAN MAKALAH
 Route::resource('perbaikan','PerbaikanController');

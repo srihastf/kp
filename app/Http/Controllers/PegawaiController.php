@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pegawaimodel;
 use App\Subbidmodel;
+use App\Bidangsntmodel;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -50,8 +51,10 @@ class PegawaiController extends Controller
     public function create()
     {
         $subbid['subbid']=Subbidmodel::Get();
-        $bidang = DB::table('bidangsnt')->pluck("kodesnt","namabidang");
-        return view('pegawai.formpegawai',compact('bidang'),$subbid);
+        $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
+        //$bidang = DB::table('bidangsnt')->pluck("kodesnt","namabidang");
+        //return view('pegawai.formpegawai',compact('bidang'),$subbid);
+        return view('pegawai.formpegawai',$subbid,$bidang);
     }
 
     public function getSubbid($id) {

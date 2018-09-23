@@ -96,11 +96,23 @@
                 </tr>
                 <tr>
                   <td>Ka.Subbid/Kelompok</td>
-                  <td>{{formatgl($data->accpsubidkapok)}}</td>
+                  <td>
+                  @if($data->accpsubidkapok!="")
+                    {{formatgl($data->accpsubidkapok)}}
+                  @else
+                    <a href="{{ route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                  @endif
+                  </td>
                 </tr>
                 <tr>
                   <td>Ka.Bidang</td>
-                  <td>{{formatgl($data->accpkabid)}}</td>
+                  <td>
+                  @if($data->accpkabid!="")
+                    {{formatgl($data->accpkabid)}}
+                  @else
+                    <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                  @endif
+                  </td>
                 </tr>
                 </table>
               </div>
@@ -112,7 +124,13 @@
                 </tr>
                 <tr>
                   <td>Diterima Ka.KPTF/KPTP</td>
-                  <td>{{formatgl($data->accpkabid)}}</td>
+                  <td>
+                  @if($data->accpkabid!="")
+                    {{formatgl($data->accpkabid)}}
+                  @else
+                    <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                  @endif
+                  </td>
                 </tr>
                 </table>
               </div>
@@ -132,20 +150,44 @@
                 </tr>
                 <tr>
                   <td>1</td>
-                  <td>{{$data->pemeriksa1}}</td>
-                  <td>{{formatgl($data->tglterimap1)}}</td>
-                  <td>{{formatgl($data->tglaccp1)}}</td>
+                  <td>
+                    @if($data->pemeriksa1!="") {{$data->pemeriksa1}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Pemeriksa -</a>
+                    @endif
+                  </td>
+                  <td>
+                    @if($data->tglterimap1!="") {{formatgl($data->tglterimap1)}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @endif
+                  </td>
+                  <td>
+                    @if($data->tglaccp1!="") {{formatgl($data->tglaccp1)}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @endif
+                  </td>
                   <td>@if($data->statusp1!=""){{$data->statusp1}}
-                  @else <a href="#"> Tambah Status</a>
+                  @else <a href="{{ route('makalah.edit', ['makalah'=>$data->nomormakalah])}}"> Tambah Status</a>
                   @endif</td>
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>{{$data->pemeriksa2}}</td>
-                  <td>{{formatgl($data->tglterimap2)}}</td>
-                  <td>{{formatgl($data->tglaccp2)}}</td>
+                  <td>
+                    @if($data->pemeriksa2!="") {{$data->pemeriksa2}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Pemeriksa -</a>
+                    @endif
+                  </td>
+                  <td>
+                    @if($data->tglterimap2!="") {{formatgl($data->tglterimap2)}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @endif
+                  </td>
+                  <td>
+                    @if($data->tglaccp2!="") {{formatgl($data->tglaccp2)}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @endif
+                  </td>
                   <td>@if($data->statusp2!=""){{$data->statusp2}}
-                  @else <a href="#"> Tambah Status</a>
+                  @else <a href="{{ route('makalah.edit', ['makalah'=>$data->nomormakalah]) }}"> Tambah Status</a>
                   @endif</td>
                 </tr>
                 </table>
@@ -158,15 +200,27 @@
                 <tr>
                 <tr>
                   <td>Diteruskan ke Ka.KPTF/KPTP</td>
-                  <td>{{ formatgl($data->ttdkakptf)}}</td>
+                  <td>
+                    @if($data->ttdkakptf!="") {{formatgl($data->ttdkakptf)}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @endif
+                  </td>
                 </tr>
                 <tr>
                   <td>Diteruskan ke Ka.PSTNT</td>
-                  <td>{{ formatgl($data->tglselesai)}}</td>
+                  <td>
+                    @if($data->tglselesai!="") {{formatgl($data->tglselesai)}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @endif
+                  </td>
                 </tr>
                 <tr>
                   <td>Makalah Selesai pada</td>
-                  <td>{{ formatgl($data->tglselesai)}}</td>
+                  <td>
+                    @if($data->tglselesai!="") {{formatgl($data->tglselesai)}}
+                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @endif
+                  </td>
                 </tr>
                 <tr>
                   <td>Berkas pada Arsip</td>
@@ -183,6 +237,12 @@
             <!-- /.box-body -->
             <div class="box-footer clearfix">
               <ul class="pagination pagination-sm no-margin pull-right">
+              <form action="{{ route('makalah.destroy', ['makalah'=>$data->nomormakalah]) }}" method="post"
+                  onsubmit="return confirm('Anda yakin akan menghapus data?')">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>
+              </form>
               </ul>
             </div>
           </div>
@@ -204,8 +264,6 @@ function formatgl($tanggal){
   if($tanggal!=null){
   $date = date_create($tanggal);
   echo date_format($date,"d-m-Y");
-  }else{
-    echo" - <a href='#'>Isi tanggal</a> - ";
   }
 }
 ?>
