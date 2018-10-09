@@ -32,10 +32,9 @@ Route::get('/master', function () {
 });
 
 //AUTENTIKASI
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::group(['middleware'=>'web'], function(){
+    Auth::routes();
+});
 
 //KTI
 Route::resource('kti','KtiController');
@@ -59,3 +58,6 @@ Route::get('mkedit/{id}', 'MakalahController@edit');
 
 //PERBAIKAN MAKALAH
 Route::resource('perbaikan','PerbaikanController');
+Route::get('/infomakalah', 'PerbaikanController@getInfo');
+
+

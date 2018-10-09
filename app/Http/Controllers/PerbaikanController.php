@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Perbaikanmodel;
+use App\Makalahmodel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PerbaikanController extends Controller
 {
     /**
      * Create a new controller instance.
-     *
+     * 
      * @return void
      */
     public function __construct()
@@ -25,7 +27,7 @@ class PerbaikanController extends Controller
     public function index()
     {
         $data['data']=Perbaikanmodel::get();
-        return view('tampilperbaikan',$data);
+        return view('perbaikan.tampilperbaikan',$data);
     }
 
     /**
@@ -35,7 +37,28 @@ class PerbaikanController extends Controller
      */
     public function create()
     {
-        //
+        return view('perbaikan.formperbaikan');
+    }
+
+        /**
+     * Show the application dataAjax.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getInfo(Request $request)
+    {
+        $data = [];
+        
+        if($request->has('q')){
+            $search = $request->q;
+            //$data = DB::table("pegawai")
+            $data = Makalahmodel::Select("nomormakalah","judulmakalah")
+                    ->where('judulmakalah','LIKE',"%$search%")
+                    ->where('statusp1','LIKE','PERBAIKAN')
+                    ->orWhere('statusp2','LIKE','PERBAIKAN')
+            		->get();
+        }
+        return response()->json($data);
     }
 
     /**
@@ -46,7 +69,28 @@ class PerbaikanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(),[
+            'nomormakalah'=>'bail|required|string|min:6|max:6',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->route('perbaikan.create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+
+        Perbaikanmodel::create([
+            'nomormakalah'=>$request->nomormakalah,
+            'tglperiksap1'=>$request->tglperiksap1,
+            'tglperiksap2'=>$request->tglperiksap2,
+            'tglselesaip1'=>$request->tglselesaip1,
+            'tglselesaip2'=>$request->tglselesaip2,
+            'statusp1'=>$request->statusp1,
+            'statusp2'=>$request->statusp2,
+        ]);
+
+        $request->session()->flash('alert-success','Data Perbaikan berhasil ditambahkan.');
+        return redirect()->route('perbaikan.show', $request->nomormakalah);
     }
 
     /**
@@ -57,7 +101,7 @@ class PerbaikanController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect()->route('makalah.show', $id);
     }
 
     /**
@@ -68,7 +112,9 @@ class PerbaikanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['data']=Perbaikanmodel::find($id);
+        $makalah['makalah']=Makalahmodel::Get();
+        return view('perbaikan.formeditperbaikan',$data,$makalah);
     }
 
     /**
@@ -80,7 +126,17 @@ class PerbaikanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $perbaikan = Perbaikanmodel::where('idperbaikan',$id)->first();
+        $nomakalah = $request->nomormakalah;
+        $perbaikan->tglselesaip1 = $request->tglselesaip1;
+        $perbaikan->tglselesaip2 = $request->tglselesaip2;
+        $perbaikan->statusp1 = $request->statusp1;
+        $perbaikan->statusp2 = $request->statusp2;
+
+        $perbaikan->save();
+
+        $request->session()->flash('alert-success','Data Perbaikan KTI berhasil diperbaharui.');
+        return redirect()->route('perbaikan.show',$nomakalah);
     }
 
     /**
@@ -89,8 +145,11 @@ class PerbaikanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+        Perbaikanmodel::find($id)->delete();
+
+        $request->session()->flash('alert-warning','Data Perbaikan berhasil dihapus.');
+        return redirect()->route('perbaikan.index');
     }
 }

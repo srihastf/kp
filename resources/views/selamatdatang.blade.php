@@ -58,32 +58,44 @@
           </li>
           @else
              <!-- User Account: style can be found in dropdown.less -->
+          <li class="nav-item">
+          <a href="/home">
+            <i class="fa fa-home"></i> <span>Beranda</span>
+          </a>
+          </li>
+          <li class="nav-item"><a href="#">|</a></li>
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <span class="hidden-xs"> {{ Auth::user()->name }}</span>
+              <icon class="ion ion-person"></icon> 
+              <span class="hidden-xs">{{ Auth::user()->name }} </span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
-              <li class="user-header">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+              <li class="user-header" style="height:100px">
                 <p>
-                {{ Auth::user()->name }} - Web Developer
-                  <small>Member since Nov. 2012</small>
+                <b>{{ Auth::user()->name }}</b></br>
+                Sebagai : {{ Auth::user()->status }}
+                  <small>Bergabung sejak : {{ Auth::user()->created_at }}</small>
                 </p>
               </li>
-              <!-- Menu Body -->
-             
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="#" class="btn btn-default btn-flat">Profil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a class="btn btn-default btn-flat" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                  </a>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                     @csrf
+                  </form>
                 </div>
               </li>
             </ul>
-          </li>
+          <!-- Control Sidebar Toggle Button -->
           @endguest
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>

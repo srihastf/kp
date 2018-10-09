@@ -24,8 +24,9 @@
           </ul>
           
           <ul class="treeview-menu">
-            <li><a href="{{route('makalah.index')}}"><i class="fa fa-file-text"></i>Pengajuan KTI/Makalah</a></li>
-            <li><a href="#"><i class="fa fa-files-o"></i> Peminjaman KTI/Makalah</a></li>
+            <li><a href="{{route('makalah.index')}}"><i class="fa fa-file-text"></i> Pengajuan KTI/Makalah</a></li>
+            <li><a href="#"><i class="fa fa-files-o"></i> Peminjaman KTI/Makalah</a></li><li>
+            <a href="{{route('perbaikan.index')}}"><i class="fa fa-files-o"></i> Perbaikan KTI/Makalah</a></li>
           </ul>
           @endif
 
