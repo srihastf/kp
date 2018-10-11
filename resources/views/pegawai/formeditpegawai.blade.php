@@ -9,6 +9,7 @@
       <h1>
        Form Edit Pegawai
       </h1>
+      Untuk memperbaharui data baru pegawai yang terdaftar pada sistem.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>

@@ -23,6 +23,7 @@
       <h1>
         Daftar Data Pegawai
       </h1>
+      Data Pegawai yang terdaftar dalam sistem.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>
@@ -54,8 +55,8 @@
                     <th>
                       <form action="{{ route('pegawai.destroy', ['pegawai'=>$d->nip]) }}" method="post"
                       onsubmit="return confirm('Anda yakin akan menghapus data?')">
-                        <a href="{{ route('pegawai.show', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Detail</button></a>
-                        <a href="{{ route('pegawai.edit', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
+                        <a href="{{ route('pegawai.show', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Lihat</button></a>
+                        <a href="{{ route('pegawai.edit', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Ubah</button></a>
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>

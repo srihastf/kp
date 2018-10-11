@@ -67,10 +67,10 @@ Route::get('/tampilpegawai','PegawaiController@tampil');
 Route::get('subbid/get/{id}', 'PegawaiController@getSubbid');
 
 
-//PENGGUNA
-Route::resource('pengguna','PenggunaController');
-Route::get('/tampilpengguna','PenggunaController@tampil');
-Route::get('/infopengguna', 'PenggunaController@getInfo');
+//USER
+Route::resource('user','UserController');
+Route::get('/tampiluser','UserController@tampil');
+Route::get('/infouser', 'UserController@getInfo');
 
 
 //MAKALAH

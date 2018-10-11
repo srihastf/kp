@@ -28,6 +28,7 @@
       <h1>
        Form Tambah Pegawai
       </h1>
+      Untuk menambah data baru pegawai yang belum terdaftar pada sistem.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>
