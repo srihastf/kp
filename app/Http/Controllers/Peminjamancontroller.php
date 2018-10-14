@@ -37,6 +37,21 @@ class PeminjamanController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function pinjamansaya($id)
+    {
+        $data['data']=Peminjamanmodel::where('nip',$id)->get();
+        $pegawai['pegawai']=Pegawaimodel::get()->pluck("nip","namapegawai");
+        $makalah['makalah']=Makalahmodel::get()->pluck("nomormakalah","judulmakalah");
+        return view('peminjaman.tampilpeminjaman',$data)
+        ->with($pegawai)
+        ->with($makalah);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -139,13 +154,14 @@ class PeminjamanController extends Controller
     public function update(Request $request, $id)
     {
         $peminjaman = Peminjamanmodel::where('idpinjam',$id)->first();
-        $peminjaman->tglbooking = $request->tglbooking;
         $peminjaman->tglpinjam = $request->tglpinjam;
         $peminjaman->tglkembali = $request->tglkembali;
         $peminjaman->status = $request->status;
+        $mk = $request->nomormakalah;
 
         $peminjaman->save();
-
+        //DB::statement("UPDATE makalah SET arsip=TERSEDIA where nomormakalah=$mk");
+        DB::update('update makalah set arsip = "TERSEDIA" where nomormakalah = ?', [$mk]);
         $request->session()->flash('alert-success','Data Perminjaman KTI berhasil diperbaharui.');
         return redirect()->route('peminjaman.show',$id);
     }

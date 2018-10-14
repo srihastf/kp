@@ -153,42 +153,67 @@
                   <td>1</td>
                   <td>
                     @if($data->pemeriksa1!="") @foreach ($pegawai as $s => $key)@if($key==$data->pemeriksa1){{$s}}@endif @endforeach 
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Pemeriksa -</a>
+                    @else 
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> Isi Pemeriksa</a>
+                      @endif
                     @endif
                   </td>
                   <td>
                     @if($data->tglterimap1!="") {{formatgl($data->tglterimap1)}}
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @else
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
                     @endif
                   </td>
                   <td>
                     @if($data->tglaccp1!="") {{formatgl($data->tglaccp1)}}
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @else 
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
                     @endif
                   </td>
                   <td>@if($data->statusp1!=""){{$data->statusp1}}
-                  @else <a href="{{ route('makalah.edit', ['makalah'=>$data->nomormakalah])}}"> Tambah Status</a>
+                  @else 
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                      <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}">Tambah Status</a>
+                    @endif
                   @endif</td>
                 </tr>
                 <tr>
                   <td>2</td>
                   <td>
                     @if($data->pemeriksa2!="") @foreach ($pegawai as $s => $key)@if($key==$data->pemeriksa2){{$s}}@endif @endforeach
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Pemeriksa -</a>
+                    @else 
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}">Isi Pemeriksa</a>
+                      @endif
                     @endif
                   </td>
                   <td>
                     @if($data->tglterimap2!="") {{formatgl($data->tglterimap2)}}
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @else 
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
                     @endif
                   </td>
                   <td>
                     @if($data->tglaccp2!="") {{formatgl($data->tglaccp2)}}
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @else 
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
                     @endif
                   </td>
-                  <td>@if($data->statusp2!=""){{$data->statusp2}}
-                  @else <a href="{{ route('makalah.edit', ['makalah'=>$data->nomormakalah]) }}"> Tambah Status</a>
+                  <td>
+                    @if($data->statusp2!=""){{$data->statusp2}}
+                    @else 
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> Tambah Status</a>
+                      @endif
                   @endif</td>
                 </tr>
               </table>
@@ -237,7 +262,10 @@
                   <td>Diteruskan ke Ka.KPTF/KPTP</td>
                   <td>
                     @if($data->ttdkakptf!="") {{formatgl($data->ttdkakptf)}}
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @else 
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
                     @endif
                   </td>
                 </tr>
@@ -245,7 +273,10 @@
                   <td>Diteruskan ke Ka.PSTNT</td>
                   <td>
                     @if($data->tglselesai!="") {{formatgl($data->tglselesai)}}
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @else 
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
                     @endif
                   </td>
                 </tr>
@@ -253,7 +284,10 @@
                   <td>Makalah Selesai pada</td>
                   <td>
                     @if($data->tglselesai!="") {{formatgl($data->tglselesai)}}
-                    @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                    @else
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
                     @endif
                   </td>
                 </tr>
@@ -272,11 +306,17 @@
             <!-- /.box-body -->
             <div class="box-footer clearfix">
               <ul class="pagination pagination-sm no-margin pull-right">
+              
               <form action="{{ route('makalah.destroy', ['makalah'=>$data->nomormakalah]) }}" method="post"
                   onsubmit="return confirm('Anda yakin akan menghapus data?')">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}">
+                  <button type="button" class="btn btn-warning btn-xs"><i class="fa fa-minus-square"></i> Ubah</button>
+                </a>
                 <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>
+                @endif
               </form>
               </ul>
             </div>
@@ -284,11 +324,19 @@
           <!-- /.box -->
         </div>
       </div>
+      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
       <div class="row">
         <div class="col-md-3">
           <a href="/makalah"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Daftar KTI/Makalah</button></a>
         </div>
       </div>
+      @elseif(Auth::user()->status=="Pegawai")
+      <div class="row">
+        <div class="col-md-3">
+          <a href="/tampilmakalah/{{Auth::user()->name}}"><button class="btn btn-block btn-sm btn-primary" type="button"> Kembali ke Daftar KTI/Makalah</button></a>
+        </div>
+      </div>
+      @endif
     </section>
     <!-- /.content -->
   </div>
