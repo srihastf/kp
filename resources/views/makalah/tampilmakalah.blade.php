@@ -100,6 +100,7 @@
               </table>
             </div>
             <!-- /.box-body -->
+            <a href="/pdfmakalah">Print</a>
           </div>
           <!-- /.box -->
         </div>

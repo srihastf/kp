@@ -104,9 +104,9 @@
               <!-- /.box-body -->
               <div class="box-footer">
                 <div class="col-md-10">
-                  <a href="/perbaikan"><button type="button" class="btn btn">Batal</button></a>
+                  <button type="submit" class="btn btn-success">Simpan Data</button>
                 </div>
-                <button type="submit" class="btn btn-success">Simpan Data</button>
+                <a href="/perbaikan"><button type="button" class="btn btn">Batal</button></a>
               </div>
             </form>
           </div>
