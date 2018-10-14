@@ -10,6 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//keadaan darurat
+Route::get('/flush', function () {
+    Session::flush();
+    return redirect('/login');
+})->name('flush');
 
 //LINKS
 Route::group(['middleware' => 'web'], function(){Route::auth();});
