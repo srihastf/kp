@@ -42,7 +42,7 @@
                 <tr>
                   <th>Id Perbaikan</th>
                   <th>Judul Makalah</th>
-                  <th width="170">Aksi</th>
+                  <th width="153">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>

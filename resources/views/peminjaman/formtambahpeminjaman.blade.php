@@ -40,8 +40,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-              <form class="form" method="POST" action="{{ route('peminjaman.store') }}">
-
+            <form class="form" method="POST" action="{{ route('peminjaman.store') }}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
@@ -49,30 +48,18 @@
                   <select class="itemName form-control" name="nomormakalah" id="nomormakalah" required></select>  
                 </div>
 
-                @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
                 <div class="form-group">
-                  <label for="text">Nama Peminjam</label>
+                  <label for="text">Nama Lengkap</label>
                   <select class="itemName2 form-control" name="nip" id="nip" required></select>  
                 </div>
-                @elseif(Auth::user()->status=="Pegawai")
-                <div class="form-group">
-                  <label for="text">Peminjam</label>
-                  <input type="nip" class="form-control" name="nip" id="nip" value="{{ Auth::user()->nip }}" required>
-                  Atas Nama : {{Auth::user()->name}}  
-                </div>
-                @endif
 
-                
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="text">Tgl Booking</label>
-                      <input type="date" class="form-control" name="tglbooking" required>
+                      <input type="date" class="form-control" name="tglbooking" >
                     </div>
                   </div>
-                  
-
-                  @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="text">Konfirmasi Peminjman</label>
@@ -94,7 +81,6 @@
                       <input type="date" class="form-control" name="tglkembali" >
                     </div>
                   </div>
-                  @endif
                 </div>
               </div>
               <!-- /.box-body -->

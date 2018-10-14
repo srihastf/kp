@@ -73,34 +73,20 @@ Route::group(['middleware'=>['auth','status:Sekertaris KPTF/KPTP']],function(){
 
     //PERBAIKAN MAKALAH
     Route::resource('perbaikan','PerbaikanController');
+    
+
+    //PEMINJAMAN 
+    Route::resource('peminjaman','PeminjamanController');
 });
 
 //AUTENTIKASI PEGAWAI
 Route::group(['middleware'=>['auth','status:Pegawai']],function(){
-    //MAKALAH
     Route::get('/semuamakalah','MakalahController@index');
     Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
     Route::get('/detail/{id}', 'MakalahController@show');
-
-    //PEMINJAMAN
-    Route::get('/pinjamkti', 'PeminjamanController@index');
-    Route::get('/pinjamansaya/{id}', 'PeminjamanController@pinjamansaya');
-    Route::get('/bookingkti', 'PeminjamanController@create');
 });
 
 //AUTENTIKASI KEPALA PSTNT
-Route::group(['middleware'=>['auth','status:Kepala PSTNT']],function(){
-    Route::get('/semuamakalah','MakalahController@index');
-    Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
-    Route::get('/detail/{id}', 'MakalahController@show');
-
-    Route::resource('laporan','LaporanController');
-    Route::get('/carimakalah', 'LaporanController@carimakalah');
-    Route::get('pdfmakalah',  'LaporanController@makePDF');
-});
-
-//PEMINJAMAN
-Route::resource('peminjaman','PeminjamanController');
 
 //KTI
 Route::resource('kti','KtiController');
@@ -110,9 +96,5 @@ Route::resource('bidangsnt','BidangsntController');
 
 //getInfo
 Route::get('/infomakalah', 'PerbaikanController@getInfo');
-Route::get('/infomakalah2', 'PeminjamanController@getInfo');
 Route::get('/infouser', 'UserController@getInfo');
 Route::get('subbid/get/{id}', 'PegawaiController@getSubbid');
-
-//pdf
-Route::get('generate-pdf','HomeController@generatePDF');

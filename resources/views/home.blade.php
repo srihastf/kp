@@ -29,7 +29,7 @@
     <!-- Main content -->
     <section class="content">
     <div class="row">
-     <div class="col-md-12">
+     <div class="col-md-8">
        <!-- Default box -->
        <div class="box">
         <div class="box-header with-border">
@@ -73,14 +73,33 @@
             echo "| Pukul : <b>". $jam." WIB "."</b>";
           ?>
           </p>
-          <!--<p><a href="/generate-pdf">Print</a></p>-->
         </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
      </div>
 
-     
+     <div class="col-md-4">
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Akses ke : </h3>
+        </div>
+        <div class="box-body">
+        <img src="{{ asset('img/mn-satn.jpg') }}">
+          <ul>
+          <br/>
+            <li><a href="http://www.batan.go.id/pstbm"> Sains & Teknologi Bahan Maju </a></li>
+            <li><a href="http://www.batan.go.id/index.php/kedeputian/sains-aplikasi-teknologi-nuklir/sains-teknologi-nuklir-terapan">Sains & Teknologi Nuklir Terapan</a></li>
+            <li><a href="http://www.batan.go.id/index.php/kedeputian/sains-aplikasi-teknologi-nuklir/sains-teknologi-akselerator">Sains & Teknologi Akselerator</a></li>
+            <li><a href="http://www.batan.go.id/index.php/kedeputian/sains-aplikasi-teknologi-nuklir/aplikasi-isotop-dan-radiasi">Aplikasi Isotop dan Radiasi</a></li>
+            <li><a href="http://www.batan.go.id/index.php/id/berita-ptkmr">Keselamatan & Metrologi Radiasi</a></li>
+            <li><a href="http://www.batan.go.id/index.php/id/pstnt-id/profil-pstnt/3281-pusat-sains-dan-teknologi-nuklir-terapan-pstnt">PSTNT BATAN BANDUNG</a></li>     
+          </ul>
+        </div>
+        <div class="box-footer">
+        </div>        
+      </div>
+     </div>
      </div>
     </section>
     <!-- /.content -->

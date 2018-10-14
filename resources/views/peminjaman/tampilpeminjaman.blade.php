@@ -57,10 +57,10 @@
                       <form action="{{ route('peminjaman.destroy', ['peminjaman'=>$d->idpinjam]) }}" method="post"
                       onsubmit="return confirm('Anda yakin akan menghapus data?')">
                         <a href="{{ route('peminjaman.show', ['peminjaman'=>$d->idpinjam]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Lihat</button></a>
-                        @if(Auth::user()->status=="Sekertaris KPTF/KPTP")<a href="{{ route('peminjaman.edit', ['peminjaman'=>$d->idpinjam]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Ubah</button></a>@endif
+                        <a href="{{ route('peminjaman.edit', ['peminjaman'=>$d->idpinjam]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Ubah</button></a>
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        @if(Auth::user()->status=="Sekertaris KPTF/KPTP")<button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>@endif
+                        <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>
                       </form>
                     </th>
                   </tr>
@@ -77,12 +77,7 @@
       <!-- /.row -->
       <div class="row">
         <div class="col-md-2">
-          @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
-            <a href="{{route('peminjaman.create')}}">
-          @elseif(Auth::user()->status=="Pegawai")
-            <a href="/bookingkti">
-          @endif
-          <button class="btn btn-block btn-sm btn-success" type="button">Tambah Data Baru</button></a>
+          <a href="{{route('peminjaman.create')}}"><button class="btn btn-block btn-sm btn-success" type="button">Tambah Data Baru</button></a>
         </div>
       </div>
     </section>

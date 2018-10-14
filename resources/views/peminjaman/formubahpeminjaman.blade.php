@@ -58,22 +58,6 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="text">Tgl Booking</label>
-                      <input type="date" class="form-control" name="tglbooking" value="{{ $data->tglbooking }}" readonly>
-                    </div>
-                  </div>
-
-                <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="text">Konfirmasi Peminjman</label>
-                      <select name="status" class="form-control">
-                        <option>ACC</option>
-                        <option>PERBAIKAN</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
                       <label for="text">Tgl dipinjam</label>
                       <input type="date" class="form-control" name="tglpinjam" value="{{$data->tglpinjam}}">
                     </div>
@@ -81,7 +65,7 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="text">Tgl dikembalikan</label>
-                      <input type="date" class="form-control" name="tglkembali" value="{{$data->tglpinjam}}">
+                      <input type="date" class="form-control" name="tglkembali" >
                     </div>
                   </div>
                 </div>
