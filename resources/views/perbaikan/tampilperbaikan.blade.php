@@ -23,6 +23,7 @@
       <h1>
         Daftar Data Perbaikan
       </h1>
+      Mencatat perkembangan proses pengajuan/pengusulan KTI/Makalah Penelitian jika melakukan perbaikan. 
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>
@@ -41,19 +42,19 @@
                 <tr>
                   <th>Id Perbaikan</th>
                   <th>Judul Makalah</th>
-                  <th>Aksi</th>
+                  <th width="153">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
                   @foreach($data as $d)
                   <tr>
                     <td>{{$d->idperbaikan}}</td>
-                    <td>{{$d->nomormakalah}}</td>
+                    <td>@foreach ($makalah as $s => $key)@if($key==$d->nomormakalah){{$s}}@endif @endforeach</td>
                     <th>
                       <form action="{{ route('perbaikan.destroy', ['perbaikan'=>$d->idperbaikan]) }}" method="post"
                       onsubmit="return confirm('Anda yakin akan menghapus data?')">
                         <a href="{{ route('perbaikan.show', ['perbaikan'=>$d->nomormakalah]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Detail</button></a>
-                        <a href="{{ route('perbaikan.edit', ['perbaikan'=>$d->idperbaikan]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Edit</button></a>
+                        <a href="{{ route('perbaikan.edit', ['perbaikan'=>$d->idperbaikan]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Ubah</button></a>
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>

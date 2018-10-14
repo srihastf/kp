@@ -49,7 +49,7 @@
                   <td>2.</td>
                   <td>Jenis Karangan</td>
                   <td>:</td>
-                  <td>{{ $data->kodekti }}</td>
+                  <td>@foreach ($kti as $s => $key)@if($key==$data->kodekti){{$s}}@endif @endforeach</td>
                 </tr>
                 <tr>
                   <td>3.</td>
@@ -61,13 +61,14 @@
                   <td>4.</td>
                   <td>Sub. Bidang / Kelompok</td>
                   <td>:</td>
-                  <td>{{ $data->subidnkelompok }}</td>
+                  <?php $subidnkelompok=$data->subidnkelompok;?>
+                  <td>@foreach ($subbid as $s => $key)@if($key==$data->subidnkelompok) $subidnkelompok = $s @endif @endforeach {{$subidnkelompok}}</td>
                 </tr>
                 <tr>
                   <td>5.</td>
                   <td>Bidang/Balai/Instalasi</td>
                   <td>:</td>
-                  <td>{{ $data->kodesnt }}</td>
+                  <td>@foreach ($bidang as $s => $key)@if($key==$data->kodesnt) {{$s}} @endif @endforeach</td>
                 </tr>
                 <tr>
                   <td>6.</td>
@@ -145,13 +146,13 @@
                   <td>No</td>
                   <td>Pemeriksa</td>
                   <td>Tanggal diterima</td>
-                  <td>Persetujuan Pemeriksa (selesai pemeriksaan)</td>
+                  <td width="400">Persetujuan Pemeriksa (selesai pemeriksaan)</td>
                   <td>Keterangan</td>
                 </tr>
                 <tr>
                   <td>1</td>
                   <td>
-                    @if($data->pemeriksa1!="") {{$data->pemeriksa1}}
+                    @if($data->pemeriksa1!="") @foreach ($pegawai as $s => $key)@if($key==$data->pemeriksa1){{$s}}@endif @endforeach 
                     @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Pemeriksa -</a>
                     @endif
                   </td>
@@ -172,7 +173,7 @@
                 <tr>
                   <td>2</td>
                   <td>
-                    @if($data->pemeriksa2!="") {{$data->pemeriksa2}}
+                    @if($data->pemeriksa2!="") @foreach ($pegawai as $s => $key)@if($key==$data->pemeriksa2){{$s}}@endif @endforeach
                     @else <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Pemeriksa -</a>
                     @endif
                   </td>
@@ -190,9 +191,43 @@
                   @else <a href="{{ route('makalah.edit', ['makalah'=>$data->nomormakalah]) }}"> Tambah Status</a>
                   @endif</td>
                 </tr>
-                </table>
+              </table>
               </div>
               </div>
+
+            @if($data->statusp1=="PERBAIKAN" || $data->statusp2=="Perbaikan")
+              <table class="table table-bordered">               
+                <tr style="background:#ebf9ff">
+                  <b>Perbaikan Karya Tulis Ilmiah/ Makalah</b>
+                </tr>
+                <tr style="background:#ebf9ff">
+                  <td width="250">Oleh Pemeriksa : </td>
+                  <td>Tanggal diperiksa</td>
+                  <td width="400">Selesai diperiksa</td>
+                  <td width="150">Status</td>
+                </tr>
+                
+                @foreach($perbaikan as $s)
+                  @if($s->statusp1!=null)
+                  <tr>
+                    <td>1</td>
+                    <td>{{formatgl($s->tglperiksap1)}}</td>
+                    <td>{{formatgl($s->tglperiksap1)}}</td>
+                    <td>{{$s->statusp1}}</td>
+                  </tr>
+                  @endif
+                  @if($s->statusp2!=null)
+                  <tr>
+                    <td>2</td>
+                    <td>{{formatgl($s->tglperiksap2)}}</td>
+                    <td>{{formatgl($s->tglperiksap2)}}</td>
+                    <td>{{$s->statusp2}}</td>
+                  </tr>
+                  @endif
+                @endforeach
+            </table>
+            @endif
+            <br/>
 
               <table class="table table-bordered">
                 <tr style="background:#ebf9ff">

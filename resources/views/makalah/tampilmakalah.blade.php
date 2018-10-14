@@ -36,7 +36,11 @@
       <div class="row">
        <div class="col-md-10"></div>
         <div class="col-md-2" style="padding-bottom:10px">
-          <a href="{{route('makalah.create')}}"><button class="btn btn-block btn-sm btn-success" type="button">Tambah Data Baru</button></a>
+        @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+        <a href="{{route('makalah.create')}}"><button class="btn btn-block btn-sm btn-success" type="button">Tambah Data Baru</button></a>
+        @else
+        <a href="/semuamakalah"><button class="btn btn-block btn-sm btn-success" type="button">Semua Makalah</button></a>
+        @endif
         </div>
       </div>
       <div class="row">
@@ -56,14 +60,23 @@
                 <tbody>
                   @foreach($data as $d)
                   <tr>
-                    <td><a href="{{ route('makalah.show', ['makalah'=>$d->nomormakalah]) }}">
+                    <td>
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                    <a href="{{ route('makalah.show', ['makalah'=>$d->nomormakalah]) }}">
+                    @else
+                    <a href="/detail/{{$d->nomormakalah}}">
+                    @endif
                     {{substr($d->nomormakalah,0,2)}}/{{$d->kodesnt}}/{{$d->kodekti}}/{{substr($d->tgldaftarawal,0,4)}}</a></td> <!--dsdddc-->
 
                     @if($d->arsip!="TERSEDIA")<th style="background:#ffcaae">
                     @else <th> @endif {{$d->judulmakalah}}</th>
                       <th>{{$d->penulis}}</th>
                     <th>
-                        <a href="{{ route('makalah.show', ['makalah'=>$d->nomormakalah]) }}">
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                      <a href="{{ route('makalah.show', ['makalah'=>$d->nomormakalah]) }}">
+                      @else
+                      <a href="/detail/{{$d->nomormakalah}}">
+                      @endif
                       @if($d->tglselesai!=null)
                         <button type="button" class="btn btn-success btn-xs"><b>Selesai</b><br/>{{formatgl($d->tglselesai)}}</button>
                       @elseif($d->tglaccperiksa!=null)

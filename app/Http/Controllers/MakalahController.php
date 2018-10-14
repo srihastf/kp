@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Makalahmodel;
+use App\Ktimodel;
+use App\Bidangsntmodel;
 use App\Subbidmodel;
+use App\Perbaikanmodel;
+use App\Pegawaimodel;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -31,6 +35,17 @@ class MakalahController extends Controller
         return view('makalah.tampilmakalah',$data);
     }
 
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function makalahsaya($id)
+    {
+        $data['data']=Makalahmodel::where('penulis','LIKE',"%$id%")->get();
+        return view('makalah.tampilmakalah',$data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +63,7 @@ class MakalahController extends Controller
         }else{
             $nm = $n.date('Y'); 
         }
-        return view('makalah.formmakalah',compact('bidang','kti','nm'),$subbid);
+        return view('makalah.formtambahmakalah',compact('bidang','kti','nm'),$subbid);
     }
 
     /**
@@ -69,9 +84,10 @@ class MakalahController extends Controller
             ->withInput();
         }
 
-        if($request->subbid!=null){
+        if($request->subbid!="---Pilih Sub.Bidang---"){
             $subidnkelompok = $request->subbid;
-        }elseif($request->kelompok!=null){
+        }
+        if($request->kelompok!=null){
             $subidnkelompok = $request->kelompok;
         }
 
@@ -125,9 +141,18 @@ class MakalahController extends Controller
      */
     public function show($id)
     {
+        $cari = $id;
         $data['data']=Makalahmodel::find($id);
-        //perbaikan model
-		return view('makalah.detailmakalah', $data);
+        $kti['kti']=Ktimodel::Get()->pluck("kodekti","jeniskti");
+        $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
+        $subbid['subbid']=Subbidmodel::Get()->pluck("kodesubid","namasubid");
+        $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
+        $perbaikan = Perbaikanmodel::where('nomormakalah', $id)->get();
+        return view('makalah.detailmakalah',$data,$pegawai)
+        ->with($kti)
+        ->with($subbid)
+        ->with($bidang)
+        ->with('perbaikan', $perbaikan);
     }
 
     /**
@@ -139,7 +164,7 @@ class MakalahController extends Controller
     public function edit($id)
     {
         $data['data']=Makalahmodel::find($id);
-        return view('makalah.formeditmakalah',$data);
+        return view('makalah.formubahmakalah',$data);
     }
 
     /**

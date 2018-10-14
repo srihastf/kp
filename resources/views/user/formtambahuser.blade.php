@@ -94,7 +94,7 @@
 $('.itemName').select2({
   placeholder: 'Masukan Nama',
   ajax: {
-    url: '/infopengguna',
+    url: '/infouser',
     dataType: 'json',
     delay: 250,
     processResults: function (data) {

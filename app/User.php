@@ -25,4 +25,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /*
+    * Method untuk mengecek apakah user yang sedang login punya hak akses untuk mengakses page sesuai rolenya
+    */ 
+    public function hasRole($roleName)
+    {
+            if ($this->status === $roleName) return true;
+            return false;
+    }
 }

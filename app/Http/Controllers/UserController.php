@@ -72,7 +72,7 @@ class UserController extends Controller
         //$data['data']=User::get();
         //return view('pengguna.formpengguna',$data);
         $data['data']=Usermodel::get();
-        return view('user.formuser');
+        return view('user.formtambahuser');
     }
 
     /**
@@ -134,7 +134,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $data['data']=Usermodel::find($id);
-        return view('user.formedituser', $data);
+        return view('user.formubahuser', $data);
     }
 
     /**
