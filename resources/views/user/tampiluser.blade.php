@@ -50,6 +50,7 @@
                 </thead>
                 <tbody>
                   @foreach($data as $d)
+                  
                   <tr>
                     <td>{{$d->id}}</td>
                     <td>{{$d->name}}</td>
@@ -63,7 +64,7 @@
                         <a href="{{ route('user.edit', ['user'=>$d->id]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Ubah</button></a>
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>
+                        @if($d->status!="Admin")<button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>@endif
                       </form>
                     </th>
                   </tr>

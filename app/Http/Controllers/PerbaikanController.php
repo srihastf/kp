@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Perbaikanmodel;
 use App\Makalahmodel;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -27,7 +28,9 @@ class PerbaikanController extends Controller
     public function index()
     {
         $data['data']=Perbaikanmodel::get();
-        return view('perbaikan.tampilperbaikan',$data);
+        $makalah['makalah']=Makalahmodel::get()->pluck("nomormakalah","judulmakalah");
+        return view('perbaikan.tampilperbaikan',$data)
+            ->with($makalah);
     }
 
     /**
@@ -37,7 +40,7 @@ class PerbaikanController extends Controller
      */
     public function create()
     {
-        return view('perbaikan.formperbaikan');
+        return view('perbaikan.formtambahperbaikan');
     }
 
         /**
@@ -53,6 +56,7 @@ class PerbaikanController extends Controller
             $search = $request->q;
             //$data = DB::table("pegawai")
             $data = Makalahmodel::Select("nomormakalah","judulmakalah")
+                    //->where('tglselesai',null)
                     ->where('judulmakalah','LIKE',"%$search%")
                     ->where('statusp1','LIKE','PERBAIKAN')
                     ->orWhere('statusp2','LIKE','PERBAIKAN')
@@ -69,6 +73,16 @@ class PerbaikanController extends Controller
      */
     public function store(Request $request)
     {
+        $statusp1 = null;
+        $statusp2 = null;
+
+        if($request->statusp1!="--Pilih--"){
+            $statusp1 = $request->statusp1;
+        }
+        if($request->statusp2!="--Pilih--"){
+            $statusp2 = $request->statusp2;
+        }
+
         $validator = Validator::make($request->all(),[
             'nomormakalah'=>'bail|required|string|min:6|max:6',
         ]);
@@ -85,8 +99,8 @@ class PerbaikanController extends Controller
             'tglperiksap2'=>$request->tglperiksap2,
             'tglselesaip1'=>$request->tglselesaip1,
             'tglselesaip2'=>$request->tglselesaip2,
-            'statusp1'=>$request->statusp1,
-            'statusp2'=>$request->statusp2,
+            'statusp1'=>$statusp1,
+            'statusp2'=>$statusp2,
         ]);
 
         $request->session()->flash('alert-success','Data Perbaikan berhasil ditambahkan.');
@@ -114,7 +128,7 @@ class PerbaikanController extends Controller
     {
         $data['data']=Perbaikanmodel::find($id);
         $makalah['makalah']=Makalahmodel::Get();
-        return view('perbaikan.formeditperbaikan',$data,$makalah);
+        return view('perbaikan.formubahperbaikan',$data,$makalah);
     }
 
     /**
@@ -148,7 +162,8 @@ class PerbaikanController extends Controller
     public function destroy(Request $request,$id)
     {
         Perbaikanmodel::find($id)->delete();
-
+        $max = DB::table('perbaikan')->max('idperbaikan')+1;
+        DB::statement("ALTER TABLE perbaikan AUTO_INCREMENT = $max");
         $request->session()->flash('alert-warning','Data Perbaikan berhasil dihapus.');
         return redirect()->route('perbaikan.index');
     }

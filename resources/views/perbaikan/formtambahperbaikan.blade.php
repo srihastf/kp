@@ -39,23 +39,25 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form" method="POST" action="{{ route('perbaikan.update',$data->idperbaikan) }}">
+            <form class="form" method="POST" action="{{ route('perbaikan.store') }}">
               {{ csrf_field() }}
-              {{method_field('PUT')}}
               <div class="box-body">
-                <label for="text">Makalah : {{$data->nomormakalah}}</label>
-                <input type="text" class="form-control" name="nomormakalah" value="{{$data->nomormakalah}}" hide>
+                <div class="form-group">
+                  <label for="text">Makalah</label>
+                  <select class="itemName form-control" name="nomormakalah" id="nomormakalah" required></select>  
+                </div>
+
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="text">Tgl Periksa P1 : {{formatgl($data->tglperiksap1)}}</label>
-                      
+                      <label for="text">Tgl Periksa P1</label>
+                      <input type="date" class="form-control" name="tglperiksap1" >
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="text">Tgl Periksa P2 : {{formatgl($data->tglperiksa2)}}</label>
-                      
+                      <label for="text">Tgl Periksa P2</label>
+                      <input type="date" class="form-control" name="tglperiksap2" >
                     </div>
                   </div>
                 </div>
@@ -64,13 +66,13 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="text">Tgl Selesai Periksa P1</label>
-                      <input type="date" class="form-control" name="tglselesaip1" value="{{$data->tglselesaip1}}">
+                      <input type="date" class="form-control" name="tglselesaip1" >
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="text">Tgl Selesai Periksa P2</label>
-                      <input type="date" class="form-control" name="tglselesaip2" value="{{$data->tglselesaip2}}">
+                      <input type="date" class="form-control" name="tglselesaip2" >
                     </div>
                   </div>
                 </div>
@@ -80,6 +82,7 @@
                     <div class="form-group">
                     <label for="text">Status P1</label>
                       <select name="statusp1" class="form-control">
+                        <option>--Pilih--</option>
                         <option>ACC</option>
                         <option>PERBAIKAN</option>
                       </select>
@@ -89,6 +92,7 @@
                     <div class="form-group">
                     <label for="text">Status P2</label>
                       <select name="statusp2" class="form-control">
+                        <option>--Pilih--</option>
                         <option>ACC</option>
                         <option>PERBAIKAN</option>
                       </select>
@@ -141,12 +145,3 @@ $('.itemName').select2({
 });
 </script>
 @endsection
-
-<?php
-function formatgl($tanggal){
-  if($tanggal!=null){
-  $date = date_create($tanggal);
-  echo date_format($date,"d-m-Y");
-  }
-}
-?>

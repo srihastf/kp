@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Data Pegawai')
+@section('title','Data Peminjaman')
 
 @section('style')
 <!-- DataTables -->
@@ -21,9 +21,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Daftar Data Pegawai
+        Daftar Data Peminjaman Makalah/KTI
       </h1>
-      Data Pegawai yang terdaftar dalam sistem.
+      Data Peminjaman Makalah/KTI yang tercatat dalam sistem.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>
@@ -40,25 +40,24 @@
               <table id="example1" class="table table-bordered table-striped">
               <thead>
                   <tr>
-                    <th>NIP</th>
-                    <th>Nama Pegawai</th>
-                    <th>Bidang</th>
-                    <th>Jabatan</th>
-                    <th>Aksi</th>
+                    <th>No</th>
+                    <th>Makalah</th>
+                    <th>Status</th>
+                    <th width="160">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
                   @foreach($data as $d)
                   <tr>
-                    <td>{{$d->nip}}</td>
-                    <td>{{$d->namapegawai}}</td>
-                    <td>{{$d->bidang}}</td>
-                    <th>{{$d->jabatan}}</th>
+                    <td><b>{{$d->idpinjam}}</b></td>
+                    <td>@foreach ($makalah as $s => $key)@if($key==$d->nomormakalah)<b>{{$s}}</b>@endif @endforeach<br/>
+                    Dipinjam oleh : @foreach ($pegawai as $s => $key)@if($key==$d->nip){{$s}}@endif @endforeach</th>
+                    <th>{{$d->status}}</th>
                     <th>
-                      <form action="{{ route('pegawai.destroy', ['pegawai'=>$d->nip]) }}" method="post"
+                      <form action="{{ route('peminjaman.destroy', ['peminjaman'=>$d->idpinjam]) }}" method="post"
                       onsubmit="return confirm('Anda yakin akan menghapus data?')">
-                        <a href="{{ route('pegawai.show', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Lihat</button></a>
-                        <a href="{{ route('pegawai.edit', ['pegawai'=>$d->nip]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Ubah</button></a>
+                        <a href="{{ route('peminjaman.show', ['peminjaman'=>$d->idpinjam]) }}"><button type="button" class="btn btn-info btn-xs"><i class="fa fa-search"></i> Lihat</button></a>
+                        <a href="{{ route('peminjaman.edit', ['peminjaman'=>$d->idpinjam]) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Ubah</button></a>
                         <input type="hidden" name="_method" value="DELETE">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <button type="submit" class="btn btn-danger btn-xs"><i class="fa fa-minus-square"></i> Hapus</button>
@@ -78,7 +77,7 @@
       <!-- /.row -->
       <div class="row">
         <div class="col-md-2">
-          <a href="{{route('pegawai.create')}}"><button class="btn btn-block btn-sm btn-success" type="button">Tambah Data Baru</button></a>
+          <a href="{{route('peminjaman.create')}}"><button class="btn btn-block btn-sm btn-success" type="button">Tambah Data Baru</button></a>
         </div>
       </div>
     </section>

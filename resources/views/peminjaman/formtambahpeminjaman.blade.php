@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Tambah Perbaikan')
+@section('title','Tambah Peminjaman')
 
  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
@@ -9,8 +9,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Form Tambah Data Perbaikan Makalah/KTI
+       Form Tambah Peminjaman Makalah/KTI
       </h1>
+      Untuk melakukan booking peminjaman makalah/KTI.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>
@@ -26,7 +27,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Silahkan isi dengan data yang sesuai.</h3><br/>
+              <h3 class="box-title">Silahkan isi untuk melakukan booking.</h3><br/>
               @if($errors->any())
                 <div class="alert alert-danger">
                   <ul>
@@ -39,7 +40,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form" method="POST" action="{{ route('perbaikan.store') }}">
+            <form class="form" method="POST" action="{{ route('peminjaman.store') }}">
               {{ csrf_field() }}
               <div class="box-body">
                 <div class="form-group">
@@ -47,41 +48,22 @@
                   <select class="itemName form-control" name="nomormakalah" id="nomormakalah" required></select>  
                 </div>
 
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="text">Tgl Periksa P1</label>
-                      <input type="date" class="form-control" name="tglperiksap1" >
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <label for="text">Tgl Periksa P2</label>
-                      <input type="date" class="form-control" name="tglperiksap2" >
-                    </div>
-                  </div>
+                <div class="form-group">
+                  <label for="text">Nama Lengkap</label>
+                  <select class="itemName2 form-control" name="nip" id="nip" required></select>  
                 </div>
 
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="text">Tgl Selesai Periksa P1</label>
-                      <input type="date" class="form-control" name="tglselesaip1" >
+                      <label for="text">Tgl Booking</label>
+                      <input type="date" class="form-control" name="tglbooking" >
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="text">Tgl Selesai Periksa P2</label>
-                      <input type="date" class="form-control" name="tglselesaip2" >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="form-group">
-                    <label for="text">Status P1</label>
-                      <select name="statusp1" class="form-control">
+                      <label for="text">Konfirmasi Peminjman</label>
+                      <select name="status" class="form-control">
                         <option>ACC</option>
                         <option>PERBAIKAN</option>
                       </select>
@@ -89,22 +71,24 @@
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                    <label for="text">Status P2</label>
-                      <select name="statusp2" class="form-control">
-                        <option>ACC</option>
-                        <option>PERBAIKAN</option>
-                      </select>
+                      <label for="text">Tgl dipinjam</label>
+                      <input type="date" class="form-control" name="tglpinjam" >
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="text">Tgl dikembalikan</label>
+                      <input type="date" class="form-control" name="tglkembali" >
                     </div>
                   </div>
                 </div>
-
               </div>
               <!-- /.box-body -->
               <div class="box-footer">
                 <div class="col-md-10">
-                  <a href="/perbaikan"><button type="button" class="btn btn">Batal</button></a>
+                  <button type="submit" class="btn btn-success">Simpan Data</button>
                 </div>
-                <button type="submit" class="btn btn-success">Simpan Data</button>
+                <a href="/perbaikan"><button type="button" class="btn btn">Batal</button></a>
               </div>
             </form>
           </div>
@@ -117,7 +101,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 @endsection
 
 @section('jsstyle')
@@ -126,7 +109,7 @@
 $('.itemName').select2({
   placeholder: 'Masukan Nama',
   ajax: {
-    url: '/infomakalah',
+    url: '/infomakalah2',
     dataType: 'json',
     delay: 250,
     processResults: function (data) {
@@ -135,6 +118,26 @@ $('.itemName').select2({
               return {
                   text: item.judulmakalah,
                   id: item.nomormakalah
+              }
+          })
+      };
+    },
+  }
+});
+</script>
+<script type="text/javascript">
+$('.itemName2').select2({
+  placeholder: 'Masukan Nama',
+  ajax: {
+    url: '/infouser',
+    dataType: 'json',
+    delay: 250,
+    processResults: function (data) {
+      return {
+        results:  $.map(data, function (item) {
+              return {
+                  text: item.namapegawai,
+                  id: item.nip
               }
           })
       };

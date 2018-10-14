@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Peminjamanmodel;
+use App\Pegawaimodel;
+use App\Makalahmodel;
+use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class Peminjamancontroller extends Controller
+class PeminjamanController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,7 +29,11 @@ class Peminjamancontroller extends Controller
     public function index()
     {
         $data['data']=Peminjamanmodel::get();
-        return view('peminjaman.tampilpeminjaman',$data);
+        $pegawai['pegawai']=Pegawaimodel::get()->pluck("nip","namapegawai");
+        $makalah['makalah']=Makalahmodel::get()->pluck("nomormakalah","judulmakalah");
+        return view('peminjaman.tampilpeminjaman',$data)
+        ->with($pegawai)
+        ->with($makalah);
     }
 
     /**
@@ -37,6 +45,26 @@ class Peminjamancontroller extends Controller
     {
         return view('peminjaman.formtambahpeminjaman');
     }
+
+            /**
+     * Show the application dataAjax.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getInfo(Request $request)
+    {
+        $data = [];
+        
+        if($request->has('q')){
+            $search = $request->q;
+            //$data = DB::table("pegawai")
+            $data = Makalahmodel::Select("nomormakalah","judulmakalah")
+                    ->where('arsip',"TERSEDIA")
+            		->get();
+        }
+        return response()->json($data);
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +86,6 @@ class Peminjamancontroller extends Controller
         }
 
         Peminjamanmodel::create([
-            'idpinjam'=>$request->idpinjam,
             'nomormakalah'=>$request->nomormakalah,
             'nip'=>$request->nip,
             'tglbooking'=>$request->tglbooking,
@@ -68,7 +95,7 @@ class Peminjamancontroller extends Controller
         ]);
 
         $request->session()->flash('alert-success','Data Peminjaman berhasil ditambahkan.');
-        return redirect()->route('peminjaman.show', $request->idpinjam);
+        return redirect()->route('peminjaman.index');
     }
 
     /**
@@ -79,7 +106,14 @@ class Peminjamancontroller extends Controller
      */
     public function show($id)
     {
-        return redirect()->route('Peminjaman.show', $id);
+        $data['data']=Peminjamanmodel::find($id);
+        $makalah['makalah']=Makalahmodel::get()->pluck("nomormakalah","judulmakalah","kodesnt","kodekti");
+        $maka['maka']=Makalahmodel::get();
+        $pegawai['pegawai']=Pegawaimodel::get()->pluck("nip","namapegawai");
+        return view('peminjaman.detailpeminjaman', $data)
+            ->with($makalah)
+            ->with($maka)
+            ->with($pegawai);
     }
 
     /**
@@ -90,9 +124,9 @@ class Peminjamancontroller extends Controller
      */
     public function edit($id)
     {
-        $data['data']=Peminjamannmodel::find($id);
+        $data['data']=Peminjamanmodel::find($id);
         $makalah['makalah']=Makalahmodel::Get();
-        return view('perbaikan.formeditpeminjaman',$data,$makalah);
+        return view('peminjaman.formubahpeminjaman',$data);
     }
 
     /**
@@ -113,19 +147,20 @@ class Peminjamancontroller extends Controller
         $peminjaman->save();
 
         $request->session()->flash('alert-success','Data Perminjaman KTI berhasil diperbaharui.');
-        return redirect()->route('peminjaman.show',$nomakalah);
+        return redirect()->route('peminjaman.show',$id);
     }
 
     /**
      * Remove the specified resource from storage.
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         Peminjamanmodel::find($id)->delete();
-
+        $max = DB::table('pinjamkti')->max('idpinjam')+1;
+        DB::statement("ALTER TABLE pinjamkti AUTO_INCREMENT = $max");
         $request->session()->flash('alert-warning','Data Peminjaman berhasil dihapus.');
         return redirect()->route('peminjaman.index');
     }

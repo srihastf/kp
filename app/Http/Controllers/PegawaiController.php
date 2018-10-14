@@ -54,7 +54,7 @@ class PegawaiController extends Controller
         $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
         //$bidang = DB::table('bidangsnt')->pluck("kodesnt","namabidang");
         //return view('pegawai.formpegawai',compact('bidang'),$subbid);
-        return view('pegawai.formpegawai',$subbid,$bidang);
+        return view('pegawai.formtambahpegawai',$subbid,$bidang);
     }
 
     public function getSubbid($id) {
@@ -141,7 +141,7 @@ class PegawaiController extends Controller
         $data['data']=Pegawaimodel::find($id);
         $subbid['subbid']=Subbidmodel::Get();
         $bidang = DB::table('bidangsnt')->pluck("kodesnt","namabidang");
-        return view('pegawai.formeditpegawai', $data,compact('bidang'),$subbid);
+        return view('pegawai.formubahpegawai', $data,compact('bidang'),$subbid);
     }
 
     /**
