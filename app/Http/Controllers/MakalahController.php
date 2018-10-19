@@ -116,6 +116,7 @@ class MakalahController extends Controller
             'pemeriksa1'=>$request->pemeriksa1,
             'pemeriksa2'=>$request->pemeriksa2,
             'tgldaftarawal'=>$request->tgldaftarawal,
+            'acckakptf'=>$request->acckakptf,
             'accpsubidkapok'=>$request->accpsubidkapok,
             'accpkabid'=>$request->accpkabid,
             'tglterimap1'=>$request->tglterimap1,
@@ -184,6 +185,7 @@ class MakalahController extends Controller
         $makalah->pemeriksa2 = $request->pemeriksa2;
         $makalah->accpsubidkapok = $request->accpsubidkapok;
         $makalah->accpkabid = $request->accpkabid;
+        $makalah->acckakptf = $request->acckakptf;
         $makalah->tglterimap1 = $request->tglterimap1;
         $makalah->tglterimap2 = $request->tglterimap2;
         $makalah->tglaccp1 = $request->tglaccp1;

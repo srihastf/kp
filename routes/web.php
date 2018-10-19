@@ -84,8 +84,8 @@ Route::group(['middleware'=>['auth','status:Sekertaris KPTF/KPTP']],function(){
 Route::group(['middleware'=>['auth','status:Pegawai']],function(){
     //MAKALAH
     Route::get('/semuamakalah','MakalahController@index');
-    Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
     Route::get('/detail/{id}', 'MakalahController@show');
+    Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
 
     //PEMINJAMAN
     Route::get('/pinjamkti', 'PeminjamanController@index');
@@ -96,7 +96,7 @@ Route::group(['middleware'=>['auth','status:Pegawai']],function(){
 //AUTENTIKASI KEPALA PSTNT
 Route::group(['middleware'=>['auth','status:Kepala PSTNT']],function(){
     Route::get('/semuamakalah','MakalahController@index');
-    Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
+    //Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
     Route::get('/detail/{id}', 'MakalahController@show');
 
     Route::resource('laporan','LaporanController');

@@ -126,8 +126,8 @@
                 <tr>
                   <td>Diterima Ka.KPTF/KPTP</td>
                   <td>
-                  @if($data->accpkabid!="")
-                    {{formatgl($data->accpkabid)}}
+                  @if($data->acckakptf!="")
+                    {{formatgl($data->acckakptf)}}
                   @else
                     <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
                   @endif

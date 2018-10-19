@@ -100,7 +100,9 @@
               </table>
             </div>
             <!-- /.box-body -->
+            @if(Auth::user()->status=="Admin")
             <a href="/pdfmakalah">Print</a>
+            @endif
           </div>
           <!-- /.box -->
         </div>

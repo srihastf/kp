@@ -120,16 +120,22 @@
             <div class="row"><div class="col-md-12" style="color:#f22155">Silahkan lewati bagian di bawah ini jika informasi belum lengkap.<br/><br/></div></div>
             
             <div class="row">
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label for="text">Persetujuan Ka.Subbid atau Ka.Kelompok</label>
                   <input type="date" class="form-control" name="accpsubidkapok" >
                 </div>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-4">
                 <div class="form-group">
                   <label for="text">Persetujuan Ka.Bidang</label>
                   <input type="date" class="form-control" name="accpkabid" >
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="text">Persetujuan Ka.KPTF/KPTP</label>
+                  <input type="date" class="form-control" name="acckakptf" >
                 </div>
               </div>
             </div>

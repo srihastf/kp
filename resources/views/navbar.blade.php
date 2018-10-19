@@ -35,7 +35,7 @@
           </ul>
           @elseif(Auth::user()->status=="Kepala PSTNT")
           <ul class="treeview-menu">
-          <li><a href="/tampilmakalah/{{Auth::user()->name}}"><i class="fa fa-file-text"></i> Pengajuan KTI/Makalah</a></li>
+          <!--<li><a href="/tampilmakalah/{{Auth::user()->name}}"><i class="fa fa-file-text"></i> Pengajuan KTI/Makalah</a></li>-->
             <li><a href="{{route('laporan.index')}}"><i class="fa fa-files-o"></i> Laporan</a></li>
           </ul>
           @endif
