@@ -100,6 +100,33 @@
                   </div>
                 </div>
 
+                <div class="row">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+                <h4> &nbsp;&nbsp;&nbsp;Pemeriksaan oleh Kepala PSTNT</h4><br/>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="text">Tgl Periksa Ka.PSTNT</label>
+                      <input type="date" class="form-control" name="tglperiksakapstnt" >
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="text">Tgl Selesai Periksa Ka.PSTNT</label>
+                      <input type="date" class="form-control" name="tglselesaikapstnt" >
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="text">Status Ka.PSTNT</label>
+                      <select name="statuskapstnt" class="form-control">
+                        <option>--Pilih--</option>
+                        <option>ACC</option>
+                        <option>PERBAIKAN</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                
               </div>
               <!-- /.box-body -->
               <div class="box-footer">

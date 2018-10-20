@@ -12,6 +12,7 @@ class Perbaikanmodel extends Model
     public $timestamps = false;
 
     public $fillable = [
-        'idperbaikan','nomormakalah','tglperiksap1','tglperiksap2','tglselesaip1','tglselesaip2','statusp1','statusp2',
+        'idperbaikan','nomormakalah','tglperiksap1','tglperiksap2','tglperiksakapstnt',
+        'tglselesaip1','tglselesaip2','tglselesaikapstnt','statusp1','statusp2','statuskapstnt'
     ];
 }

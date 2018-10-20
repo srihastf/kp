@@ -48,14 +48,14 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="text">Tgl Periksa P1 : {{formatgl($data->tglperiksap1)}}</label>
-                      
+                      <label for="text">Tgl Periksa P1</label>
+                      <input type="date" class="form-control" name="tglperiksap1" value="{{$data->tglperiksap1}}">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="text">Tgl Periksa P2 : {{formatgl($data->tglperiksa2)}}</label>
-                      
+                      <label for="text">Tgl Periksa P2</label>
+                      <input type="date" class="form-control" name="tglperiksap2" value="{{$data->tglperiksap2}}">
                     </div>
                   </div>
                 </div>
@@ -80,22 +80,53 @@
                     <div class="form-group">
                     <label for="text">Status P1</label>
                       <select name="statusp1" class="form-control">
-                        <option>ACC</option>
-                        <option>PERBAIKAN</option>
-                      </select>
+                          @if($data->statusp1=="ACC")<option selected>ACC</option><option>PERBAIKAN</option>
+                          @elseif($data->statusp1=="PERBAIKAN")<option selected>PERBAIKAN</option><option>ACC</option>
+                          @else($data->statusp1=="")<option>--Pilih--</option><option>ACC</option><option>PERBAIKAN</option>
+                          @endif
+                        </select>
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                     <label for="text">Status P2</label>
-                      <select name="statusp2" class="form-control">
-                        <option>ACC</option>
-                        <option>TOLAK</option>
-                      </select>
+                    <select name="statusp2" class="form-control">
+                          @if($data->statusp2=="ACC")<option selected>ACC</option><option>PERBAIKAN</option>
+                          @elseif($data->statusp2=="PERBAIKAN")<option selected>PERBAIKAN</option><option>ACC</option>
+                          @else($data->statusp2=="")<option>--Pilih--</option><option>ACC</option><option>PERBAIKAN</option>
+                          @endif
+                        </select>
                     </div>
                   </div>
                 </div>
 
+                <div class="row">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</p>
+                <h4> &nbsp;&nbsp;&nbsp;Pemeriksaan oleh Kepala PSTNT</h4><br/>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="text">Tgl Periksa Ka.PSTNT</label>
+                      <input type="date" class="form-control" name="tglperiksakapstnt" value="{{$data->tglperiksakapstnt}}">
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="text">Tgl Selesai Periksa Ka.PSTNT</label>
+                      <input type="date" class="form-control" name="tglselesaikapstnt" value="{{$data->tglselesaikapstnt}}">
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                    <label for="text">Status Ka.PSTNT</label>
+                    <select name="statuskapstnt" class="form-control">
+                          @if($data->statuskapstnt=="ACC")<option selected>ACC</option><option>PERBAIKAN</option>
+                          @elseif($data->statuskapstnt=="PERBAIKAN")<option selected>PERBAIKAN</option><option>ACC</option>
+                          @else($data->statuskapstnt=="")<option>--Pilih--</option><option>ACC</option><option>PERBAIKAN</option>
+                          @endif
+                        </select>
+                    </div>
+                  </div>
+                </div>
               </div>
               <!-- /.box-body -->
               <div class="box-footer">

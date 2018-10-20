@@ -165,7 +165,8 @@ class MakalahController extends Controller
     public function edit($id)
     {
         $data['data']=Makalahmodel::find($id);
-        return view('makalah.formubahmakalah',$data);
+        $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
+        return view('makalah.formubahmakalah',$data,$pegawai);
     }
 
     /**
@@ -181,6 +182,7 @@ class MakalahController extends Controller
         
         $makalah->judulmakalah = $request->judulmakalah;
         $makalah->tujuan = $request->tujuan;
+        $makalah->penulis = $request->penulis;
         $makalah->pemeriksa1 = $request->pemeriksa1;
         $makalah->pemeriksa2 = $request->pemeriksa2;
         $makalah->accpsubidkapok = $request->accpsubidkapok;

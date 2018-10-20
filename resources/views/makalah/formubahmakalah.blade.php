@@ -64,7 +64,7 @@
                 </div>
                 <div class="form-group">
                   <label for="text">Penulis</label>
-                  <textarea type="text" rows="3" class="form-control" name="penulis" readonly>{{$data->penulis}}</textarea>
+                  <textarea type="text" rows="3" class="form-control" name="penulis">{{$data->penulis}}</textarea>
                 </div>
               </div>
             </div>
@@ -97,10 +97,11 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="text">Pemeriksa 1</label>
-                  @if($data->pemeriksa1=="")
-                    <select class="itemName form-control" name="pemeriksa1" id="pemeriksa"></select>  
-                  @else
+                  @if($data->pemeriksa1!=null)
                     <input type="text" class="form-control" name="pemeriksa1" value="{{$data->pemeriksa1}}">
+                    Nama : <b>@foreach ($pegawai as $s => $key)@if($key==$data->pemeriksa1){{$s}}@endif @endforeach</b>
+                  @else
+                    <select class="itemName form-control" name="pemeriksa1" id="pemeriksa"></select>  
                   @endif
                 </div>
               </div>
@@ -108,10 +109,11 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="text">Pemeriksa 2</label>
-                  @if($data->pemeriksa1=="")
-                    <select class="itemName form-control" name="pemeriksa2" id="pemeriksa"></select>  
-                  @else
+                  @if($data->pemeriksa2!=null)
                     <input type="text" class="form-control" name="pemeriksa2" value="{{$data->pemeriksa2}}">
+                    Nama : <b>@foreach ($pegawai as $s => $key)@if($key==$data->pemeriksa2){{$s}}@endif @endforeach</b>
+                  @else
+                    <select class="itemName form-control" name="pemeriksa2" id="pemeriksa"></select>
                   @endif
                 </div>
               </div>

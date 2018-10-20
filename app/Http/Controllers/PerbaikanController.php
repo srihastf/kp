@@ -58,8 +58,9 @@ class PerbaikanController extends Controller
             $data = Makalahmodel::Select("nomormakalah","judulmakalah")
                     //->where('tglselesai',null)
                     ->where('judulmakalah','LIKE',"%$search%")
-                    ->where('statusp1','LIKE','PERBAIKAN')
-                    ->orWhere('statusp2','LIKE','PERBAIKAN')
+                    ->orwhere('nomormakalah','LIKE',"%$search%")
+                    ->where('statusp1','PERBAIKAN')
+                    ->orWhere('statusp2','PERBAIKAN')
             		->get();
         }
         return response()->json($data);
@@ -75,12 +76,16 @@ class PerbaikanController extends Controller
     {
         $statusp1 = null;
         $statusp2 = null;
+        $statuskapstnt = null;
 
         if($request->statusp1!="--Pilih--"){
             $statusp1 = $request->statusp1;
         }
         if($request->statusp2!="--Pilih--"){
             $statusp2 = $request->statusp2;
+        }
+        if($request->statuskapstnt!="--Pilih--"){
+            $statuskapstnt = $request->statuskapstnt;
         }
 
         $validator = Validator::make($request->all(),[
@@ -97,10 +102,13 @@ class PerbaikanController extends Controller
             'nomormakalah'=>$request->nomormakalah,
             'tglperiksap1'=>$request->tglperiksap1,
             'tglperiksap2'=>$request->tglperiksap2,
+            'tglperiksakapstnt'=>$request->tglperiksakapstnt,
             'tglselesaip1'=>$request->tglselesaip1,
             'tglselesaip2'=>$request->tglselesaip2,
+            'tglselesaikapstnt'=>$request->tglselesaikapstnt,
             'statusp1'=>$statusp1,
             'statusp2'=>$statusp2,
+            'statuskapstnt'=>$statuskapstnt,
         ]);
 
         $request->session()->flash('alert-success','Data Perbaikan berhasil ditambahkan.');
@@ -140,12 +148,32 @@ class PerbaikanController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $statusp1 = null;
+        $statusp2 = null;
+        $statuskapstnt = null;
+        
+        if($request->statusp1!="--Pilih--"){
+            $statusp1 = $request->statusp1;
+        }
+        if($request->statusp2!="--Pilih--"){
+            $statusp2 = $request->statusp2;
+        }
+        if($request->statuskapstnt!="--Pilih--"){
+            $statuskapstnt = $request->statuskapstnt;
+        }
+
         $perbaikan = Perbaikanmodel::where('idperbaikan',$id)->first();
         $nomakalah = $request->nomormakalah;
+        $perbaikan->tglperiksap1 = $request->tglperiksap1;
+        $perbaikan->tglperiksap2 = $request->tglperiksap2;
+        $perbaikan->tglperiksakapstnt = $request->tglperiksakapstnt;
         $perbaikan->tglselesaip1 = $request->tglselesaip1;
         $perbaikan->tglselesaip2 = $request->tglselesaip2;
-        $perbaikan->statusp1 = $request->statusp1;
-        $perbaikan->statusp2 = $request->statusp2;
+        $perbaikan->tglselesaikapstnt = $request->tglselesaikapstnt;
+        $perbaikan->statusp1 = $statusp1;
+        $perbaikan->statusp2 = $statusp2;
+        $perbaikan->statuskapstnt = $statuskapstnt;
 
         $perbaikan->save();
 

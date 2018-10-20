@@ -237,7 +237,7 @@
                   <tr>
                     <td>1</td>
                     <td>{{formatgl($s->tglperiksap1)}}</td>
-                    <td>{{formatgl($s->tglperiksap1)}}</td>
+                    <td>{{formatgl($s->tglselesaip1)}}</td>
                     <td>{{$s->statusp1}}</td>
                   </tr>
                   @endif
@@ -245,8 +245,16 @@
                   <tr>
                     <td>2</td>
                     <td>{{formatgl($s->tglperiksap2)}}</td>
-                    <td>{{formatgl($s->tglperiksap2)}}</td>
+                    <td>{{formatgl($s->tglselesaip2)}}</td>
                     <td>{{$s->statusp2}}</td>
+                  </tr>
+                  @endif
+                  @if($s->statuskapstnt!=null)
+                  <tr>
+                    <td>Ka.PSTNT</td>
+                    <td>{{formatgl($s->tglperiksakapstnt)}}</td>
+                    <td>{{formatgl($s->tglselesaikapstnt)}}</td>
+                    <td>{{$s->statuskapstnt}}</td>
                   </tr>
                   @endif
                 @endforeach
