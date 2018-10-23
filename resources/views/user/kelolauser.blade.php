@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Kelola User')
+@section('title','Kelola Users')
 
 @section('style')
 <style>
@@ -20,9 +20,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Kelola Data User
+        Kelola Data Users
       </h1>
-      Bagian untuk mengelola data user.
+      Bagian untuk mengelola data users.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>
@@ -43,7 +43,7 @@
                  <i class="fa fa-users" ></i>
                 </div>
             </div>           
-            <a href="{{url('/tampiluser')}}" class="small-box-footer"><h4>Daftar User</h4> <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{url('/tampiluser')}}" class="small-box-footer"><h4>Daftar Users</h4> <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -55,7 +55,7 @@
                  <i class="ion ion-person-add" style=""></i>
                 </div>
             </div>           
-            <a href="{{route('user.create')}}" class="small-box-footer"><h4>Tambah User</h4> <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('user.create')}}" class="small-box-footer"><h4>Tambah Users</h4> <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- right col -->
@@ -65,20 +65,20 @@
        <!-- Default box -->
        <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Mengelola data user seperti tambah user, ubah data user, lihat data user dan hapus data user.</h3>
+          <h3 class="box-title">Mengelola data users seperti tambah users, ubah data users, lihat data users dan hapus data users.</h3>
         </div>
         <div class="box-body">
           
           <ol>
-            <li>Tambah User : </li>
-            <p>Menambah data user baru yang belum terdata dalam sistem.</p>
-            <li>Ubah User : </li>
-            <p>Memperbaharui data user yang sudah terdata dalam sistem sebelumnya.Untuk keadaan jika pegawai 
+            <li>Tambah Users : </li>
+            <p>Menambah data users baru yang belum terdata dalam sistem.</p>
+            <li>Ubah Users : </li>
+            <p>Memperbaharui data users yang sudah terdata dalam sistem sebelumnya.Untuk keadaan jika pegawai 
             misalnya lupa password atau mengubah emailnya, dan menghubungi Admin untuk membantu memperbaharui datanya.</p>
-            <li>Lihat User : </li>
-            <p>Melihat detail data user secara lengkap yang terdata dalam sistem.</p>
-            <li>Hapus User : </li>
-            <p>Menghapus data user yang sudah terdata dalam sistem. Untuk keadaan darurat (ada kesalahan).</p>
+            <li>Lihat Users : </li>
+            <p>Melihat detail data users secara lengkap yang terdata dalam sistem.</p>
+            <li>Hapus Users : </li>
+            <p>Menghapus data users yang sudah terdata dalam sistem. Untuk keadaan darurat (ada kesalahan).</p>
           </ol>
         </div>
         <!-- /.box-body -->

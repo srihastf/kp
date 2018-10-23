@@ -69,7 +69,8 @@
                     {{substr($d->nomormakalah,0,2)}}/{{$d->kodesnt}}/{{$d->kodekti}}/{{substr($d->tgldaftarawal,0,4)}}</a></td> <!--dsdddc-->
 
                     @if($d->arsip!="TERSEDIA")<th style="background:#ffcaae">
-                    @else <th> @endif {{$d->judulmakalah}}</th>
+                    @else <th> @endif {{$d->judulmakalah}} 
+                      <br/><small><a>@foreach ($bidang as $s => $key)@if($key==$d->kodesnt) {{$s}} @endif @endforeach</a></small></th>
                       <th>{{$d->penulis}}</th>
                     <th>
                       @if(Auth::user()->status=="Sekertaris KPTF/KPTP")

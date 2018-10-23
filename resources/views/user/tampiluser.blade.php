@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Data User')
+@section('title','Data Users')
 
 @section('style')
 <!-- DataTables -->
@@ -21,9 +21,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Daftar Data User
+        Daftar Data Users
       </h1>
-      Data User yang terdaftar dalam sistem.
+      Data Users yang terdaftar dalam sistem.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>

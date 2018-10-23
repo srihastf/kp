@@ -128,9 +128,9 @@
           
         </li>
         <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="/about"><i class="fa fa-circle-o text-yellow"></i> <span>About</span></a></li>
-        <li><a href="/contact"><i class="fa fa-circle-o text-aqua"></i> <span>Contact</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Informasi Penting</span></a></li>
+        <li><a href="/about"><i class="fa fa-circle-o text-yellow"></i> <span>Tentang Kami</span></a></li>
+        <li><a href="/contact"><i class="fa fa-circle-o text-aqua"></i> <span>Kontak</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -158,7 +158,7 @@
             <div class="icon">
               <i class="fa fa-building-o"></i>
             </div>
-            <a class="small-box-footer" href="#">Informasi Lainnya <i class="fa fa-arrow-circle-right"></i></a>
+            <a class="small-box-footer" href="http://www.batan.go.id/index.php/id/">Informasi Lainnya <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
 
@@ -171,7 +171,7 @@
             <div class="icon">
               <i class="fa fa-building"></i>
             </div>
-            <a class="small-box-footer" href="#">Informasi Lainnya <i class="fa fa-arrow-circle-right"></i></a>
+            <a class="small-box-footer" href="http://www.batan.go.id/index.php/id/pstnt-id/profil-pstnt/3281-pusat-sains-dan-teknologi-nuklir-terapan-pstnt">Informasi Lainnya <i class="fa fa-arrow-circle-right"></i></a>
             </div>
           </div>
 

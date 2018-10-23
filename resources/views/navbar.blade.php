@@ -20,7 +20,7 @@
           @if(Auth::user()->status=="Admin")
           <ul class="treeview-menu">
             <li><a href="{{route('pegawai.index')}}"><i class="fa fa-user"></i> Pegawai</a></li>
-            <li><a href="/user"><i class="fa fa-users"></i> User</a></li>
+            <li><a href="/user"><i class="fa fa-users"></i> Users</a></li>
           </ul>
           @elseif(Auth::user()->status=="Sekertaris KPTF/KPTP")
           <ul class="treeview-menu">
@@ -41,8 +41,8 @@
           @endif
 
         </li>
-        <li class="header">Informasi</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Penting</span></a></li>
+        <li class="header">Halaman</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Informasi Penting</span></a></li>
         <li class=" treeview">
           <a href="#">
             <i class="fa fa-circle-o text-yellow"></i> <span>Panduan</span>

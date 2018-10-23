@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Ubah User')
+@section('title','Ubah Users')
 
  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
@@ -9,9 +9,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Form Ubah User
+       Form Ubah Users
       </h1>
-      Untuk memperbaharui data baru user yang terdaftar pada sistem.
+      Untuk memperbaharui data baru users yang terdaftar pada sistem.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>

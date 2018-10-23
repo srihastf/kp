@@ -44,15 +44,6 @@
                   <td>:</td>
                   <td><b>{{ $data->idpinjam }}</b></td>
                 </tr>
-                
-                <tr>
-                  <td>Nomor Makalah</td>
-                  <td>:</td>
-                  <td>@foreach($maka as $mk)
-                  <b>{{substr($data->nomormakalah,0,2)}}/{{$mk->kodesnt}}/{{$mk->kodekti}}/{{substr($mk->tgldaftarawal,0,4)}}<b>
-                    @endforeach
-                  </td>
-                </tr>
                 <tr>
                   <td>Judul Makalah</td>
                   <td>:</td>

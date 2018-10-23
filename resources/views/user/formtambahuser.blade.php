@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Tambah User')
+@section('title','Tambah Users')
 
  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
@@ -9,9 +9,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Form Tambah User
+       Form Tambah Users
       </h1>
-      Untuk menambah data baru user yang belum terdaftar pada sistem.
+      Untuk menambah data baru users yang belum terdaftar pada sistem.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>

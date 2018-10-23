@@ -64,7 +64,7 @@
             <div class="row">
               <div class="col-md-5">
                 <div class="form-group">
-                  <label>Kode KTI</label>
+                  <label>Jenis KTI</label>
                   <select class="form-control" name="kodekti" required>
                   <option>---Pilih Jenis KTI---</option>
                   @foreach ($kti as $k => $key)

@@ -16,13 +16,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Data Detail User
+        Data Detail Users
       </h1>
-      Data lengkap dari setiap User.
+      Data lengkap dari setiap Users.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i>Beranda</a></li>
-        <li><a href="/user">User</a></li>
-        <li class="active">Detail User</li>
+        <li><a href="/user">Users</a></li>
+        <li class="active">Detail Users</li>
       </ol>
     </section>
 
@@ -69,7 +69,7 @@
             <div class="box-footer clearfix">
               <ul class="pagination pagination-sm no-margin pull-right">
               </ul>
-             <a href="/tampiluser"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Daftar User</button></a>
+             <a href="/tampiluser"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Daftar Users</button></a>
           </div>
           <!-- /.box -->
         </div>

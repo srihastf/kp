@@ -32,7 +32,8 @@ class MakalahController extends Controller
     public function index()
     {
         $data['data']=Makalahmodel::get();
-        return view('makalah.tampilmakalah',$data);
+        $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
+        return view('makalah.tampilmakalah',$data,$bidang);
     }
 
      /**
@@ -43,7 +44,8 @@ class MakalahController extends Controller
     public function makalahsaya($id)
     {
         $data['data']=Makalahmodel::where('penulis','LIKE',"%$id%")->get();
-        return view('makalah.tampilmakalah',$data);
+        $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
+        return view('makalah.tampilmakalah',$data,$bidang);
     }
 
     /**
