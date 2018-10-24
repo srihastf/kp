@@ -1,5 +1,5 @@
 <?php
-
+// use DB;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -53,6 +53,8 @@ Route::get('/master', function () {
     return view('master');
 });
 
+// Route::get('/grafik', 'grafikC'
+
 
 //AUTENTIKASI
 Auth::routes();
@@ -98,10 +100,10 @@ Route::group(['middleware'=>['auth','status:Kepala PSTNT']],function(){
     Route::get('/semuamakalah','MakalahController@index');
     //Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
     Route::get('/detail/{id}', 'MakalahController@show');
+    Route::get('/cetaklaporan/{id}', 'LaporanController@cetaklaporan');
+    Route::get('pdf',  'LaporanController@makePDF');
 
     Route::resource('laporan','LaporanController');
-    Route::get('/carimakalah', 'LaporanController@carimakalah');
-    Route::get('pdfmakalah',  'LaporanController@makePDF');
 });
 
 //PEMINJAMAN
@@ -121,3 +123,5 @@ Route::get('subbid/get/{id}', 'PegawaiController@getSubbid');
 
 //pdf
 Route::get('generate-pdf','HomeController@generatePDF');
+
+Route::get('/grafik','grafikController@index');

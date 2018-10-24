@@ -40,8 +40,8 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form action="/carimakalah", method="GET">
-              {{ csrf_field() }}
+            <form class="form" method="POST" action="{{ route('laporan.store') }}">
+            {{ csrf_field() }}
               <div class="box-body">
 
                 <div class="row">
