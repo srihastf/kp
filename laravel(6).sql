@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Okt 2018 pada 14.49
+-- Waktu pembuatan: 25 Okt 2018 pada 05.11
 -- Versi server: 10.1.30-MariaDB
 -- Versi PHP: 7.2.2
 
@@ -80,7 +80,7 @@ CREATE TABLE `makalah` (
   `kodekti` char(5) NOT NULL,
   `subidnkelompok` varchar(40) NOT NULL,
   `judulmakalah` varchar(300) NOT NULL,
-  `tujuan` varchar(40) NOT NULL,
+  `tujuan` varchar(68) NOT NULL,
   `penulis` text NOT NULL,
   `pemeriksa1` char(21) DEFAULT NULL,
   `pemeriksa2` char(21) DEFAULT NULL,
@@ -105,32 +105,21 @@ CREATE TABLE `makalah` (
 
 INSERT INTO `makalah` (`nomormakalah`, `kodesnt`, `kodekti`, `subidnkelompok`, `judulmakalah`, `tujuan`, `penulis`, `pemeriksa1`, `pemeriksa2`, `tgldaftarawal`, `acckakptf`, `accpsubidkapok`, `accpkabid`, `tglterimap1`, `tglterimap2`, `tglaccp1`, `tglaccp2`, `statusp1`, `statusp2`, `ttdkakptf`, `tglselesai`, `arsip`) VALUES
 ('012017', 'SNT.2', 'KTI-3', '-', 'SYNTHESIS AND CHARACTERIZATION OF MOLYBDENUM PHTALOCYANINE AS TARGET MATERIAL FOR HIGH SPECIFIC ACTIVITY MOLYBDENUM-99 PRODUCTION', 'Indonesian Journal of Chemistry', 'Muhamad Basit Febrian, Duyeh Setiawan, Hilda Hidayati', '19750822 199403 2 001', '19560705 198211 2 001', '2017-01-04', '2017-01-17', NULL, NULL, '2017-01-18', '2017-01-18', '2017-09-20', '2017-01-25', 'ACC', 'ACC', '2017-02-09', '2017-02-10', 'TERSEDIA'),
-('082017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('092017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('102017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('112017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('122017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('132017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('142017', ' Indo', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('152017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('162017', '5 pad', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('172017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('182017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('192017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('202017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('212017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('222017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('232017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('242017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('252017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('262017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('272017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('292017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('302017', 'bandu', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('332017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('342017', ' 12-D', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('372017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('382017', '', '', '', '', '', '', NULL, NULL, '0000-00-00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+('022017', 'SNT.3', 'KTI-1', '-', 'STUDI PERPINDAHAN KALOR KONVEKSI PAKSA NANOFLUIDA AIR-ZrO2 DALAM SUB-BULUH VERTIKAL SEGIEMPAT', 'JSTNI', 'Ketut Kamajaya, Efrizon Umar', '19640716 199303 1 002', '19560705 198211 2 001', '2017-01-20', '2017-01-20', NULL, NULL, '2017-01-20', '2017-01-20', '2017-02-13', '2017-01-26', 'PERBAIKAN', 'PERBAIKAN', '2017-02-22', '2017-02-23', 'TERSEDIA'),
+('032017', 'SNT.3', 'KTI-4', '-', 'Characteristics of Nanofluids Made from Solgel Synthesized-Al2O3 Nanoparticles Using Citric Acid and PEG as Organic Agent and Bauxite as Raw Material', 'Seminar Nasional QIR 2017', 'Dani Gustaman Syarif, Djoko Hadi Prajitno, Efrizon Umar', '19640716 199303 1 002', '19540311 198503 1 002', '2017-02-02', '2017-02-03', NULL, NULL, '2017-02-03', '2017-02-03', '2017-04-13', '2017-04-17', 'ACC', 'ACC', '2017-05-25', '2017-05-25', 'TERSEDIA'),
+('042017', 'SNT.2', 'KTI-1', '-', 'EVALUASI BIOLOGIS 99MTc-GLUKOSA-6-FOSFAT PADA TIKUS PUTIH (Rattus norvegicus) STOCK SPRAGUE DAWLEY', 'Jurnal Ganendra', 'Iim Halimah, Hendris Wongso, Isti Daruwati', '19750822 199403 2 001', '19560705 198211 2 001', '2017-03-15', '2017-03-16', NULL, NULL, '2017-03-16', '2017-03-27', '2017-03-27', '2017-03-27', 'PERBAIKAN', 'PERBAIKAN', '2017-08-28', '2017-08-28', 'TERSEDIA'),
+('052017', 'SNT.3', 'KTI-2', '-', 'PERANCANGAN ROUTING PERPIPAAN SISTEM PENDINGIN PRIMER REAKTOR TRIGA 2000 BANDUNG KONVERSI', 'Jurnal/Seminar', 'Henky Poedjo Rahardjo, V.Indiati Sri Wardhani', '19640718 198803 2 001', '19540311 198503 1 002', '2017-04-12', '2017-04-12', NULL, NULL, '2017-04-13', '2017-04-13', '2017-04-17', '2017-04-17', 'PERBAIKAN', 'PERBAIKAN', '2017-04-25', '2017-04-25', 'TERSEDIA'),
+('062017', 'SNT.3', 'KTI-2', '-', 'ANALISIS TERMOHIDROLIK TERAS REAKTOR TRIGA BANDUNG BERBAHAN BAKAR TIPE PELAT MENGGUNAKAN PROGRAM CFD', 'Seminar SENTEN 2017', 'Reinaldy Nazar, Sudjatmi KA', '19640716 199303 1 002', '19540311 198503 1 002', '2017-05-02', '2017-05-04', NULL, NULL, '2017-05-04', '2017-05-04', '2017-05-16', '2017-05-22', 'PERBAIKAN', 'PERBAIKAN', '2017-06-08', '2017-06-09', 'TERSEDIA'),
+('072017', 'SNT.3', 'KTI-3', '-', 'Effect of Calcination Temperature During Synthesis of Al2O3 from Local Bauxite on Stability and CHF of Water-Al2O3 nanofluids', 'Jurnal Internasional ACSJ Springer', 'Dani Gustaman Syarif, Djoko Hadi Prajitno, Jupiter Sitorus Pane', '19560705 198211 2 001', '19640718 198803 2 001', '2017-06-07', '2017-06-08', NULL, NULL, '2017-06-09', '2017-06-09', '2017-06-16', '2017-06-14', 'ACC', 'ACC', '2017-07-11', '2017-07-11', 'TERSEDIA'),
+('082017', 'SNT.2', 'KTI-1', '-', 'PENINGKATAN EFISIENSI PEMISAHAN RADIOISOTOP TERBIUM-161 BERBASIS KROMATOGRAFI KOLOM UNTUK APLIKASI TERAPI KANKER', 'JSTNI', 'Azmairit Aziz', '19790220 200312 2 001', '19591014 198812 1 001', '2017-06-08', '2017-06-09', NULL, NULL, '2016-06-09', '2017-06-09', '2017-07-10', '2017-06-16', 'ACC', 'ACC', '2017-07-11', '2017-07-12', 'TERSEDIA'),
+('092017', 'SNT.3', 'KTI-3', '-', 'Neutron flux Distribution at Cip of Plate Type Fuel Element TRIGA 2000 Reactor', 'ICONSTA', 'Epung Saepul Bahrum, Prasetyo Basuki', '19640716 199303 1 002', '19560705 198211 2 001', '2017-06-08', '2017-06-09', NULL, NULL, '2017-06-09', '2017-06-12', '2017-07-24', '2017-07-13', 'PERBAIKAN', 'ACC', '2017-07-31', '2017-08-03', 'TERSEDIA'),
+('102017', 'SNT.2', 'KTI-4', '-', 'Radioisoiopes 113m ln Separation of Irradiated Sn(TIN) isoiopes Natural Target Based Silica Get column Chromato Sraphy', 'Jurnal/Seminar Internasional 2017', 'Duyeh Setiawan, M Basit Febrian,  Yanuar Sotiah', '19640718 198803 2 001', '19610522 198403 1 002', '2017-06-19', '2017-06-19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'TIDAK TERSEDIA'),
+('112017', 'SNT.2', 'KTI-3', '-', 'Proparation of 99mTc-quercetin as Cancer Radiotracer', 'Seminar ICONSTA', 'Eva Maria Widyasari, Maria Yunita Anastasia Simarmata, Muharam Marzuki, Maula Eka Sriyani, Witri Nuraeni', '19750822 199403 2 001', '19640716 199303 1 002', '2017-06-21', '2017-06-21', NULL, NULL, '2017-05-21', '2017-06-21', '2017-07-03', '2017-07-26', 'ACC', 'ACC', '2017-07-31', '2017-08-03', 'TERSEDIA'),
+('122017', 'SNT.3', 'KTI-2', '-', 'Analisis Distribusi Temperatur Kanal Terpanas Teras Reaktor TRIGA Bandung Berbahan Bakar Pelat dengan Program CFD', 'Seminar', 'Veronica Indriati Sri Wardhani, Henky P. Rahardjo, Surip Widodo', '19540311 198503 1 002', NULL, '2017-06-10', '2017-07-10', NULL, NULL, '2017-07-13', '2017-07-10', '2017-07-24', '2017-07-17', 'PERBAIKAN', 'PERBAIKAN', '2017-08-03', '2017-08-03', 'TERSEDIA'),
+('132017', 'SNT.2', 'KTI-3', '-', 'Separation of Radioisoiope Lodine -131 from Radiotellurium-131 Base on Dowex-1x8 use as column matrix', 'the 2th international Seminar on Chemistry (1sc)28-29 September 2017', 'Duyeh Setiawan, Iwan Hastiawan, April Aulia Nugraha', '19640718 198803 2 001', '19640716 199303 1 002', '2017-07-18', '2017-07-20', NULL, NULL, '2017-07-20', '2017-07-20', NULL, '2017-09-13', NULL, NULL, NULL, NULL, 'TIDAK TERSEDIA'),
+('142017', 'SNT.2', 'KTI-3', '-', 'Characteristic of Trace Elements in Volcanic Ash of Kelud Eruption in East Java, Indonesia', 'Indonesian Journal of Chemistry', 'Diah Dwiana Lestiani, Revi Apryani, Linda Lestari, Muhayatun Santoso, Eko Prabowo, Syukria Kurniawati', '19670518 199201 2 001', '19560705 198211 2 001', '2017-07-28', '2017-07-31', NULL, NULL, '2017-08-03', '2017-08-03', '2017-08-15', '2017-08-08', 'PERBAIKAN', 'ACC', '2017-08-22', '2017-08-29', 'TERSEDIA'),
+('152017', 'SNT.3', 'KTI-3', '-', 'Neutrons fluex distribution calculation at piercing beam plunt of plate type fuel element trisa 2000 reactor', 'ICONSTA', 'Epung Saepul B, Prasetyo Basuki, Alan Maulana', '19560705 198211 2 001', '19640718 198803 2 001', '2017-08-28', '2017-08-28', NULL, NULL, '2017-09-15', '2017-09-15', NULL, NULL, 'PERBAIKAN', 'PERBAIKAN', '2018-01-09', '2018-01-09', 'TERSEDIA'),
+('162017', 'SNT.2', 'KTI-3', '-', 'Karakterisasi Unsur pm2,5 pada periode kebakaran hutan di Indonesia dengan teknik AAN', 'Jurnal Nasional Terakreditasi', 'Indah Kusmartini, Natalia Adventini, Dyah Kumala Sari, Syukria Kurniawati, Diah Dwiana Lestiani, Muhayatun Santoso', '19670518 199201 2 001', '19560705 198211 2 001', '2017-09-12', '2017-09-12', NULL, NULL, '2017-09-12', '2017-09-12', '2017-09-26', '2017-09-15', 'PERBAIKAN', 'ACC', '2017-11-07', '2018-01-21', 'TERSEDIA');
 
 -- --------------------------------------------------------
 
@@ -162,7 +151,7 @@ CREATE TABLE `pegawai` (
   `bidang` char(5) DEFAULT NULL,
   `subbid` char(15) DEFAULT NULL,
   `namapegawai` varchar(40) NOT NULL,
-  `golongan` char(5) NOT NULL,
+  `golongan` char(5) DEFAULT NULL,
   `pendidikanakhir` enum('SD','SMP','SMA','SMK','STM','D1','D2','D3','D4','S1','S2','S3') NOT NULL,
   `jurusan` varchar(40) NOT NULL,
   `jabatan` varchar(40) NOT NULL,
@@ -349,18 +338,28 @@ CREATE TABLE `perbaikan` (
   `nomormakalah` char(6) NOT NULL,
   `tglperiksap1` date DEFAULT NULL,
   `tglperiksap2` date DEFAULT NULL,
+  `tglperiksakapstnt` date DEFAULT NULL,
   `tglselesaip1` date DEFAULT NULL,
   `tglselesaip2` date DEFAULT NULL,
+  `tglselesaikapstnt` date DEFAULT NULL,
   `statusp1` enum('ACC','PERBAIKAN') DEFAULT NULL,
-  `statusp2` enum('ACC','PERBAIKAN') DEFAULT NULL
+  `statusp2` enum('ACC','PERBAIKAN') DEFAULT NULL,
+  `statuskapstnt` enum('ACC','PERBAIKAN') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `perbaikan`
 --
 
-INSERT INTO `perbaikan` (`idperbaikan`, `nomormakalah`, `tglperiksap1`, `tglperiksap2`, `tglselesaip1`, `tglselesaip2`, `statusp1`, `statusp2`) VALUES
-(1, '042017', '2017-04-03', '2017-04-05', '2018-04-05', '2018-04-06', 'ACC', 'ACC');
+INSERT INTO `perbaikan` (`idperbaikan`, `nomormakalah`, `tglperiksap1`, `tglperiksap2`, `tglperiksakapstnt`, `tglselesaip1`, `tglselesaip2`, `tglselesaikapstnt`, `statusp1`, `statusp2`, `statuskapstnt`) VALUES
+(1, '022017', '2017-02-20', '2017-01-27', NULL, '2017-02-20', '2017-01-27', NULL, 'ACC', 'ACC', NULL),
+(2, '042017', '2017-06-09', '2017-04-05', NULL, '2017-06-09', '2017-05-04', NULL, 'ACC', 'ACC', NULL),
+(3, '052017', '2017-04-19', '2017-04-20', NULL, '2017-04-19', '2017-04-20', NULL, 'ACC', 'ACC', NULL),
+(4, '062017', '2017-06-07', '2017-06-07', NULL, '2017-06-07', '2017-06-07', NULL, 'ACC', 'ACC', NULL),
+(5, '092017', '2017-07-27', NULL, NULL, '2017-07-27', NULL, NULL, 'ACC', NULL, NULL),
+(7, '122017', '2017-07-27', '2017-08-03', NULL, '2017-07-27', '2017-08-03', NULL, 'ACC', 'ACC', NULL),
+(10, '162017', '2017-11-03', NULL, '2018-11-08', '2017-11-03', NULL, '2017-11-15', 'ACC', NULL, 'ACC'),
+(11, '152017', '2017-10-02', '2017-12-15', NULL, '2017-10-02', '2017-12-15', NULL, 'ACC', 'ACC', NULL);
 
 -- --------------------------------------------------------
 
@@ -437,9 +436,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `nip`, `name`, `email`, `status`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin', 'admin@gmail.com', 'Admin', '$2y$10$GlKjnMpcSAIyyVzYT6CDGuqgWotWr7KXrtcOYt1.qvNUIHcp7pQs6', 'DIckxBMTsZEm1Wu1eWP8s9E3r8axk1e5Nj4s8VNnTshdLronih4KgYuy6JJr', '2018-08-19 02:42:21', '2018-08-19 02:42:21'),
+(1, 'admin', 'admin', 'admin@gmail.com', 'Admin', '$2y$10$GlKjnMpcSAIyyVzYT6CDGuqgWotWr7KXrtcOYt1.qvNUIHcp7pQs6', 'sr7jdgl58gaNxWknvYVnOiQdBOwZLTHxuyO0wZgwuHQpSTKqobpY8Cp5erOg', '2018-08-19 02:42:21', '2018-08-19 02:42:21'),
 (2, '19600511 198502 1 001', 'Dr.Jupiter Sitorus Pane. M.Sc.', 'jp@gmail.com', 'Kepala PSTNT', '$2y$10$YsBo3fbn4QqewhCJFjw85.Qq4jJpq1JGGbrbhaZedQDWEL6vqisGu', 'wKKZW0RvTNSvwIPuJS9rMdPbRSCom6h9ME5CvwvfNBEoYkKcXbz8ipl8HI8m', '2018-08-19 03:42:21', '2018-08-19 03:42:21'),
-(3, '19610125 198302 2 001', 'Rina Yuliyani', 'rina6183@gmail.com', 'Sekertaris KPTF/KPTP', '$2y$10$cyd.PRQ0xuPxPtRJS8JgM.u.Z.oUraZDapVkmENxwFdMP.4HAA/nG', 'uwvbe8AFL4IHbtUOXWX5GdPH4PqJHiaip3ScYPsNnXaxCtNHy9wYulQRDMki', '2018-08-20 18:41:19', '2018-08-20 20:39:46'),
+(3, '19610125 198302 2 001', 'Rina Yuliyani', 'rina6183@gmail.com', 'Sekertaris KPTF/KPTP', '$2y$10$cyd.PRQ0xuPxPtRJS8JgM.u.Z.oUraZDapVkmENxwFdMP.4HAA/nG', 'ZZ8ApmjVmaBlUjqUHe8Ne49QhIsZ0BXPgN8ySnzboHaMBZAz3YLdZqZdwYYk', '2018-08-20 18:41:19', '2018-08-20 20:39:46'),
 (4, '19650505 198602 2 001', 'Onih Setiati', 'onih@gmail.com', 'Sekertaris KPTF/KPTP', '$2y$10$aWqj3VlpkohoMnDtxX4jZe.XtPMI5m2G0vw2bEVnx0lYz9qfggQWq', 'tjRT0rCbQame5kmYpTghxWQq2rpPRv415MQFKnraUnG1a4mLLs5mM0QUx2NQ', '2018-08-20 18:41:20', '2018-08-20 18:41:20'),
 (5, '19550221 197703 1 001', 'Drs. Duyeh Setiawan, MT.', 'dy@gmail.com', 'Pegawai', '$2y$10$iSF7NxFOKNFgyGnrEwU1m.JULKF.MaJj5lmybwENeIlcgt0pgQ8GK', 'oXnWZwkg3mKmPp9a7io0pRzhZgvV7m0pEWbaPl48sxkQCr2siB8lCDbNC3CV', '2018-08-20 18:41:22', '2018-08-20 18:41:22');
 
@@ -526,7 +525,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `perbaikan`
 --
 ALTER TABLE `perbaikan`
-  MODIFY `idperbaikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idperbaikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `pinjamkti`
@@ -552,26 +551,6 @@ ALTER TABLE `makalah`
   ADD CONSTRAINT `makalah_ibfk_2` FOREIGN KEY (`kodesnt`) REFERENCES `bidangsnt` (`kodesnt`),
   ADD CONSTRAINT `makalah_ibfk_3` FOREIGN KEY (`pemeriksa1`) REFERENCES `pegawai` (`nip`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `makalah_ibfk_4` FOREIGN KEY (`pemeriksa2`) REFERENCES `pegawai` (`nip`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Ketidakleluasaan untuk tabel `pegawai`
---
-ALTER TABLE `pegawai`
-  ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`bidang`) REFERENCES `bidangsnt` (`kodesnt`),
-  ADD CONSTRAINT `pegawai_ibfk_2` FOREIGN KEY (`subbid`) REFERENCES `subbidang` (`kodesubid`);
-
---
--- Ketidakleluasaan untuk tabel `pinjamkti`
---
-ALTER TABLE `pinjamkti`
-  ADD CONSTRAINT `pinjamkti_ibfk_1` FOREIGN KEY (`nomormakalah`) REFERENCES `makalah` (`nomormakalah`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  ADD CONSTRAINT `pinjamkti_ibfk_2` FOREIGN KEY (`nip`) REFERENCES `pegawai` (`nip`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Ketidakleluasaan untuk tabel `subbidang`
---
-ALTER TABLE `subbidang`
-  ADD CONSTRAINT `subbidang_ibfk_1` FOREIGN KEY (`kodesnt`) REFERENCES `bidangsnt` (`kodesnt`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

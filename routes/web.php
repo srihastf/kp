@@ -26,20 +26,26 @@ Route::get('/',function(){
 });
 
 Route::get('/infopegawai',function(){
-    return view('home');
+    return view('infopegawai');
 });
 
-Route::get('/infouser',function(){
-    return view('home');
+Route::get('/infousers',function(){
+    return view('infousers');
 });
 
 Route::get('/infopengajuan',function(){
-    return view('home');
+    return view('infopengajuan');
 });
 
 Route::get('/infopeminjaman',function(){
-    return view('home');
+    return view('infopeminjaman');
 });
+
+Route::get('/informasipenting',function(){
+    return view('informasipenting');
+});
+
+///////////////////////////////////////
 
 Route::get('/about', function () {
     return view('about');
@@ -53,7 +59,16 @@ Route::get('/master', function () {
     return view('master');
 });
 
-// Route::get('/grafik', 'grafikC'
+//PANDUAN
+Route::get('/panduanbackup', function () {
+    return view('panduan.panduanbackup');
+});
+Route::get('/panduankelolapegawai', function () {
+    return view('panduan.panduankelolapegawai');
+});
+Route::get('/panduankelolausers', function () {
+    return view('panduan.panduankelolausers');
+});
 
 
 //AUTENTIKASI
@@ -87,7 +102,7 @@ Route::group(['middleware'=>['auth','status:Pegawai']],function(){
     //MAKALAH
     Route::get('/semuamakalah','MakalahController@index');
     Route::get('/detail/{id}', 'MakalahController@show');
-    Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
+    
 
     //PEMINJAMAN
     Route::get('/pinjamkti', 'PeminjamanController@index');
@@ -125,3 +140,10 @@ Route::get('subbid/get/{id}', 'PegawaiController@getSubbid');
 Route::get('generate-pdf','HomeController@generatePDF');
 
 Route::get('/grafik','grafikController@index');
+Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
+
+//LINK
+Route::get('/profil', function () {
+    return view('profil');
+});
+

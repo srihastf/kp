@@ -11,7 +11,7 @@
       <h1>
        Form Cari Laporan
       </h1>
-      Untuk memilih kriteria laporan yang ingin ditampilkan.
+      Laporan akan dicari berdasarkan tahun.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>

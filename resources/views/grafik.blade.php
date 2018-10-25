@@ -1,4 +1,4 @@
-@section('title','Grafik')
+@section('title','Laporan Pusat Sains Tenaga Nuklir Terapan BATAN BANDUNG')
 @extends('master')
 
 @section('content')
@@ -9,9 +9,10 @@
         Grafik Penelitian PSTNT BATAN BANDUNG</br>
         <small>Penelitian yang dikerjakan di PSTNT BATAN BANDUNG <?php echo $tahunkti;?></small>
       </h1>
+      <!--
       <ol class="breadcrumb">
         <li><a href="/cetaklaporan/{{$tahunkti}}"><button class="btn btn-block btn-sm btn-success" type="button">Cetak</button></a></li>
-      </ol>
+      </ol>-->
         
 
 
@@ -35,7 +36,7 @@
         <!-- Pie CHART -->
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Pegawai</h3>
+              <h3 class="box-title">Pegawai PSTNT BATAN BANDUNG</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -54,7 +55,7 @@
         <!-- Pie CHART -->
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Makalah/KTI yang diajukan</h3>
+              <h3 class="box-title">Makalah/KTI yang diajukan (<?php echo $tahunkti;?>)</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -68,12 +69,12 @@
           </div>
           <!-- /.box -->
         </div>
-
+<br/><br/><br/>
         <div class="col-md-5">
         <!-- Pie CHART -->
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Makalah/KTI yang dipublikasi</h3>
+              <h3 class="box-title">Makalah/KTI yang dipublikasi (<?php echo $tahunkti;?>)</h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -122,7 +123,7 @@
 
 <script>
     new Chart(document.getElementById("pie-chart2"), {
-    type: 'pie',
+    type: 'bar',
     data: {
       labels: ["Senyawa Bertanda dan Radiometri", "Teknofisika", "Reaktor"],
       datasets: [{
@@ -143,7 +144,7 @@
 
 <script>
     new Chart(document.getElementById("pie-chart3"), {
-    type: 'pie',
+    type: 'bar',
     data: {
       labels: ["Senyawa Bertanda dan Radiometri", "Teknofisika", "Reaktor"],
       datasets: [{

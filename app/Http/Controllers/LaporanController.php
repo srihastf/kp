@@ -31,7 +31,7 @@ class LaporanController extends Controller
     public function cetaklaporan($id)
     {
         $tahunkti = $id;
-        $data = DB::select("SELECT count(pegawai.bidang) as jumlah, bidang FROM `pegawai` GROUP by pegawai.bidang");
+        $Data = DB::select("SELECT count(pegawai.bidang) as jumlah, bidang FROM `pegawai` GROUP by pegawai.bidang");
         // print_r(array_column($Data,'jumlah'));
 
         $data2 = DB::select("SELECT count(makalah.kodesnt) as jumlah2, kodesnt FROM `makalah` WHERE makalah.tgldaftarawal LIKE '%$tahunkti%' GROUP by makalah.kodesnt");
@@ -39,14 +39,12 @@ class LaporanController extends Controller
 
         // $data3 = DB::select("SELECT count(*) as jumlah3 FROM `makalah` WHERE tglselesai LIKE %$tahunkti% GROUP by kodesnt");
         $data3 = DB::select("SELECT count(makalah.kodesnt) as jumlah3, kodesnt FROM `makalah` WHERE makalah.tglselesai LIKE '%$tahunkti%' GROUP by makalah.kodesnt");
-        // print_r(array_column($data3,'jumlah3'));
+        // print_r(array_column($data3,'jumlah3'));                         
 
-        // $pdf=PDF::loadView('cetakgrafik')->with('data', json_encode(array_column($data,'jumlah')))
-        //                     ->with('data2',json_encode(array_column($data2,'jumlah2')))
-        //                     ->with('data3',json_encode(array_column($data3,'jumlah3')));
-
-        $pdf=PDF::loadView('cetakgrafik',compact('data'));
-        return $pdf->download('LaporanGrafikPSTNT.pdf');
+        return view('cetakgrafik',compact('tahunkti'))->with('data', json_encode(array_column($Data,'jumlah')))
+        ->with('data2',json_encode(array_column($data2,'jumlah2')))
+        ->with('data3',json_encode(array_column($data3,'jumlah3')))
+        ->with($tahunkti);
     }
 
     /**
@@ -82,6 +80,18 @@ class LaporanController extends Controller
                             ->with('data2',json_encode(array_column($data2,'jumlah2')))
                             ->with('data3',json_encode(array_column($data3,'jumlah3')))
                             ->with($tahunkti);
+
+        // $pdf = PDF::loadView('cetakgrafik',compact('tahunkti'))->with('data', json_encode(array_column($Data,'jumlah')))
+        // ->with('data2',json_encode(array_column($data2,'jumlah2')))
+        // ->with('data3',json_encode(array_column($data3,'jumlah3')))
+        // ->with($tahunkti);
+        
+
+        // $pdf = PDF::loadView('cetakgrafik', compact('data', 'data2', 'data3'));
+        // // // If you want to store the generated pdf to the server then you can use the store function
+        //  $pdf->save(storage_path().'_filename.pdf');
+        // // // Finally, you can download the file using download function
+        //  return $pdf->download('LaporanPSTNT.pdf');
     }
 
     /**

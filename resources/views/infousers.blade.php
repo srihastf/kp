@@ -1,4 +1,4 @@
-@section('title','Tentang Kami')
+@section('title','Info Users')
 <!-- Header -->
 @include('header2')
 <!-- End Header -->
@@ -10,8 +10,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Informasi Tentang Kami
+        Kelola Data Users
       </h1>
+      Bagian untuk mengelola data users.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>
@@ -24,29 +25,26 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <!-- ./col -->
-      <div class="col-md-12">
+        
+
+      <div class="col-md-7">
        <!-- Default box -->
        <div class="box">
-        <div class="box-header" style="background:#c5f3fd" align="center">
-            <img src="{{ asset('img/Logo_Baru_BATAN.png') }}" style="width:40px"><br/>
-            <b>BADAN TENAGA NUKLIR NASIONAL<br/>
-                    PUSAT SAINS DAN TEKNOLOGI NUKLIR TERAPAN<br/>Jl.Tamansari No.71 Bandung 40132<br/><br/></b>
-            </div>
-        </div>
-       
-       <div class="box">
-       
         <div class="box-header with-border">
-          <h3 class="box-title">Seputar SIP3KTI</h3>
+          <h3 class="box-title">Mengelola data users seperti tambah users, ubah data users, lihat data users dan hapus data users.</h3>
         </div>
         <div class="box-body">
           
-          <ul>
-            <li>SIP3KTI adalah sebuah sistem untuk membantu mengelola data perkembangan pengajuan KTI.</li>
-            <p>Pencatatan perkembangan aliran pengajuan yang diusulkan untuk diperiksa oleh tim KPTF/KPTP</p>
-            <li>SIP3KTI diimplementasikan untuk PSTNT BATAN BANDUNG</li>
-            <p></p>
-          </ul>
+          <ol>
+            <li>Tambah Users : </li>
+            <p>Menambah data users baru yang belum terdata dalam sistem.</p>
+            <li>Ubah Users : </li>
+            <p>Memperbaharui data users yang sudah terdata dalam sistem sebelumnya.</p>
+            <li>Lihat Users : </li>
+            <p>Melihat detail data users secara lengkap yang terdata dalam sistem.</p>
+            <li>Hapus Users : </li>
+            <p>Menghapus data users yang sudah terdata dalam sistem. Untuk keadaan darurat (ada kesalahan).</p>
+          </ol>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
@@ -62,17 +60,13 @@
        <!-- Default box -->
        <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Seputar developer sistem.</h3>
+          <h3 class="box-title">Manfaat mengelola data users dalam sistem.</h3>
         </div>
         <div class="box-body">
           
           <ul>
-            <li>SIP3KTI sebagai implementasi dari Kerja Praktek mahasiswa.</li>
-            <li>Arifah Ummul Fadiyah & Sri Hastuti Fatimah, Universitas Jenderal Achmad Yani Cimahi, '2015</li>
-            <li>email&kontak :</li>
-            <p>Arifah : (Whatsapp) : 0813-9521-2278</p>
-            <p>Sri : srihastf@gmail.com / (Whatsapp) : 0859-5006-7243</p>
-            <li>Jurusan Informatika, Fakultas Sains dan Informatika</li>
+            <li>Users atau pengguna yang terlibat dalam sistem menjadi jelas terdefinisi.</li>
+            <li>Keterkaitan dengan pengelolaan data lainnya juga jelas informasinya.</li>
           </ul>
         </div>
         <!-- /.box-body -->

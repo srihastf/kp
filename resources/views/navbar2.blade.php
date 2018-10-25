@@ -13,14 +13,14 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/infopegawai"><i class="fa fa-circle-o"></i> Pegawai</a></li>
-            <li><a href="/infouser"><i class="fa fa-circle-o"></i> User</a></li>
+            <li><a href="/infousers"><i class="fa fa-circle-o"></i> Users</a></li>
             <li><a href="/infopengajuan"><i class="fa fa-circle-o"></i> Pengajuan KTI</a></li>
             <li><a href="/infopeminjaman"><i class="fa fa-circle-o"></i> Peminjaman KTI</a></li>
           </ul>
           
         </li>
         <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Informasi Penting</span></a></li>
+        <li><a href="/informasipenting"><i class="fa fa-circle-o text-red"></i> <span>Informasi Penting</span></a></li>
         <li><a href="/about"><i class="fa fa-circle-o text-yellow"></i> <span>Tentang Kami</span></a></li>
         <li><a href="/contact"><i class="fa fa-circle-o text-aqua"></i> <span>Kontak</span></a></li>
       </ul>

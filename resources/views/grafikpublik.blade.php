@@ -8,12 +8,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Grafik Penelitian PSTNT BATAN BANDUNG (<?php 
-            $tgl=mktime(date("m"),date("d"),date("Y"));
-            echo "<b>".date("Y", $tgl)."</b>";
-            date_default_timezone_set('Asia/Jakarta');
-          ?>)</br>
-        <small>Penelitian yang dikerjakan di PSTNT BATAN BANDUNG</small>
+        Grafik Penelitian PSTNT BATAN BANDUNG (Keseluruhan)</br>
+        <small>Penelitian yang dikerjakan di PSTNT BATAN BANDUNG dari awal ada hingga sekarang.</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>

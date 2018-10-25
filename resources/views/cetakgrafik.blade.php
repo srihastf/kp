@@ -78,7 +78,6 @@ LAPORAN PUSAT SAINS DAN TEKNOLOGI NUKLIR TERAPAN</br>
     <!-- /.row -->
     </section>
     <!-- /.content -->
-    <a href="/cetaklaporan"><button class="btn btn-block btn-sm btn-success" type="button">Cetak</button></a>
   </div>
 
 <script src="js/Chart.min.js"></script>

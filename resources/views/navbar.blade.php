@@ -35,14 +35,14 @@
           </ul>
           @elseif(Auth::user()->status=="Kepala PSTNT")
           <ul class="treeview-menu">
-          <!--<li><a href="/tampilmakalah/{{Auth::user()->name}}"><i class="fa fa-file-text"></i> Pengajuan KTI/Makalah</a></li>-->
+          <li><a href="/tampilmakalah/{{Auth::user()->name}}"><i class="fa fa-file-text"></i> Pengajuan KTI/Makalah</a></li>
             <li><a href="{{route('laporan.index')}}"><i class="fa fa-files-o"></i> Laporan</a></li>
           </ul>
           @endif
 
         </li>
         <li class="header">Halaman</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Informasi Penting</span></a></li>
+        <li><a href="/informasipenting"><i class="fa fa-circle-o text-red"></i> <span>Informasi Penting</span></a></li>
         <li class=" treeview">
           <a href="#">
             <i class="fa fa-circle-o text-yellow"></i> <span>Panduan</span>
@@ -52,8 +52,8 @@
           </a>
           @if(Auth::user()->status=="Admin")
           <ul class="treeview-menu">
-            <li class="active"><a href="#">Kelola Pegawai</a></li>
-            <li><a href="#">Kelola Pengguna</a></li>
+            <li class="active"><a href="/panduankelolapegawai">Kelola Pegawai</a></li>
+            <li><a href="/panduankelolausers">Kelola Users</a></li>
           </ul>
           @elseif(Auth::user()->status=="Sekertaris KPTF/KPTP")
           <ul class="treeview-menu">

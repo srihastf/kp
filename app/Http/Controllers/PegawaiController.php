@@ -73,11 +73,8 @@ class PegawaiController extends Controller
     {
 
         $validator= Validator::make($request->all(),[
-            'nip' => 'bail|required|string|min:21|max:21|unique:pegawai',
-            'bidang' => 'string|max:5',
-            'subbid' => 'string|max:15',
+            'nip' => 'bail|required|string|min:5|max:21|unique:pegawai',
             'nama' => 'required|string|max:40',
-            'golongan' => 'string|min:3|max:5',
             'pendidikanakhir' => 'required|string|max:3',
             'jurusan' => 'string|max:40',
             'jabatan' => 'required|string|max:40',
@@ -89,8 +86,14 @@ class PegawaiController extends Controller
             ->withErrors($validator)
             ->withInput();
         }
+        
+        if($request->bidang=="---Pilih Bidang---"){
+            $bidang="";
+        }else{
+            $bidang=$request->bidang;
+        }
 
-        if($request->subbid==""){
+        if($request->subbid=="---Pilih Sub.Bidang---"){
             $isisubbid=null;
         }else{
             $isisubbid=$request->subbid;
@@ -98,7 +101,7 @@ class PegawaiController extends Controller
 
         Pegawaimodel::create([
             'nip' => $request->nip,
-            'bidang'=>$request->bidang,
+            'bidang'=>$bidang,
             'subbid'=>$isisubbid,
 			'namapegawai' =>  $request->nama,
             'golongan' => $request->golongan,
