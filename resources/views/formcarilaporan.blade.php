@@ -43,17 +43,24 @@
             <form class="form" method="POST" action="{{ route('laporan.store') }}">
             {{ csrf_field() }}
               <div class="box-body">
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                        <label for="text">Tahun</label>
-                            <input type="text" class="form-control" name="tahunkti" placeholder="*misal: 2016" >
-                        </div>
-                    </div>
-                    
+              <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <table class="table" style="font-size:15px">
+                    <tr>
+                      <td><b>Dari tanggal:</b></td>
+                      <td><b>Sampai tanggal:</b></td>
+                    </tr>
+                    <tr>
+                      <td><input type="date" class="form-control" name="tahunktiawal"></td>
+                      <td><input type="date" class="form-control" name="tahunktiakhir"></td>
+                    </tr>
+                  </table>
                 </div>
               </div>
+            </div>
+            <!-- /.row -->
+
               <!-- /.box-body -->
               <div class="box-footer">
                 <div class="col-md-10">

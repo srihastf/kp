@@ -7,13 +7,9 @@
     <section class="content-header">
       <h1>
         Grafik Penelitian PSTNT BATAN BANDUNG</br>
-        <small>Penelitian yang dikerjakan di PSTNT BATAN BANDUNG <?php echo $tahunkti;?></small>
+        <small>Penelitian yang dikerjakan di PSTNT BATAN BANDUNG </small>
       </h1>
-      <!--
-      <ol class="breadcrumb">
-        <li><a href="/cetaklaporan/{{$tahunkti}}"><button class="btn btn-block btn-sm btn-success" type="button">Cetak</button></a></li>
-      </ol>-->
-        
+
 
 
       <div class="card-body">
@@ -33,6 +29,13 @@
     <section class="content">
     <div class="row">
         <div class="col-md-10">
+        <div class="box">
+        <div class="box-header" style="background:#c5f3fd" align="center">
+            <img src="{{ asset('img/Logo_Baru_BATAN.png') }}" style="width:40px"><br/>
+            <b>BADAN TENAGA NUKLIR NASIONAL<br/>
+                    PUSAT SAINS DAN TEKNOLOGI NUKLIR TERAPAN<br/>Jl.Tamansari No.71 Bandung 40132<br/><br/></b>
+            </div>
+        </div>
         <!-- Pie CHART -->
         <div class="box box-danger">
             <div class="box-header with-border">
@@ -50,12 +53,14 @@
           </div>
           <!-- /.box -->
         </div>
+        <br/><br/>
 
         <div class="col-md-5">
         <!-- Pie CHART -->
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Makalah/KTI yang diajukan (<?php echo $tahunkti;?>)</h3>
+              <h3 class="box-title">Makalah/KTI yang telah diajukan</h3><br/>
+              <small><b>Dari: <?php echo $tahunktiawal;?>   -    Sampai: <?php echo $tahunktiakhir;?></b></small>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -63,18 +68,19 @@
               </div>
             </div>
             <div class="box-body chart-responsive">
-                <canvas id="pie-chart2" width="300" height="250"></canvas>
+                <canvas id="myChart2" width="300" height="250"></canvas>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
         </div>
-<br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <div class="col-md-5">
         <!-- Pie CHART -->
         <div class="box box-danger">
             <div class="box-header with-border">
-              <h3 class="box-title">Makalah/KTI yang dipublikasi (<?php echo $tahunkti;?>)</h3>
+              <h3 class="box-title">Makalah/KTI yang telah dipublikasi </h3><br/>
+              <small><b>Dari: <?php echo $tahunktiawal;?>   -    Sampai: <?php echo $tahunktiakhir;?></b></small>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -82,7 +88,8 @@
               </div>
             </div>
             <div class="box-body chart-responsive">
-                <canvas id="pie-chart3" width="300" height="250"></canvas>
+                <!--<canvas id="pie-chart3" width="300" height="250"></canvas>-->
+                <canvas id="myChart3" width="300" height="250"></canvas>
             </div>
             <!-- /.box-body -->
           </div>
@@ -122,28 +129,34 @@
 </script>
 
 <script>
-    new Chart(document.getElementById("pie-chart2"), {
+var ctx = document.getElementById("myChart2").getContext('2d');
+var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ["Senyawa Bertanda dan Radiometri", "Teknofisika", "Reaktor"],
       datasets: [{
         label: "Jumlah Makalah/KTI Penelitian",
-        backgroundColor: ["#ff9a9a", "#fff9be","#cdffbe","#b0fdff","#f5bfff","#d8bcb5","#727272"],
+        backgroundColor: ["#fff960","#c45850","#e8c3b9"],
         data: <?php echo $data2;?>,
       }]
     },
     options: {
-      title: {
-        display: false,
-        text: 'Predicted world population (millions) in 2050'
-      }
+      legend:{display:false},
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                }
+            }]
+        }
     }
 });
 </script>
 
 
 <script>
-    new Chart(document.getElementById("pie-chart3"), {
+var ctx = document.getElementById("myChart3").getContext('2d');
+var myChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: ["Senyawa Bertanda dan Radiometri", "Teknofisika", "Reaktor"],
@@ -154,10 +167,14 @@
       }]
     },
     options: {
-      title: {
-        display: false,
-        text: 'Predicted world population (millions) in 2050'
-      }
+      legend:{display:false},
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
     }
 });
 </script>
