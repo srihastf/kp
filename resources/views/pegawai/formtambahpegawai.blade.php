@@ -187,6 +187,7 @@ $('select[name="bidang"]').on('change', function(){
             },
             success:function(data) {
                 $('select[name="subbid"]').empty();
+                $('select[name="subbid"]').append('<option>---Pilih Sub.Bidang---</option>');
                 $.each(data, function(key, value){
                     $('select[name="subbid"]').append('<option value="'+ value +'">' + value + '</option>');
                 });

@@ -88,7 +88,7 @@ class PegawaiController extends Controller
         }
         
         if($request->bidang=="---Pilih Bidang---"){
-            $bidang="";
+            $bidang=null;
         }else{
             $bidang=$request->bidang;
         }
