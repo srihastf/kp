@@ -121,7 +121,7 @@
 <script src="../../bower_components/select2/dist/js/select2.full.min.js"></script>
 <script type="text/javascript">
 $('.itemName').select2({
-  placeholder: 'Masukan Nama',
+  placeholder: 'Cari Judul Makalah',
   ajax: {
     url: '/infomakalah2',
     dataType: 'json',

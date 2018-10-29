@@ -69,6 +69,12 @@ Route::get('/panduankelolapegawai', function () {
 Route::get('/panduankelolausers', function () {
     return view('panduan.panduankelolausers');
 });
+Route::get('/panduankelolapengajuan', function (){
+    return view('panduan.panduankelolapengajuan');
+});
+Route::get('/panduankelolaperbaikan', function(){
+    return view('panduan.panduankelolaperbaikan');
+});
 
 
 //AUTENTIKASI

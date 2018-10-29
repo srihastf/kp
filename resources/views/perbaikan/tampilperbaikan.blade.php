@@ -21,9 +21,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Daftar Data Perbaikan
+        Daftar Data Perbaikan Makalah/KTI
       </h1>
-      Mencatat perkembangan proses pengajuan/pengusulan KTI/Makalah Penelitian jika melakukan perbaikan. 
+      Mencatat perkembangan proses perbaikan dalam pengajuan/pengusulan KTI/Makalah Penelitian jika makalah mendapatkan status "perbaikan". 
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>

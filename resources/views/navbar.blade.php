@@ -57,8 +57,9 @@
           </ul>
           @elseif(Auth::user()->status=="Sekertaris KPTF/KPTP")
           <ul class="treeview-menu">
-            <li class="active"><a href="#">Kelola Pengajuan KTI/Makalah</a></li>
-            <li><a href="#">Kelola Peminjaman KTI/Makalah</a></li>
+            <li class="active"><a href="/panduankelolapengajuan">Kelola Pengajuan KTI/Makalah</a></li>
+            <li><a href="/panduankelolaperbaikan">Kelola Perbaikan KTI/Makalah</a></li>
+            <li><a href="/panduankelolapeminjaman">Kelola Peminjaman Makalah</a></li>
           </ul>
           @endif
         </li>

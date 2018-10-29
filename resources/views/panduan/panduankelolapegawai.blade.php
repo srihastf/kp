@@ -12,7 +12,7 @@
       <h1>
         Panduan Kelola Pegawai
       </h1>
-      Kelola Pegawai diakses oleh Admin. engelola data pegawai seperti tambah pegawai, ubah data pegawai, lihat data pegawai dan hapus data pegawai.
+      Kelola Pegawai diakses oleh Admin. Mengelola data pegawai seperti tambah pegawai, ubah data pegawai, lihat data pegawai dan hapus data pegawai.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>
