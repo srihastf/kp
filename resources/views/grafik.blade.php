@@ -110,7 +110,7 @@
     new Chart(document.getElementById("pie-chart1"), {
     type: 'bar',
     data: {
-      labels: ["Tanpa Bidang","Tata Usaha", "Senyawa Bertanda dan Radiometri", "Teknofisika", "Reaktor", "Keselamatan Kerja dan Keteknikan","Unit Jaminan Mutu","Unit Pengamanan Mutu"],
+      labels: ["","Tata Usaha", "Senyawa Bertanda dan Radiometri", "Teknofisika", "Reaktor", "Keselamatan Kerja dan Keteknikan","Unit Jaminan Mutu","Unit Pengamanan Mutu"],
       datasets: [{
         label: "Jumlah Pegawai per-bidang",
         backgroundColor: ["#ff9a9a", "#fff9be","#cdffbe","#b0fdff","#f5bfff","#d8bcb5","#727272"],

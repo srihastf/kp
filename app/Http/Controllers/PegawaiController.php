@@ -160,7 +160,6 @@ class PegawaiController extends Controller
             'bidang' => 'required|string|max:5',
             'subbid' => 'string|max:15',
             'nama' => 'required|string|max:40',
-            'golongan' => 'string|min:3|max:5',
             'pendidikanakhir' => 'required|string|max:3',
             'jurusan' => 'string|max:40',
             'jabatan' => 'required|string|max:40',

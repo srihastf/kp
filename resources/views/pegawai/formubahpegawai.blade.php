@@ -83,7 +83,7 @@
                 </div>
                 <div class="form-group">
                   <label for="text">Golongan</label>
-                  <input type="text" class="form-control" name="golongan" value="{{ $data->golongan }}" required>
+                  <input type="text" class="form-control" name="golongan" value="{{ $data->golongan }}">
                 </div>
                 <div class="form-group">
                   <label>Pendidikan Akhir</label>

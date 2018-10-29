@@ -9,7 +9,7 @@ class grafikController extends Controller
     public function index(){
 
         $Data = DB::select("SELECT count(pegawai.bidang) as jumlah, bidang FROM `pegawai` GROUP by pegawai.bidang");
-        // print_r(array_column($Data,'jumlah'));
+         //print_r(array_column($Data,'jumlah'));
 
         $data2 = DB::select("SELECT count(makalah.kodesnt) as jumlah2, kodesnt FROM `makalah` GROUP by makalah.kodesnt");
         // print_r(array_column($data2,'jumlah2'));
