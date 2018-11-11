@@ -52,7 +52,8 @@
             <p>File database akan terunduh.</p>
             <img src="{{ asset('img/pbackup/5.png') }}"style="width:900px"><br/><br/>
             <b><li>Simpan pada File Explorer</li></b>
-            <p>Simpan file pada folder yang rapi, mudah dicari dan sesuai keinginan Anda.</p>
+            <p>Simpan dan sesuaikan file pada folder yang rapi, mudah dicari dan sesuai keinginan Anda.</p>
+            <img src="{{ asset('img/pbackup/6.png') }}"style="width:900px"><br/><br/>
           </ol>
         </div>
         <!-- /.box-body -->

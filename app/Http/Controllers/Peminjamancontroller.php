@@ -161,7 +161,9 @@ class PeminjamanController extends Controller
 
         $peminjaman->save();
         //DB::statement("UPDATE makalah SET arsip=TERSEDIA where nomormakalah=$mk");
-        DB::update('update makalah set arsip = "TERSEDIA" where nomormakalah = ?', [$mk]);
+        if($request->tglkembali!=null){
+            DB::update('update makalah set arsip = "TERSEDIA" where nomormakalah = ?', [$mk]);
+        }
         $request->session()->flash('alert-success','Data Perminjaman KTI berhasil diperbaharui.');
         return redirect()->route('peminjaman.show',$id);
     }

@@ -27,6 +27,7 @@
             <li><a href="{{route('makalah.index')}}"><i class="fa fa-file-o"></i> Pengajuan KTI/Makalah</a></li>
             <li><a href="{{route('perbaikan.index')}}"><i class="fa fa-file-text"></i> Perbaikan KTI/Makalah</a></li>
             <li><a href="{{route('peminjaman.index')}}"><i class="fa fa-files-o"></i> Peminjaman KTI/Makalah</a></li>
+            <li><a href="/cariLogbook"><i class="fa fa-files-o"></i> Laporan</a></li>
           </ul>
           @elseif(Auth::user()->status=="Pegawai")
           <ul class="treeview-menu">

@@ -14,8 +14,10 @@ class Makalahmodel extends Model
     protected $fillable = [
         'nomormakalah','kodesnt','kodekti',
         'subidnkelompok','judulmakalah','tujuan','penulis',
-        'pemeriksa1','pemeriksa2','tgldaftarawal','acckakptf','accpsubidkapok','accpkabid',
-        'tglterimap1','tglterimap2','tglaccp1','tglaccp2',
-        'statusp1','statusp2','ttdkakptf','tglselesai','arsip'
+        'tgldaftarawal','accpsubidkapok','accpkabid',
+        'tglkesekertaris','tglkekakptf','pemeriksa1','pemeriksa2',
+        'acckakptf','tglterimap1','cttp1','tglaccp1','statusp1','tgltrmsekertarisp1',
+        'tglterimap2','cttp2','tglaccp2','statusp2','tgltrmsekertarisp2',
+        'ttdkakptf','tglselesai','arsip','dokumen'
     ];
 }

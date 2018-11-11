@@ -1,15 +1,3 @@
-Account
-
-1. admin || adminn
-2. 19600511 198502 1 001 || kepalapstnt
-3. 19610125 198302 2 001 || sekertaris
-4. 19650505 198602 2 001 || onihh
-5. 19550221 197703 1 001 || pegawai
-6. 19610305 198303 1 006 || pegawai
-
-
-
-
 //Akun Terbaru
 1. admin || adminn
 2. 19600511 198502 1 001 || kepalapstnt

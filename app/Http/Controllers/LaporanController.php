@@ -70,7 +70,7 @@ class LaporanController extends Controller
         $Data = DB::select("SELECT count(pegawai.bidang) as jumlah, bidang FROM `pegawai` GROUP by pegawai.bidang");
         // print_r(array_column($Data,'jumlah'));
 
-        $data2 = DB::select("SELECT count(makalah.kodesnt) as jumlah2, kodesnt FROM `makalah` WHERE makalah.tgldaftarawal BETWEEN '$tahunktiawal' AND '$tahunktiakhir' GROUP by makalah.kodesnt");
+        $data2 = DB::select("SELECT count(makalah.kodesnt) as jumlah2, kodesnt FROM `makalah` WHERE makalah.acckakptf BETWEEN '$tahunktiawal' AND '$tahunktiakhir' GROUP by makalah.kodesnt");
         // print_r(array_column($data2,'jumlah2'));
 
         // $data3 = DB::select("SELECT count(*) as jumlah3 FROM `makalah` WHERE tglselesai LIKE %$tahunkti% GROUP by kodesnt");
@@ -80,51 +80,5 @@ class LaporanController extends Controller
         return view('grafik',compact('tahunktiawal','tahunktiakhir'))->with('data', json_encode(array_column($Data,'jumlah')))
                             ->with('data2',json_encode(array_column($data2,'jumlah2')))
                             ->with('data3',json_encode(array_column($data3,'jumlah3')));
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

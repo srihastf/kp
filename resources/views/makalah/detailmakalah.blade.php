@@ -13,11 +13,10 @@
         @endif
       @endforeach
     </div>
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        Data Detail Pengajuan Pemeriksaan Karya Tulis Ilmiah/ Makalah
-      </h1>
+      <h1>Data Detail Pengajuan Pemeriksaan Karya Tulis Ilmiah/ Makalah</h1>
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i>Beranda</a></li>
         <li><a href="/makalah">Data KTI/Makalah</a></li>
@@ -33,12 +32,15 @@
             <!-- /.box-header -->
             <div class="box-body">
               <table class="table table-bordered">
+
+              <!--KOP Tabel-->
                 <tr style="background:#c5f3fd">
                   <td colspan="3" align="center"><img src="{{ asset('img/Logo_Baru_BATAN.png') }}" style="width:90px"></td>
                   <td colspan="2" align="center"><b><h3>BADAN TENAGA NUKLIR NASIONAL</h3>
                     <small>PUSAT SAINS DAN TEKNOLOGI NUKLIR TERAPAN<br/>Jl.Tamansari No.71 Bandung 40132<br/><br/></small></b>
                   </td>
                 </tr>
+
                 <tr>
                   <td>1.</td>
                   <td>Judul</td>
@@ -62,7 +64,8 @@
                   <td>Sub. Bidang / Kelompok</td>
                   <td>:</td>
                   <?php $subidnkelompok=$data->subidnkelompok;?>
-                  <td>@foreach ($subbid as $s => $key)@if($key==$data->subidnkelompok) $subidnkelompok = $s @endif @endforeach {{$subidnkelompok}}</td>
+                  @foreach ($subbid as $s => $key)@if($key==$data->subidnkelompok) <?php $subidnkelompok = $s;?> @endif @endforeach
+                  <td>{{$subidnkelompok}}</td>
                 </tr>
                 <tr>
                   <td>5.</td>
@@ -77,7 +80,7 @@
                   <td>{{ $data->tujuan }}</td>
                 </tr>
               </table>
-            
+
               <table class="table table-bordered">
               <tr style="background:#f5f3a0">
                   <td><b>Nomor Makalah : {{substr($data->nomormakalah,0,2)}}/{{$data->kodesnt}}/{{$data->kodekti}}/{{substr($data->tgldaftarawal,0,4)}}
@@ -121,10 +124,30 @@
               <div class="col-md-7">
               <table class="table table-bordered">               
                 <tr style="background:#ebf9ff">
-                  <td colspan="2"> Pengesahan pengusulan/pengajuan : </td>
+                  <td colspan="2"> Pengesahan untuk pengusulan/pengajuan KTI : </td>
+                </tr>
+                <tr>
+                  <td>Dikirim ke Sekertaris KPTF/KPTP</td>
+                  <td>
+                  @if($data->tglkesekertaris!="")
+                    {{formatgl($data->tglkesekertaris)}}
+                  @else
+                    <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                  @endif
+                  </td>
                 </tr>
                 <tr>
                   <td>Diterima Ka.KPTF/KPTP</td>
+                  <td>
+                  @if($data->tglkekakptf!="")
+                    {{formatgl($data->tglkekakptf)}}
+                  @else
+                    <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                  @endif
+                  </td>
+                </tr>
+                <tr>
+                  <td>Disetujui Ka.KPTF/KPTP</td>
                   <td>
                   @if($data->acckakptf!="")
                     {{formatgl($data->acckakptf)}}
@@ -136,6 +159,8 @@
                 </table>
               </div>
               </div>
+
+
               <div class="row">
               <div class="col-md-12">
               <table class="table table-bordered">               
@@ -146,6 +171,7 @@
                   <td>No</td>
                   <td>Pemeriksa</td>
                   <td>Tanggal diterima</td>
+                  <td>Catatan Pemeriksa</td>
                   <td width="400">Persetujuan Pemeriksa (selesai pemeriksaan)</td>
                   <td>Keterangan</td>
                 </tr>
@@ -164,6 +190,14 @@
                     @else
                     @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
                         <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
+                    @endif
+                  </td>
+                  <td>
+                    @if($data->cttp1!="") {{$data->cttp1}}
+                    @else
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Tambah Catatan -</a>
                       @endif
                     @endif
                   </td>
@@ -201,6 +235,14 @@
                     @endif
                   </td>
                   <td>
+                    @if($data->cttp2!="") {{$data->cttp2}}
+                    @else
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Tambah Catatan -</a>
+                      @endif
+                    @endif
+                  </td>
+                  <td>
                     @if($data->tglaccp2!="") {{formatgl($data->tglaccp2)}}
                     @else 
                       @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
@@ -220,7 +262,7 @@
               </div>
               </div>
 
-            @if($data->statusp1=="PERBAIKAN" || $data->statusp2=="Perbaikan")
+            @if($data->statusp1=="PERBAIKAN" || $data->statusp2=="PERBAIKAN")
               <table class="table table-bordered">               
                 <tr style="background:#ebf9ff">
                   <b>Perbaikan Karya Tulis Ilmiah/ Makalah</b>
@@ -267,6 +309,19 @@
                   <td colspan="2">Informasi KTI/Makalah</td>
                 <tr>
                 <tr>
+                  <td>Diterima ke Sekertaris KPTF/KPTP</td>
+                  <td>
+                    @if($data->tgltrmsekertarisp1!="" or $data->tgltrmsekertarisp2!="") 
+                    Dari Pemeriksa 1 : {{formatgl($data->tgltrmsekertarisp1)}}<br/>
+                    Dari Pemeriksa 2 : {{formatgl($data->tgltrmsekertarisp2)}}<br/>
+                    @else 
+                    @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Isi Tanggal -</a>
+                      @endif
+                    @endif
+                  </td>
+                </tr>
+                <tr>
                   <td>Diteruskan ke Ka.KPTF/KPTP</td>
                   <td>
                     @if($data->ttdkakptf!="") {{formatgl($data->ttdkakptf)}}
@@ -309,6 +364,17 @@
                   @endif
                   </td>
                 </tr>
+                <tr>
+                  <td>Dokumen</td>
+                  <td>
+                  @if($data->dokumen!="") {{$data->dokumen}}
+                    @else
+                      @if(Auth::user()->status=="Sekertaris KPTF/KPTP")
+                        <a href="{{route('makalah.edit',['makalah'=>$data->nomormakalah])}}"> - Tambah Dokumen -</a>
+                      @endif
+                    @endif
+                  </td>
+                </tr>
               </table>
             </div>
             <!-- /.box-body -->
@@ -336,6 +402,10 @@
       <div class="row">
         <div class="col-md-3">
           <a href="/makalah"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Daftar KTI/Makalah</button></a>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-3">
+          <a href="/makalah"><button class="btn btn-block btn-sm btn-success" type="button">Cetak Formulir</button></a>
         </div>
       </div>
       @elseif(Auth::user()->status=="Pegawai")

@@ -45,8 +45,6 @@ Route::get('/informasipenting',function(){
     return view('informasipenting');
 });
 
-///////////////////////////////////////
-
 Route::get('/about', function () {
     return view('about');
 });
@@ -58,6 +56,7 @@ Route::get('/contact', function () {
 Route::get('/master', function () {
     return view('master');
 });
+
 
 //PANDUAN
 Route::get('/panduanbackup', function () {
@@ -98,6 +97,8 @@ Route::group(['middleware'=>['auth','status:Sekertaris KPTF/KPTP']],function(){
     //MAKALAH
     Route::resource('makalah','MakalahController');
     Route::get('mkedit/{id}', 'MakalahController@edit');
+    Route::get('/cariLogbook','MakalahController@cariLogbook');
+    Route::post('makeLogbook','MakalahController@makeLogbook');
 
     //PERBAIKAN MAKALAH
     Route::resource('perbaikan','PerbaikanController');
@@ -105,11 +106,6 @@ Route::group(['middleware'=>['auth','status:Sekertaris KPTF/KPTP']],function(){
 
 //AUTENTIKASI PEGAWAI
 Route::group(['middleware'=>['auth','status:Pegawai']],function(){
-    //MAKALAH
-    Route::get('/semuamakalah','MakalahController@index');
-    Route::get('/detail/{id}', 'MakalahController@show');
-    
-
     //PEMINJAMAN
     Route::get('/pinjamkti', 'PeminjamanController@index');
     Route::get('/pinjamansaya/{id}', 'PeminjamanController@pinjamansaya');
@@ -118,12 +114,8 @@ Route::group(['middleware'=>['auth','status:Pegawai']],function(){
 
 //AUTENTIKASI KEPALA PSTNT
 Route::group(['middleware'=>['auth','status:Kepala PSTNT']],function(){
-    Route::get('/semuamakalah','MakalahController@index');
-    //Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
-    Route::get('/detail/{id}', 'MakalahController@show');
     Route::get('/cetaklaporan/{id}', 'LaporanController@cetaklaporan');
     Route::get('pdf',  'LaporanController@makePDF');
-
     Route::resource('laporan','LaporanController');
 });
 
@@ -146,7 +138,9 @@ Route::get('subbid/get/{id}', 'PegawaiController@getSubbid');
 Route::get('generate-pdf','HomeController@generatePDF');
 
 Route::get('/grafik','grafikController@index');
+Route::get('/semuamakalah','MakalahController@index');
 Route::get('/tampilmakalah/{id}', 'MakalahController@makalahsaya');
+Route::get('/detail/{id}', 'MakalahController@show');
 
 //LINK
 Route::get('/profil', function () {

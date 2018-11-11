@@ -36,7 +36,7 @@
           </div>
           <!-- /.box-header -->
           <!-- form start -->
-          <form class="form" method="POST" action="{{ route('makalah.update', $data->nomormakalah) }}">
+          <form class="form" method="POST" action="{{ route('makalah.update', $data->nomormakalah) }}" enctype="multipart/form-data">
           {{csrf_field()}}
           {{method_field('PUT')}}
           <div class="box-body">
@@ -78,13 +78,23 @@
                   <label for="text">Persetujuan Ka.Subbid atau Ka.Kelompok</label>
                   <input type="date" class="form-control" name="accpsubidkapok" placeholder="{{$data->accpsubidkapok}}" value="{{$data->accpsubidkapok}}">
                 </div>
-              </div>
-              <div class="col-md-4">
                 <div class="form-group">
                   <label for="text">Persetujuan Ka.Bidang</label>
                   <input type="date" class="form-control" name="accpkabid" placeholder="{{$data->accpkabid}}" value="{{$data->accpkabid}}">
                 </div>
               </div>
+
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="text">Dikirim ke Sekertaris KPTF/KPTP</label>
+                  <input type="date" class="form-control" name=" tglkesekertaris" placeholder="{{$data-> tglkesekertaris }}" value="{{$data-> tglkesekertaris }}">
+                </div>
+                <div class="form-group">
+                  <label for="text">Diterima Ka.KPTF/KPTP</label>
+                  <input type="date" class="form-control" name="tglkekakptf" placeholder="{{$data->tglkekakptf}}" value="{{$data->tglkekakptf}}">
+                </div>
+              </div>
+
               <div class="col-md-4">
                 <div class="form-group">
                   <label for="text">Persetujuan Ka.KPTF/KPTP</label>
@@ -130,12 +140,14 @@
                   <tr style="background:#ebf9ff">
                     <td>No</td>
                     <td>Tanggal diterima</td>
+                    <td>Catatan</td>
                     <td>Persetujuan Pemeriksa / selesai pemeriksaan </td>
                     <td>Keterangan</td>
                   </tr>
                   <tr>
                     <td>Pemeriksa 1</td>
                     <td><input type="date" class="form-control" name="tglterimap1" placeholder="{{$data->tglterimap1}}" value="{{$data->tglterimap1}}"></td>
+                    <td><input type="text" class="form-control" name="cttp1"  placeholder="....." value="{{$data->cttp1}}"></td>
                     <td><input type="date" class="form-control" name="tglaccp1" placeholder="{{$data->tglaccp1}}" value="{{$data->tglaccp1}}"></td>
                     <td><select name="statusp1" class="form-control">
                           @if($data->statusp1=="ACC")<option selected>ACC</option><option>PERBAIKAN</option>
@@ -147,6 +159,7 @@
                   <tr>
                     <td>Pemeriksa 2</td>
                     <td><input type="date" class="form-control" name="tglterimap2" placeholder="{{$data->tglterimap2}}" value="{{$data->tglterimap2}}"></td>
+                    <td><input type="text" class="form-control" name="cttp2"  placeholder="......" value="{{$data->cttp2}}"></td>
                     <td><input type="date" class="form-control" name="tglaccp2" placeholder="{{$data->tglaccp2}}" value="{{$data->tglaccp2}}"></td>
                     <td><select name="statusp2" class="form-control">
                           @if($data->statusp2=="ACC")<option selected>ACC</option><option>PERBAIKAN</option>
@@ -169,6 +182,11 @@
                       <td colspan="2"><b>Informasi KTI/Makalah</b></td>
                     <tr>
                     <tr>
+                      <td>Diterima Sekertaris KPTF/KPTP</td>
+                      <td>Dari Pemeriksa 1 : <input type="date" class="form-control" name="tgltrmsekertarisp1" placeholder="{{$data->tgltrmsekertarisp1}}" value="{{$data->tgltrmsekertarisp1}}"><br/>
+                      Dari Pemeriksa 1 : <input type="date" class="form-control" name="tgltrmsekertarisp2" placeholder="{{$data->tgltrmsekertarisp2}}" value="{{$data->tgltrmsekertarisp2}}"></td>
+                    </tr>
+                    <tr>
                       <td>Diteruskan ke Ka.KPTF/KPTP</td>
                       <td><input type="date" class="form-control" name="ttdkakptf" placeholder="{{$data->ttdkakptf}}" value="{{$data->ttdkakptf}}"></td>
                     </tr>
@@ -183,6 +201,10 @@
                           @elseif($data->arsip=="TIDAK TERSEDIA")<option selected>TIDAK TERSEDIA</option><option>TERSEDIA</option>
                           @endif
                         </select></td>
+                    </tr>
+                    <tr>
+                      <td>Upload Dokumen *pdf</td>
+                      <td><input class="form-control" type="file" name="dokumen" id="upload_file"></td>
                     </tr>
                   </table>
                 </div>

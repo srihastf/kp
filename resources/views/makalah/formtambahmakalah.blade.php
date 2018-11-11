@@ -125,8 +125,6 @@
                   <label for="text">Persetujuan Ka.Subbid atau Ka.Kelompok</label>
                   <input type="date" class="form-control" name="accpsubidkapok" >
                 </div>
-              </div>
-              <div class="col-md-4">
                 <div class="form-group">
                   <label for="text">Persetujuan Ka.Bidang</label>
                   <input type="date" class="form-control" name="accpkabid" >
@@ -134,25 +132,27 @@
               </div>
               <div class="col-md-4">
                 <div class="form-group">
-                  <label for="text">Persetujuan Ka.KPTF/KPTP</label>
-                  <input type="date" class="form-control" name="acckakptf" >
+                  <label for="text">Dikirim ke Sekertaris KPTF/KPTP </label>
+                  <input type="date" class="form-control" name="tglkesekertaris" >
+                </div>
+                <div class="form-group">
+                  <label for="text">Diterima Ka.KPTF/KPTP </label>
+                  <input type="date" class="form-control" name="tglkekakptf" >
                 </div>
               </div>
-            </div>
-            <!-- /.row -->
-            
-            <div class="row">
-              <div class="col-md-6">
+
+              <div class="col-md-3">
                 <div class="form-group">
-                  <label for="text">Pemeriksa 1</label>
+                  <label for="text">Pemeriksa 1</label><br/>
                   <select class="itemName form-control" name="pemeriksa1" id="pemeriksa"></select>  
                 </div>
-              </div>
-              
-              <div class="col-md-6">
                 <div class="form-group">
-                  <label for="text">Pemeriksa 2</label>
+                  <label for="text">Pemeriksa 2</label><br/>
                   <select class="itemName form-control" name="pemeriksa2" id="pemeriksa"></select>  
+                </div>
+                <div class="form-group">
+                  <label for="text">Persetujuan Ka.KPTF/KPTP</label>
+                  <input type="date" class="form-control" name="acckakptf" >
                 </div>
               </div>
             </div>
@@ -168,12 +168,14 @@
                   <tr style="background:#ebf9ff">
                     <td>No</td>
                     <td>Tanggal diterima</td>
+                    <td>Catatan</td>
                     <td>Persetujuan Pemeriksa / selesai pemeriksaan </td>
                     <td>Keterangan</td>
                   </tr>
                   <tr>
                     <td>Pemeriksa 1</td>
                     <td><input type="date" class="form-control" name="tglterimap1" ></td>
+                    <td><input type="text" class="form-control" name="cttp1"  placeholder="......"></td>
                     <td><input type="date" class="form-control" name="tglaccp1" ></td>
                     <td><select name="statusp1" class="form-control">
                           <option>ACC</option>
@@ -183,6 +185,7 @@
                   <tr>
                     <td>Pemeriksa 2</td>
                     <td><input type="date" class="form-control" name="tglterimap2" ></td>
+                    <td><input type="text" class="form-control" name="cttp2"  placeholder="......"></td>
                     <td><input type="date" class="form-control" name="tglaccp2" ></td>
                     <td><select name="statusp2" class="form-control">
                           <option>ACC</option>
@@ -203,6 +206,11 @@
                       <td colspan="2"><b>Informasi KTI/Makalah</b></td>
                     <tr>
                     <tr>
+                      <td>Diterima Sekertaris KPTF/KPTP</td>
+                      <td>Dari Pemeriksa 1 : <input type="date" class="form-control" name="tgltrmsekertarisp1" ><br/>
+                      Dari Pemeriksa 2 : <input type="date" class="form-control" name="tgltrmsekertarisp2" ></td>
+                    </tr>
+                    <tr>
                       <td>Diteruskan ke Ka.KPTF/KPTP</td>
                       <td><input type="date" class="form-control" name="ttdkakptf" ></td>
                     </tr>
@@ -216,6 +224,10 @@
                           <option>TIDAK TERSEDIA</option>
                           <option>TERSEDIA</option>
                         </select></td>
+                    </tr>
+                    <tr>
+                      <td>Dokumen</td>
+                      <td><input type="file" class="form-control"name="dokumen" ></td>
                     </tr>
                   </table>
                 </div>
