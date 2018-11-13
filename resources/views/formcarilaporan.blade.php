@@ -11,7 +11,7 @@
       <h1>
        Form Cari Laporan
       </h1>
-      Laporan akan dicari berdasarkan tahun.
+      Laporan akan dicari berdasarkan rentang waktu.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>

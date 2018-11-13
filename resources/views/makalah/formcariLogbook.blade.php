@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Form Laporan')
+@section('title','Form Cari Logbook')
 
  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
@@ -9,9 +9,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Form Cari Laporan
+       Form Cari Logbook
       </h1>
-      Laporan akan dicari berdasarkan tahun.
+      Logbook akan dicari berdasarkan tahun.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>
@@ -27,7 +27,7 @@
           <!-- general form elements -->
           <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title">Laporan Makalah</h3><br/>
+              <h3 class="box-title">Logbook Perkembangan Pengajuan Makalah</h3><br/>
               @if($errors->any())
                 <div class="alert alert-danger">
                   <ul>

@@ -99,6 +99,7 @@ Route::group(['middleware'=>['auth','status:Sekertaris KPTF/KPTP']],function(){
     Route::get('mkedit/{id}', 'MakalahController@edit');
     Route::get('/cariLogbook','MakalahController@cariLogbook');
     Route::post('makeLogbook','MakalahController@makeLogbook');
+    Route::post('exportLogbook','MakalahController@exportLogbook');
 
     //PERBAIKAN MAKALAH
     Route::resource('perbaikan','PerbaikanController');

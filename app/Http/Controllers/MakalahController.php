@@ -57,7 +57,7 @@ class MakalahController extends Controller
      */
     public function cariLogbook()
     {
-        return view('formbuatLogbook');
+        return view('makalah.formcariLogbook');
     }
 
     /**
@@ -70,9 +70,44 @@ class MakalahController extends Controller
     {
         $tahunkti = $request->tahunkti;
         $data['data']=Makalahmodel::where('tgldaftarawal','LIKE',"%$tahunkti%")->get();
-        return view('makalah.tampilLogbook',compact('tahunkti'),$data);
+        $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
+        $perbaikan['perbaikan'] = Perbaikanmodel::Get();
+        return view('makalah.tampilLogbook',compact('tahunkti'),$data)
+        ->with($pegawai)
+        ->with($perbaikan);
 
-        // $pdf = PDF::loadView('makalah.tampilLogbook',compact('tahunkti'),$data)->setPaper('a4','landscape');
+        // $pdf = PDF::loadView('makalah.logbook',compact('tahunkti'),$data)->setPaper('a4','landscape');
+        // $pdf->save(storage_path().'_filename.pdf');
+        // return $pdf->download('logbook-'.$tahunkti.'.pdf');
+    }
+
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exportLogbook(Request $request)
+    {
+        $tahunkti = $request->tahunkti;
+        //$data['data']=Makalahmodel::where('tgldaftarawal','LIKE',"%$tahunkti%")->get();
+        $data['data'] = DB::table('makalah')
+            ->leftjoin('perbaikan', 'makalah.nomormakalah', '=', 'perbaikan.nomormakalah')
+            ->leftjoin('pegawai', 'pegawai.nip', '=', 'makalah.pemeriksa1')
+            ->where('tgldaftarawal','LIKE',"%$tahunkti%")
+            ->get();
+
+        $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
+        $perbaikan['perbaikan'] = Perbaikanmodel::get();
+        return view('makalah.logbook',compact('tahunkti'),$data)
+        ->with($pegawai);
+
+        // $html = view('makalah.logbook',compact('tahunkti','pegawai'),['perbaikan'=>$perbaikan]);
+        // $pdf = PDF::loadView($html,$data)->setPaper('a4','landscape');
+        // $pdf->save(storage_path().'_filename.pdf');
+        // return $pdf->download('invoice.pdf');
+
+        // $pdf = PDF::loadView('makalah.logbook',compact('tahunkti','pegawai'),$data)->setPaper('a4','landscape');
         // $pdf->save(storage_path().'_filename.pdf');
         // return $pdf->download('logbook-'.$tahunkti.'.pdf');
     }
