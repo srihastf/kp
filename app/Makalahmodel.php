@@ -18,6 +18,6 @@ class Makalahmodel extends Model
         'tglkesekertaris','tglkekakptf','pemeriksa1','pemeriksa2',
         'acckakptf','tglterimap1','cttp1','tglaccp1','statusp1','tgltrmsekertarisp1',
         'tglterimap2','cttp2','tglaccp2','statusp2','tgltrmsekertarisp2',
-        'ttdkakptf','tglselesai','arsip','dokumen'
+        'ttdkakptf','tglselesai','arsip'
     ];
 }

@@ -225,10 +225,10 @@
                           <option>TERSEDIA</option>
                         </select></td>
                     </tr>
-                    <tr>
+                    <!--<tr>
                       <td>Dokumen</td>
                       <td><input type="file" class="form-control"name="dokumen" ></td>
-                    </tr>
+                    </tr>-->
                   </table>
                 </div>
               </div>

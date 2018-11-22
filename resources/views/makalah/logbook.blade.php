@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Logbook Tahun {{$tahunkti}}</title>
+        <title>Logbook Perkembangan Pengajuan Makalah/KTI</title>
         <style>
             table{
                 border:3px solid;
@@ -19,7 +19,13 @@
             <td width="100px" align="center" style="border-bottom: 2px solid black;"><img src="{{ asset('img/Logo_Baru_BATAN.png') }}" style="width:90px"></td>
             <td colspan="8" align="center" style="border-bottom: 2px solid black;"><b><h2>BADAN TENAGA NUKLIR NASIONAL</h2>
             <small>PUSAT SAINS DAN TEKNOLOGI NUKLIR TERAPAN<br/>Jl.Tamansari No.71 Bandung 40132<br/><br/></small>
-            <small>Periode : {{$tahunkti}}</small></b></td>
+            <small>Logbook Perkembangan Pengajuan Karya Tulis Ilmiah</small><br/>
+            <small>Periode :  @foreach($data as $d) 
+                                <?php $date = date_create($d->tgldaftarawal);
+                                echo date_format($date,"Y");?> 
+                                @break
+                              @endforeach
+            </small></b></td>
         </tr>      
         <tr style="background:lightgray">
             <th rowspan="2" style="border-bottom: 2px solid black;">Nomor Makalah</th>
@@ -54,7 +60,7 @@
             <tr>
                 <td>1</td>
                 <td>{{formatgl($d->tglterimap1)}}</td>
-                <td>@if($d->pemeriksa1!="") @foreach ($data as $s){{$s->namapegawai}} @endforeach @endif</td>
+                <td>@if($d->pemeriksa1!="") @foreach ($pegawai as $s => $key)@if($key==$d->pemeriksa1){{$s}}@endif @endforeach @endif</td>
                 <td>{{formatgl($d->tglaccp1)}}</td>
                 <td>{{$d->cttp1}}</td>
                 <td>{{$d->statusp1}}</td>
@@ -62,7 +68,7 @@
             <tr>
                 <td>2</td>
                 <td>{{formatgl($d->tglterimap2)}}</td>
-                <td>@if($d->pemeriksa2!="") @foreach ($data as $s){{$s->namapegawai}} @endforeach @endif</td>
+                <td>@if($d->pemeriksa2!="") @foreach ($pegawai as $s => $key)@if($key==$d->pemeriksa2){{$s}}@endif @endforeach @endif</td>
                 <td>{{formatgl($d->tglaccp2)}}</td>
                 <td>{{$d->cttp2}}</td>
                 <td>{{$d->statusp2}}</td>

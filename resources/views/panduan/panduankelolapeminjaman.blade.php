@@ -1,4 +1,4 @@
-@section('title','Panduan Kelola Perbaikan Makalah/KTI')
+@section('title','Panduan Kelola Peminjaman Makalah/KTI')
 <!-- Header -->
 @include('header2')
 <!-- End Header -->
@@ -10,9 +10,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Panduan Kelola Perbaikan Makalah/KTI
+        Panduan Kelola Peminjaman Makalah/KTI
       </h1>
-      Kelola Perbaikan Makalah/KTI diakses oleh Sekertaris KPTF/KPTP. Mengelola data perbaikan Makalah/KTI seperti tambah perbaikan makalah/kti, ubah data perbaikan makalah/kti, lihat data perbaikan makalah/kti dan hapus data perbaikan makalah/kti.
+      Kelola Peminjaman Makalah/KTI diakses oleh Sekertaris KPTF/KPTP. Mengelola data peminjaman Makalah/KTI seperti tambah peminjaman makalah/kti, ubah data peminjaman makalah/kti, lihat data peminjaman makalah/kti dan hapus data peminjaman makalah/kti.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         </li>
@@ -31,14 +31,14 @@
        <!-- Default box -->
        <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">A. Tambah Perbaikan Makalah/KTI</h3>
+          <h3 class="box-title">A. Tambah Peminjaman Makalah/KTI</h3>
         </div>
         <div class="box-body">
           
           <ol>
-            <b><li>Login sebagai Sekertaris kemudian pilih Menu Kelola Perbaikan Makalah/KTI</li></b>
+            <b><li>Login sebagai Sekertaris kemudian pilih Menu Kelola Peminjaman Makalah/KTI</li></b>
             <p>Akan tampil halaman Daftar Data Perbaikan Makalah/KTI</p>
-            <img src="{{ asset('img/pkelolaperbaikan/1.png') }}"style="width:900px"><br/><br/>
+            <img src="{{ asset('img/pkelolapeminjaman/0.png') }}"style="width:900px"><br/><br/>
             <b><li>Klik tombol "Tambah Data Baru"</li></b>
             <img src="{{ asset('img/pkelolaperbaikan/2.png') }}"style="width:900px"><br/><br/>
             <b><li>Isi data Perbaikan Makalah pada Form.</li></b>

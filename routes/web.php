@@ -74,6 +74,9 @@ Route::get('/panduankelolapengajuan', function (){
 Route::get('/panduankelolaperbaikan', function(){
     return view('panduan.panduankelolaperbaikan');
 });
+Route::get('/panduankelolapeminjaman', function(){
+    return view('panduan.panduankelolapeminjaman');
+});
 
 
 //AUTENTIKASI
@@ -100,7 +103,9 @@ Route::group(['middleware'=>['auth','status:Sekertaris KPTF/KPTP']],function(){
     Route::get('/cariLogbook','MakalahController@cariLogbook');
     Route::post('makeLogbook','MakalahController@makeLogbook');
     Route::post('exportLogbook','MakalahController@exportLogbook');
-
+    Route::post('exportForm','MakalahController@exportForm');
+    Route::get('pdfform/{id}', 'MakalahController@exportFormp');
+    
     //PERBAIKAN MAKALAH
     Route::resource('perbaikan','PerbaikanController');
 });

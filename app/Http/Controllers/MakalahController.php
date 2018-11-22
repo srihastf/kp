@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 
 class MakalahController extends Controller
 {
+    public $thnktistatis;
     /**
      * Create a new controller instance.
      *
@@ -59,7 +60,7 @@ class MakalahController extends Controller
     {
         return view('makalah.formcariLogbook');
     }
-
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -68,17 +69,14 @@ class MakalahController extends Controller
      */
     public function makeLogbook(Request $request)
     {
-        $tahunkti = $request->tahunkti;
+        $this->thnktistatis = $request->tahunkti;
+        $tahunkti = $this->thnktistatis;
         $data['data']=Makalahmodel::where('tgldaftarawal','LIKE',"%$tahunkti%")->get();
         $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
         $perbaikan['perbaikan'] = Perbaikanmodel::Get();
         return view('makalah.tampilLogbook',compact('tahunkti'),$data)
         ->with($pegawai)
         ->with($perbaikan);
-
-        // $pdf = PDF::loadView('makalah.logbook',compact('tahunkti'),$data)->setPaper('a4','landscape');
-        // $pdf->save(storage_path().'_filename.pdf');
-        // return $pdf->download('logbook-'.$tahunkti.'.pdf');
     }
 
         /**
@@ -89,28 +87,96 @@ class MakalahController extends Controller
      */
     public function exportLogbook(Request $request)
     {
+        
         $tahunkti = $request->tahunkti;
-        //$data['data']=Makalahmodel::where('tgldaftarawal','LIKE',"%$tahunkti%")->get();
-        $data['data'] = DB::table('makalah')
-            ->leftjoin('perbaikan', 'makalah.nomormakalah', '=', 'perbaikan.nomormakalah')
-            ->leftjoin('pegawai', 'pegawai.nip', '=', 'makalah.pemeriksa1')
-            ->where('tgldaftarawal','LIKE',"%$tahunkti%")
-            ->get();
+
+        $data['data']=Makalahmodel::where('tgldaftarawal','LIKE',"%$tahunkti%")->get();
+        //$data['data'] = DB::table('makalah')
+            //->leftjoin('perbaikan', 'makalah.nomormakalah', '=', 'perbaikan.nomormakalah')
+           // ->leftjoin('pegawai', 'pegawai.nip', '=', 'makalah.pemeriksa1')
+            //->where('tgldaftarawal','LIKE',"%$tahunkti%")
+            //->get();
 
         $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
         $perbaikan['perbaikan'] = Perbaikanmodel::get();
-        return view('makalah.logbook',compact('tahunkti'),$data)
-        ->with($pegawai);
+        //   return view('makalah.logbook',compact('tahunkti'),$data)
+        //   ->with($pegawai)
+        //   ->with($perbaikan);
 
-        // $html = view('makalah.logbook',compact('tahunkti','pegawai'),['perbaikan'=>$perbaikan]);
-        // $pdf = PDF::loadView($html,$data)->setPaper('a4','landscape');
+        $pdf = PDF::loadView('makalah.logbook',$data,$pegawai,$perbaikan)->setPaper('a4','landscape');
+        $pdf->save(storage_path().'_filename.pdf');
+        return $pdf->download('logbook-'.$tahunkti.'.pdf');
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function exportFormp($id)
+    {
+       
+        $data['data']=Makalahmodel::find($id);
+        $kti['kti']=Ktimodel::Get()->pluck("kodekti","jeniskti");
+        $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
+        $subbid['subbid']=Subbidmodel::Get()->pluck("kodesubid","namasubid");
+        $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
+        $pegawai2['pegawai2']=Pegawaimodel::Get();
+        $perbaikan = Perbaikanmodel::where('nomormakalah', $id)->get();
+        return view('makalah.formpengajuan',$data,$pegawai)
+        ->with($pegawai2)
+        ->with($kti)
+        ->with($subbid)
+        ->with($bidang)
+        ->with('perbaikan', $perbaikan);
+
+        // $pdf = PDF::loadView('makalah.formpengajuan',$data)->setPaper('a4','potrait');
         // $pdf->save(storage_path().'_filename.pdf');
-        // return $pdf->download('invoice.pdf');
+        // return $pdf->download('formPengajuan-'.$id.'.pdf');
 
-        // $pdf = PDF::loadView('makalah.logbook',compact('tahunkti','pegawai'),$data)->setPaper('a4','landscape');
+    }
+
+        /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exportForm(Request $request)
+    {
+        // $data['data']=Makalahmodel::where('tgldaftarawal','LIKE',"%$tahunkti%")->get();
+        // //$data['data'] = DB::table('makalah')
+        //     //->leftjoin('perbaikan', 'makalah.nomormakalah', '=', 'perbaikan.nomormakalah')
+        //    // ->leftjoin('pegawai', 'pegawai.nip', '=', 'makalah.pemeriksa1')
+        //     //->where('tgldaftarawal','LIKE',"%$tahunkti%")
+        //     //->get();
+
+        // $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
+        // $perbaikan['perbaikan'] = Perbaikanmodel::get();
+        // return view('makalah.logbook',compact('tahunkti'),$data)
+        // ->with($pegawai)
+        // ->with($perbaikan);
+
+        $nokti['nokti'] = $request->nokti;
+        $data['data']=Makalahmodel::find($nokti);
+        $kti['kti']=Ktimodel::Get()->pluck("kodekti","jeniskti");
+        $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
+        $subbid['subbid']=Subbidmodel::Get()->pluck("kodesubid","namasubid");
+        $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
+        $perbaikan = Perbaikanmodel::where('nomormakalah', $nokti)->get();
+        return view('makalah.formpengajuan')
+        ->with($kti)
+        ->with($subbid)
+        ->with($bidang)
+        ->with('perbaikan', $perbaikan)
+        ->with($nokti);
+
+
+        // $pdf = PDF::loadView('makalah.logbook',$data,$pegawai,$perbaikan)->setPaper('a4','landscape');
         // $pdf->save(storage_path().'_filename.pdf');
         // return $pdf->download('logbook-'.$tahunkti.'.pdf');
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -200,7 +266,6 @@ class MakalahController extends Controller
             'ttdkakptf'=>$request->ttdkakptf,
             'tglselesai'=>$request->tglselesai,
             'arsip'=>$arsip,
-            'dokumen'=>$request->dokumen,
         ]);
 
         $request->session()->flash('alert-success','Data Makalah berhasil ditambahkan.');
@@ -215,7 +280,7 @@ class MakalahController extends Controller
      */
     public function show($id)
     {
-        $cari = $id;
+        $nokti['nokti'] = $id;
         $data['data']=Makalahmodel::find($id);
         $kti['kti']=Ktimodel::Get()->pluck("kodekti","jeniskti");
         $bidang['bidang']=Bidangsntmodel::Get()->pluck("kodesnt","namabidang");
@@ -226,7 +291,8 @@ class MakalahController extends Controller
         ->with($kti)
         ->with($subbid)
         ->with($bidang)
-        ->with('perbaikan', $perbaikan);
+        ->with('perbaikan', $perbaikan)
+        ->with($nokti);
     }
 
     /**
@@ -276,7 +342,6 @@ class MakalahController extends Controller
         $makalah->ttdkakptf = $request->ttdkakptf;
         $makalah->tglselesai = $request->tglselesai;
         $makalah->arsip = $request->arsip;
-        $makalah->dokumen = $request->dokumen;
 
         $makalah->save();
 

@@ -1,6 +1,7 @@
 @extends('master')
 @section('title','Detail Makalah')
 
+
 @section('content')
  <!-- Content Wrapper. Contains page content -->
  <div class="content-wrapper">
@@ -364,7 +365,7 @@
                   @endif
                   </td>
                 </tr>
-                <tr>
+                <!--<tr>
                   <td>Dokumen</td>
                   <td>
                   @if($data->dokumen!="") {{$data->dokumen}}
@@ -374,7 +375,7 @@
                       @endif
                     @endif
                   </td>
-                </tr>
+                </tr>-->
               </table>
             </div>
             <!-- /.box-body -->
@@ -405,7 +406,7 @@
         </div>
         <div class="col-md-6"></div>
         <div class="col-md-3">
-          <a href="/makalah"><button class="btn btn-block btn-sm btn-success" type="button">Cetak Formulir</button></a>
+          <a href="/pdfform/{{$nokti}}"><button class="btn btn-block btn-sm btn-success" type="button">Cetak Formulir</button></a>
         </div>
       </div>
       @elseif(Auth::user()->status=="Pegawai")

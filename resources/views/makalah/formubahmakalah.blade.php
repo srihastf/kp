@@ -202,10 +202,10 @@
                           @endif
                         </select></td>
                     </tr>
-                    <tr>
+                    <!--<tr>
                       <td>Upload Dokumen *pdf</td>
                       <td><input class="form-control" type="file" name="dokumen" id="upload_file"></td>
-                    </tr>
+                    </tr>-->
                   </table>
                 </div>
               </div>

@@ -51,7 +51,7 @@
                       <td><b>Masukan Tahun:</b></td>
                     </tr>
                     <tr>
-                      <td><input type="text" class="form-control" name="tahunkti"></td>
+                      <td><input type="text" class="form-control" name="tahunkti" placeholder="Misal : 2016"></td>
                     </tr>
                   </table>
                 </div>

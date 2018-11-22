@@ -44,6 +44,7 @@
                     <td width="150px" align="center" style="border-bottom: 2px solid black;"><img src="{{ asset('img/Logo_Baru_BATAN.png') }}" style="width:90px"></td>
                     <td colspan="7" align="center" style="border-bottom: 2px solid black;"><b><h2>BADAN TENAGA NUKLIR NASIONAL</h2>
                     <small>PUSAT SAINS DAN TEKNOLOGI NUKLIR TERAPAN<br/>Jl.Tamansari No.71 Bandung 40132<br/><br/></small>
+                    <small>Logbook Perkembangan Pengajuan Karya Tulis Ilmiah</small><br/>
                     <small>Periode : {{$tahunkti}}</small></b></td>
                     <td style="border-bottom: 2px solid black;">
                     <form class="form" method="POST" action="exportLogbook">

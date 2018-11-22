@@ -1,5 +1,5 @@
 @extends('master')
-@section('title','Tambah Perbaikan')
+@section('title','Ubah Perbaikan')
 
  <link rel="stylesheet" href="../../bower_components/select2/dist/css/select2.min.css">
 
@@ -9,7 +9,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-       Form Tambah Data Perbaikan Makalah/KTI
+       Form Ubah Data Perbaikan Makalah/KTI
       </h1>
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
