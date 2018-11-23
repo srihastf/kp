@@ -2,9 +2,9 @@
 
 @section('style')
 <style>
-body {
-    background: url("/img/Capture.png");
-}
+    body {
+        background: url("/img/Capture.png");
+    }
 </style>
 @endsection
 
@@ -13,7 +13,7 @@ body {
     <div class="row">
         <div class="col-md-7">
             <div class="card">
-                <div class="card-header">{{ __('Informasi SIP3KTI') }}</div>
+                <div class="card-header">Informasi Seputar SIP3KTI</div>
                 <div class="card-body">
                 <p>Sistem Informasi Pengelolaan Pengajuan dan Peminjaman Karya Tulis Ilmiah (SIP3KTI).</p>
                 <img src="{{ asset('img/DSC_0003.jpg') }}" width="580px"><br/>
@@ -79,3 +79,5 @@ body {
     </div>
 </div>
 @endsection
+
+

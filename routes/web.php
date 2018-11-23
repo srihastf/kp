@@ -37,6 +37,10 @@ Route::get('/infopengajuan',function(){
     return view('infopengajuan');
 });
 
+Route::get('/infoperbaikan',function(){
+    return view('infoperbaikan');
+});
+
 Route::get('/infopeminjaman',function(){
     return view('infopeminjaman');
 });
@@ -77,6 +81,19 @@ Route::get('/panduankelolaperbaikan', function(){
 Route::get('/panduankelolapeminjaman', function(){
     return view('panduan.panduankelolapeminjaman');
 });
+Route::get('/panduanlihatpengajuan',function(){
+    return view('/panduan.panduanlihatpengajuan');
+});
+Route::get('/panduanlihatlaporan',function(){
+    return view('panduan.panduanlihatlaporan');
+});
+Route::get('/panduanlogbook',function(){
+    return view('panduan.panduanlihatlogbook');
+});
+Route::get('/panduanpinjaman',function(){
+    return view('panduan.panduanpinjaman');
+});
+
 
 
 //AUTENTIKASI

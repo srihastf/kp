@@ -50,7 +50,7 @@
                     <form class="form" method="POST" action="exportLogbook">
                     {{ csrf_field() }}
                     <input type="hidden" class="form-control" name="tahunkti" value="{{$tahunkti}}" hide>
-                    <button type="submit" class="btn btn-success">PDF</button>
+                    <button type="submit" class="btn btn-success">Print</button>
                     </form>
                     </td>
                 </tr>      

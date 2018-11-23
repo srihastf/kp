@@ -56,7 +56,17 @@
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b><?php echo date("d-m-Y");?></b>
+      <b>
+      <p class="meta">
+          <?php 
+            $tgl=mktime(date("m"),date("d"),date("Y"));
+            echo "Tanggal : <b>".date("d-m-Y", $tgl)."</b> ";
+            date_default_timezone_set('Asia/Jakarta');
+            $jam=date("H:i:s");
+            echo "| Pukul : <b>". $jam." WIB "."</b>";
+          ?>
+          </p>
+      </b>
     </div>
     <strong>BATAN BANDUNG</strong>
   </footer>

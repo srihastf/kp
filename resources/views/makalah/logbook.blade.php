@@ -10,6 +10,11 @@
             th, td {
                 padding: 1px;
             }
+
+            .breakNow{
+                page-break-inside:avoid;
+                page-break-after:always;
+            }
         </style>
     </head>
     <body>
@@ -17,7 +22,7 @@
     <table border="1" cellspacing="0" style="border:1 solid black;" >
         <tr>
             <td width="100px" align="center" style="border-bottom: 2px solid black;"><img src="{{ asset('img/Logo_Baru_BATAN.png') }}" style="width:90px"></td>
-            <td colspan="8" align="center" style="border-bottom: 2px solid black;"><b><h2>BADAN TENAGA NUKLIR NASIONAL</h2>
+            <td colspan="8" align="center" style="border-bottom: 2px solid black;"><b><h1>BADAN TENAGA NUKLIR NASIONAL</h1>
             <small>PUSAT SAINS DAN TEKNOLOGI NUKLIR TERAPAN<br/>Jl.Tamansari No.71 Bandung 40132<br/><br/></small>
             <small>Logbook Perkembangan Pengajuan Karya Tulis Ilmiah</small><br/>
             <small>Periode :  @foreach($data as $d) 
@@ -41,7 +46,7 @@
             <td style="border-bottom: 2px solid black;"><b>Pemeriksa</b></td>
             <td style="border-bottom: 2px solid black;"><b>Selesai</b></td>
         </tr>
-
+        
         @foreach($data as $d)
             @if($d->statusp1=="ACC" || $d->statusp2=="ACC")
             <tr>
@@ -100,12 +105,13 @@
                 @else <td style="border-bottom: 2px solid black;"></td>
                 @endif
             </tr>
+            
             @else
             <tr>
-                <td rowspan="10">{{substr($d->nomormakalah,0,2)}}/{{$d->kodesnt}}/{{$d->kodekti}}/{{substr($d->tgldaftarawal,0,4)}}</a></td>
-                <td rowspan="10">{{$d->judulmakalah}}<br/><br/>
+                <td rowspan="10" style="border-bottom: 2px solid black;">{{substr($d->nomormakalah,0,2)}}/{{$d->kodesnt}}/{{$d->kodekti}}/{{substr($d->tgldaftarawal,0,4)}}</a></td>
+                <td rowspan="10" style="border-bottom: 2px solid black;">{{$d->judulmakalah}}<br/><br/>
                     Ditujukan untuk : <b>{{$d->tujuan}}</b></td>
-                <td rowspan="10">{{$d->penulis}}</td>
+                <td rowspan="10" style="border-bottom: 2px solid black;">{{$d->penulis}}</td>
 
                 <td></td>
                 <td><b>Daftar : {{formatgl($d->tgldaftarawal)}}</b><br/></td>

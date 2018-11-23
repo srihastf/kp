@@ -60,7 +60,7 @@
         <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Makalah/KTI yang telah diajukan</h3><br/>
-              <small><b>Dari: <?php echo $tahunktiawal;?>   -    Sampai: <?php echo $tahunktiakhir;?></b></small>
+              <small><b>Dari: <?php echo formatgl($tahunktiawal);?>   -    Sampai: <?php echo formatgl($tahunktiakhir);?></b></small>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -80,7 +80,7 @@
         <div class="box box-danger">
             <div class="box-header with-border">
               <h3 class="box-title">Makalah/KTI yang telah dipublikasi </h3><br/>
-              <small><b>Dari: <?php echo $tahunktiawal;?>   -    Sampai: <?php echo $tahunktiakhir;?></b></small>
+              <small><b>Dari: <?php echo formatgl($tahunktiawal);?>   -    Sampai: <?php echo formatgl($tahunktiakhir);?></b></small>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                 </button>
@@ -101,6 +101,12 @@
     <!-- /.content -->
   </div>
 @endsection
+
+<?php
+function formatgl($tanggal){
+  $date = date_create($tanggal);
+  echo date_format($date,"d-m-Y");
+}?>
 
 @section('jsstyle')
 <script src="js/Chart.min.js"></script>

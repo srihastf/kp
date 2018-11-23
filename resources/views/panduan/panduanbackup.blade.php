@@ -52,23 +52,17 @@
             <p>File database akan terunduh.</p>
             <img src="{{ asset('img/pbackup/5.png') }}"style="width:900px"><br/><br/>
             <b><li>Simpan pada File Explorer</li></b>
-            <p>Simpan dan sesuaikan file pada folder yang rapi, mudah dicari dan sesuai keinginan Anda.</p>
+            <p>Simpan dan sesuaikan file dan nama file pada folder yang rapi, mudah dicari dan sesuai keinginan Anda.</p>
             <img src="{{ asset('img/pbackup/6.png') }}"style="width:900px"><br/><br/>
           </ol>
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
+        <a href="/home"><button class="btn btn-primary"><i class="fa fa-home"></i> Beranda<button></a>
         </div>
         <!-- /.box-footer-->
       </div>
       <!-- /.box -->
-      </div>
-     </div>
-      <!-- /.row -->
-        <!-- /.box-body -->
-        <div class="box-footer">
-        </div>
-        <!-- /.box-footer-->
       </div>
       <!-- /.box -->
       </div>

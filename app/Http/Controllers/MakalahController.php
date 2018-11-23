@@ -99,13 +99,13 @@ class MakalahController extends Controller
 
         $pegawai['pegawai']=Pegawaimodel::Get()->pluck("nip","namapegawai");
         $perbaikan['perbaikan'] = Perbaikanmodel::get();
-        //   return view('makalah.logbook',compact('tahunkti'),$data)
-        //   ->with($pegawai)
-        //   ->with($perbaikan);
+          return view('makalah.logbook',compact('tahunkti'),$data)
+           ->with($pegawai)
+           ->with($perbaikan);
 
-        $pdf = PDF::loadView('makalah.logbook',$data,$pegawai,$perbaikan)->setPaper('a4','landscape');
-        $pdf->save(storage_path().'_filename.pdf');
-        return $pdf->download('logbook-'.$tahunkti.'.pdf');
+        // $pdf = PDF::loadView('makalah.logbook',$data,$pegawai,$perbaikan)->setPaper('a4','landscape');
+        // $pdf->save(storage_path().'_filename.pdf');
+        // return $pdf->download('logbook-'.$tahunkti.'.pdf');
     }
 
      /**

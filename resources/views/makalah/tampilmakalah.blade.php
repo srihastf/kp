@@ -23,7 +23,7 @@
       <h1>
         Daftar Data Pengajuan KTI/Makalah
       </h1>
-      Mencatat perkembangan proses pengajuan/pengusulan KTI/Makalah Penelitian.
+      Daftar KTI/Makalah yang berhubungan dengan saya.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>

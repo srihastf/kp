@@ -121,7 +121,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-        <a href="/home"><button class="btn btn-block btn-sm btn-primary" type="button">Kembali ke Beranda</button></a>
+        <a href="/home"><button class="btn btn-primary"><i class="fa fa-home"></i> Beranda<button></a>
         </div>
         <!-- /.box-footer-->
       </div>

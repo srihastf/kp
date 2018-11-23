@@ -1,4 +1,4 @@
-@section('title','Info Pegawai')
+@section('title','Info Perbaikan KTI/Makalah')
 
 <!-- Header -->
 @include('header2')
@@ -12,9 +12,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Informasi Pengelolaan Data Pegawai
+        Informasi Pengelolaan Data Perbaikan KTI/Makalah
       </h1>
-      Bagian untuk mengelola data pegawai.
+      Bagian untuk mengelola data perbaikan KTI/Makalah.
       <ol class="breadcrumb">
         <li><a href="/home"><i class="fa fa-home"></i> Beranda</a></li>
         <li class="breadcrumb-item active">@yield('title')</li>
@@ -31,20 +31,20 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">
-                Mengelola data pegawai seperti <b>tambah</b> data pegawai, 
-                <b>ubah</b> data pegawai, <b>lihat</b> data pegawai dan 
-                <b>hapus</b> data pegawai.</h3>
+                Mengelola data perbaikan KTI/Makalah seperti <b>tambah</b> data perbaikan KTI/Makalah, 
+                <b>ubah</b> data perbaikan KTI/Makalah, <b>lihat</b> data perbaikan KTI/Makalah dan 
+                <b>hapus</b> data perbaikan KTI/Makalah.</h3>
             </div>
             <div class="box-body">
               <ol>
-                <li>Tambah Pegawai : </li>
-                <p>Menambah data pegawai baru yang belum terdata dalam sistem.</p>
-                <li>Ubah Pegawai : </li>
-                <p>Memperbaharui data pegawai yang sudah terdata dalam sistem sebelumnya.</p>
-                <li>Lihat Pegawai : </li>
-                <p>Melihat detail data pegawai secara lengkap yang terdata dalam sistem.</p>
-                <li>Hapus Pegawai : </li>
-                <p>Menghapus data pegawai yang sudah terdata dalam sistem. Untuk keadaan darurat (ada kesalahan).</p>
+                <li>Tambah Perbaikan KTI/Makalah : </li>
+                <p>Menambah data perbaikan KTI/Makalah baru yang belum terdata dalam sistem.</p>
+                <li>Ubah Perbaikan KTI/Makalah : </li>
+                <p>Memperbaharui data perbaikan KTI/Makalah yang sudah terdata dalam sistem sebelumnya.</p>
+                <li>Lihat Perbaikan KTI/Makalah : </li>
+                <p>Melihat detail data perbaikan KTI/Makalah secara lengkap yang terdata dalam sistem.</p>
+                <li>Hapus Perbaikan KTI/Makalah : </li>
+                <p>Menghapus data perbaikan KTI/Makalah yang sudah terdata dalam sistem. Untuk keadaan darurat (ada kesalahan).</p>
               </ol>
             </div>
             <!-- /.box-body -->
@@ -62,12 +62,13 @@
           <!-- Default box -->
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Manfaat mengelola data pegawai dalam sistem.</h3>
+              <h3 class="box-title">Manfaat mengelola data perbaikan KTI/Makalah dalam sistem.</h3>
             </div>
             <div class="box-body">
               <ul>
-                <li>Pegawai yang terlibat dalam sistem menjadi jelas terdefinisi.</li>
+                <li>KTI/Makalah yang terlibat dalam sistem menjadi jelas terdefinisi.</li>
                 <li>Keterkaitan dengan pengelolaan data lainnya menjadi jelas informasinya.</li>
+                <li>Merekap data perbaikan selama pemeriksaan/pengusulan/pengajuan KTI/Makalah dilakukan.</li>
               </ul>
             </div>
             <!-- /.box-body -->
